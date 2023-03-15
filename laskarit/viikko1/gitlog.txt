@@ -1,4 +1,5 @@
 Tässä harjoitustehtävän "git log" -tulostus
+LISÄÄ TEKSTIÄ AINA LISÄÄ TEKSTIÄ!!!!!
 
 commit 4d83d60e89552aedd61b4dfed7994c6bc74c75a5
 Author: thefakejj <jasper.laurila@gmail.com>
