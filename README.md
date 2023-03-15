@@ -7,3 +7,7 @@
 
 ## Aloitetaan
 **Eka rivi tekstiä**, toivottavasti kaikilla menee _hyvin_
+
+### Pieniä muutoksia
+
+Pientä ~~tekstiä~~
