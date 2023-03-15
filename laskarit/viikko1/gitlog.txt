@@ -1,0 +1,112 @@
+commit 4d83d60e89552aedd61b4dfed7994c6bc74c75a5
+Author: thefakejj <jasper.laurila@gmail.com>
+Date:   Tue Mar 14 18:43:09 2023 +0200
+
+    file1 poistettu, file2 uudelleennimetty file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 8a8383eb194b68d2e8bb2fd4b344a8b547d49cf8
+Author: thefakejj <jasper.laurila@gmail.com>
+Date:   Tue Mar 14 18:38:52 2023 +0200
+
+    lisätään hakemisto tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 411d5022754ec450b512bede54c304b02465f7cf
+Author: thefakejj <jasper.laurila@gmail.com>
+Date:   Tue Mar 14 18:28:45 2023 +0200
+
+    lisätään eka.txt ja kolmas.txt muutokset
+
+ eka.txt    | 2 +-
+ kolmas.txt | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+commit 8be7f5fa17254afedb2b8b99988c42f101dc8cb8
+Author: thefakejj <jasper.laurila@gmail.com>
+Date:   Tue Mar 14 18:25:19 2023 +0200
+
+    hups nyt tiedosto.txt on pois kans
+
+ tiedosto.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 54249df14e4fdf36901a8c918aa37b54478c2702
+Author: thefakejj <jasper.laurila@gmail.com>
+Date:   Tue Mar 14 18:24:47 2023 +0200
+
+    tiedosto.txt on nyt nimeltään eka.txt
+
+ eka.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 152751396d231bf3d556183813ad26f6b69c577b
+Author: thefakejj <jasper.laurila@gmail.com>
+Date:   Tue Mar 14 18:22:52 2023 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 2702b2e2ec15c4091153bddcedebff80d1b1b802
+Author: thefakejj <jasper.laurila@gmail.com>
+Date:   Tue Mar 14 18:07:41 2023 +0200
+
+    poistettu kolme viimeistä osaa copypastasta
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 6f73afb4d89c5e16767d95f996b887dc069b7a08
+Author: thefakejj <jasper.laurila@gmail.com>
+Date:   Tue Mar 14 18:06:15 2023 +0200
+
+    tiedosto.txt lisätty paljon tekstiä
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 86e54551913048454380dc56d15a152232196cf5
+Author: thefakejj <jasper.laurila@gmail.com>
+Date:   Tue Mar 14 17:56:06 2023 +0200
+
+    stuff-hakemisto lisätty
+
+ stuff/jokin.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 70fd29502b98ea5888917174400b09a5db33ddcf
+Author: thefakejj <jasper.laurila@gmail.com>
+Date:   Tue Mar 14 17:52:03 2023 +0200
+
+    kolmas.txt lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 16aace6a0a21406703d6fbb22182636093093264
+Author: thefakejj <jasper.laurila@gmail.com>
+Date:   Tue Mar 14 17:45:46 2023 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 9002c3559baf23833bab68e119bd9c9abf1091f3
+Author: thefakejj <jasper.laurila@gmail.com>
+Date:   Tue Mar 14 15:46:13 2023 +0200
+
+    tiedpsto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
