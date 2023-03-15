@@ -1,4 +1,4 @@
-#Tervetuloa readme-tiedostoon
+# Tervetuloa readme-tiedostoon
 
-##Aloitetaan
+## Aloitetaan
 **Eka rivi tekstiä**, toivottavasti kaikilla menee _hyvin_
