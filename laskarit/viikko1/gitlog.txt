@@ -1,3 +1,5 @@
+Tässä harjoitustehtävän "git log" -tulostus
+
 commit 4d83d60e89552aedd61b4dfed7994c6bc74c75a5
 Author: thefakejj <jasper.laurila@gmail.com>
 Date:   Tue Mar 14 18:43:09 2023 +0200
