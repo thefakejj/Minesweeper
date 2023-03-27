@@ -23,7 +23,7 @@ class TestMaksukortti(unittest.TestCase):
         kortti.syo_edullisesti()
 
         self.assertEqual(str(kortti), "Kortilla on rahaa 2.00 euroa")
-        
+
     def test_kortille_voi_ladata_rahaa(self):
         self.kortti.lataa_rahaa(2500)
 
