@@ -16,3 +16,9 @@ Pientä ~~tekstiä~~
 Tykkään tehdä muutoksia
 lisää muutoksia kun viimeks ei toiminu lollers
 moi taas haha
+
+
+## Dokumentaatio
+
+- [Tuntikirjanpito](https://github.com/thefakejj/ot-harjoitustyo/blob/main/documentation/tuntikirjanpito.md)
+- [Vaatimusmäärittely](https://github.com/thefakejj/ot-harjoitustyo/blob/main/documentation/vaatimusmaarittely.md)
