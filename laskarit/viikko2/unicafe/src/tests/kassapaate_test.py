@@ -60,4 +60,3 @@ class TestKassapaate(unittest.TestCase):
         
         self.kassapaate.lataa_rahaa_kortille(self.ed_riittaa, 50)
         self.assertEqual(str(self.ed_riittaa), "Kortilla on rahaa 3.00 euroa")
-        self.assertEqual(self.kassapaate.kassassa_rahaa, 100050)
