@@ -1,0 +1,40 @@
+minesweeper
+menu
+napit:
+pelaa
+asetukset
+lopeta
+
+pelin sisällä:
+alustavasti 16x16 minesweeper-taulukko (myöhemmin ehkä mielivaltainen ruudukko)
+ruudut ovat joko miinoja, tai kertovat kuinka monta miinaa on ympäröivissä kahdeksassa ruudussa
+pitää satunnaisesti generoida ruudukko
+ruutuja pystyy avaamaan
+pitää pystyä liputtamaan ruudun
+kun klikkaa liputettua ruutua, se ei "avaudu"
+pelissä otetaan aikaa
+aika tallennetaan scoreboardiin
+kun pelin läpäisee, kysytään nimeä, jonka kanssa aika tallennetaan tietokantaan
+
+kentän voisi generoida vasta ensimmäisen klikkauksen jälkeen(?), jotta ensimmäisen ruudun alla ei ole miinaa
+
+asetukset:
+ruudukon koko
+ruudukon väri
+
+
+scoreboard:
+näyttää scoreboard-taulukosta vaikka top 10 lyhyimmän ajan perusteella
+
+
+
+tietokannat: 
+scoreboard
+asetukset
+
+
+kirjastot:
+pytest
+pygame
+pygame-menu    (https://pygame-menu.readthedocs.io/en/4.4.0/#pygame-menu)
+

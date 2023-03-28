@@ -36,14 +36,3 @@ class TestMaksukortti(unittest.TestCase):
         raha_ei_riita = Maksukortti(1000)
 
         self.assertEqual(raha_ei_riita.ota_rahaa(2000), False)
-
-
-
-
-
-
-"""
-Rahan ottaminen toimii:
-    Metodi palauttaa True, jos rahat riittivät ja muuten False
-Suorita testit terminaalissa virtuaaliympäristössä pytest src-komennolla.
-"""
