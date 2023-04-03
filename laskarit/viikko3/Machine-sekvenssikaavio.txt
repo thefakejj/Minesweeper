@@ -1,0 +1,25 @@
+https://www.websequencediagrams.com/
+
+title Machine-sekvenssikaavio
+
+main->Machine: Machine(tank, engine)
+
+Machine->FuelTank: self._tank = FuelTank()
+
+Machine->FuelTank: self._tank.fill(40)
+
+Machine->Engine: init self._engine = Engine(self._tank)
+
+main->Machine: drive(self)
+
+Machine->Engine: self._engine.start()
+
+Engine-> FuelTank: self._fuel_tank.consume(5)
+
+Engine->Engine: is_running()
+
+FuelTank->FuelTank: fill()
+
+Machine->Engine: self.use_energy()
+
+Engine->FuelTank: self._fuel_tank.consume(10)
