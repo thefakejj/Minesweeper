@@ -4,7 +4,6 @@ version = "0.1.0"
 description = ""
 authors = ["thefakejj <jasper.laurila@gmail.com>"]
 readme = "README.md"
-packages = [{include = "ot_harjoitustyo"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
