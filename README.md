@@ -1,21 +1,6 @@
-# Tervetuloa readme-tiedostoon
+# Miinaharava
 
-# Linkit
-[gitlog.txt](https://github.com/thefakejj/ot-harjoitustyo/blob/main/laskarit/viikko1/gitlog.txt)
-
-[komentorivi.txt](https://github.com/thefakejj/ot-harjoitustyo/blob/main/laskarit/viikko1/komentorivi.txt)
-
-## Aloitetaan
-**Eka rivi tekstiä**, toivottavasti kaikilla menee _hyvin_
-
-### Pieniä muutoksia
-
-Pientä ~~tekstiä~~
-
-### Etärepositorion muutokset
-Tykkään tehdä muutoksia
-lisää muutoksia kun viimeks ei toiminu lollers
-moi taas haha
+Miinaharava on muun muassa vanhoista Windows-versioista tuttu peli *Minesweeper*. Pelin tavoitteena on paljastaa kaikki ruudut, joiden alla ei ole miinaa. Jos paljastaa miinan, häviää pelin. Pelissä pystyy myös liputtamaan miinaksi epäiltyjä ruutuja.
 
 
 ## Dokumentaatio
