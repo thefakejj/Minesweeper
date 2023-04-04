@@ -1,19 +1,11 @@
 from invoke import task
 
-@task
-def foo(ctx):
-    print("bar")
 
 @task
 def start(ctx):
     ctx.run("python3 src/index.py", pty=True)
 
-@task
-def lorem_ipsum(ctx):
-    print("Lorem ipsum")
-
-
-#coverage-jutut
+#coverage stuff
 
 @task
 def coverage(ctx):
@@ -22,3 +14,9 @@ def coverage(ctx):
 @task(coverage)
 def coverage_report(ctx):
     ctx.run("coverage html", pty=True)
+
+#testing
+
+@task
+def test(ctx):
+    ctx.run("pytest src", pty=True)

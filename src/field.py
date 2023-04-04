@@ -1,7 +1,7 @@
 from random import randint
 
 
-#0: empty, 1: bomb                                                 , make another grid for revealed and unrevealed tiles
+#0: empty, 1: mine                                                 , make another grid for revealed and unrevealed tiles
 class Field:
     def __init__(self, scale: int):
         #something randint, should maybe take input from pygame to ensure the first tile is empty
@@ -15,9 +15,13 @@ class Field:
     def create_random_field(self):
 
         for i in range(self.mine_count):
+            #firstclick_x = some_input_x
+            #firstclick_y = some_input_y
+
             x = randint(0, self.scale-1)
             y = randint(0, self.scale-1)
 
+            #when the pygame functinality is added, the while loop should also check that the first square that was clicked will not be a mine
             while self.grid[y][x] == 1:
                 x = randint(0, self.scale-1)
                 y = randint(0, self.scale-1)
