@@ -1,14 +1,11 @@
 from field import Field
+import field_debug
 
-grid_8 = Field(8) #8x8 grid
+grid_8 = Field(8)
 
-print(grid_8)
+grid_8.print_grid()
 
-grid_16 = Field(16)
+print(len(grid_8.grid))
 
-print(grid_16)
-
-
-grid_10 = Field(10) 
-
-print(grid_10)
+for i in range(len(grid_8.grid)):
+    print(len(grid_8.grid[i]))
