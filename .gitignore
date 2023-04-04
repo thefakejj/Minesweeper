@@ -2,3 +2,4 @@
 __pycache__
 minesweeper_suunnitelma.txt
 htmlcov/
+.coverage
