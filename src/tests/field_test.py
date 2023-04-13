@@ -1,5 +1,5 @@
 import unittest
-from field import Field
+from services.field import Field
 
 
 class TestField(unittest.TestCase):

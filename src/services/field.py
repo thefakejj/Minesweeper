@@ -5,7 +5,6 @@ from random import randint
 class Field:
     def __init__(self, scale: int):
         #something randint, should maybe take input from pygame to ensure the first tile is empty
-        #additionally, you could have an array full of None to begin with, which is then filled accordingly after the first click
         self.scale = scale
         #minesweeper has 16% of tiles as mines
         self.mine_count = (16*(scale*scale))//100
