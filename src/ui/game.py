@@ -1,4 +1,5 @@
 #import os
+#import time
 import pygame
 
 class Minesweeper:
@@ -22,6 +23,10 @@ class Minesweeper:
     def loop(self):
         while True:
             for event in pygame.event.get():
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    x_position = event.pos[0]
+                    y_position = event.pos[1]
+
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     exit()
