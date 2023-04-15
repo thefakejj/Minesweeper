@@ -1,8 +1,9 @@
 import os
 # time for timing a game of minesweeper, pygame's time for clock to reduce wasted computing power? I'll look into this
-import time
+#import time
 import pygame
-import pygame_menu
+#import pygame_menu
+from menu.menu import Menu
 
 dirname = os.path.dirname(__file__)
 
@@ -27,16 +28,7 @@ class Minesweeper:
         self.bg_color = (128, 128, 128)
 
         self.main_loop()
-        self.menu()
-    #     self.open_menu()
-
-    # def open_menu(self):
-    #     menu = pygame_menu.Menu('Settings', 400, 300,
-    #                    theme=pygame_menu.themes.THEME_BLUE)
-    #     menu.add.button('Play', self.start_game(self.set_minesweeper_size))
-    #     menu.add.selector('Field size :', [('8x8', 1), ('16x16', 2)], onchange=self.set_minesweeper_size)
-
-    #     menu.add.button('Quit', pygame_menu.events.EXIT)
+        Menu(self)
 
 
     def main_loop(self):
@@ -63,26 +55,3 @@ class Minesweeper:
     def draw_surface(self):
 
         self.surface.fill(self.bg_color)
-
-    # def set_minesweeper_size(self, value, size):
-    #     if value == 1:
-    #         return 8
-    #     if value == 2:
-    #         return 16
-
-
-    def set_minesweeper_size(self, value):
-            if value == 1:
-                return 8
-            if value == 2:
-                return 16
-
-    def menu(self):
-        menu = pygame_menu.Menu('Settings', 400, 300,
-                        theme=pygame_menu.themes.THEME_BLUE)
-        menu.add.button('Play', start_game())
-        menu.add.selector('Field size :', [('8x8', 1), ('16x16', 2)], onchange=set_minesweeper_size)
-
-        menu.add.button('Quit', pygame_menu.events.EXIT)
-
-        menu.mainloop(self.surface)
