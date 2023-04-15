@@ -3,6 +3,7 @@ import os
 import time
 import pygame
 import pygame_menu
+from menu.menu import Menu
 
 dirname = os.path.dirname(__file__)
 
@@ -30,18 +31,12 @@ class Minesweeper:
         # maybe make it a private attribute?
         self.bg_color = (128, 128, 128)
 
-        self.main_loop()
-        self.menu()
-    #     self.open_menu()
+        self.run_menu()
 
-    # def open_menu(self):
-    #     menu = pygame_menu.Menu('Settings', 400, 300,
-    #                    theme=pygame_menu.themes.THEME_BLUE)
-    #     menu.add.button('Play', self.start_game(self.set_minesweeper_size))
-    #     menu.add.selector('Field size :', [('8x8', 1), ('16x16', 2)], onchange=self.set_minesweeper_size)
+        # self.main_loop()
 
-    #     menu.add.button('Quit', pygame_menu.events.EXIT)
-
+        
+        
 
     def main_loop(self):
         while True:
@@ -68,6 +63,12 @@ class Minesweeper:
 
         self.surface.fill(self.bg_color)
 
-
+    # ChatGPT | the main loop will only be run once the "Play" button is pressed in the menu
     def start_game(self):
+        self.main_loop()
         print("kukkuu, start_game funktiota just käytettiin!")
+
+    # ChatGPT | method to run the menu from an external module
+    def run_menu(self):
+        menu = Menu(self)
+        menu.menu()
