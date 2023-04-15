@@ -14,7 +14,7 @@ class Menu:
         print("Moi:)")
         main_menu = pygame_menu.Menu('Settings', 400, 300,
                         theme=pygame_menu.themes.THEME_BLUE)
-        main_menu.add.button('Play', self.minesweeper.start_game)
+        main_menu.add.button('Play', self.minesweeper.start_game())
         main_menu.add.selector('Field size :', [('8x8', 1), ('16x16', 2)], onchange=self.set_minesweeper_size)
 
         main_menu.add.button('Quit', pygame_menu.events.EXIT)
