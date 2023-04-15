@@ -19,12 +19,11 @@ class Minesweeper:
         self.height = 480
 
         # ChatGPT | since the menu selectors change the size of the grid, having a default grid size is necessary for now
-        self.grid_size = 8 # default grid size
+        self.grid_size = 8  # default grid size
 
         self.surface = pygame.display.set_mode((self.width, self.height))
-        
-        self.clock = pygame.time.Clock()
 
+        self.clock = pygame.time.Clock()
 
         # currently trying to make a working game loop
         # setting a background color for the surface to test
@@ -34,9 +33,6 @@ class Minesweeper:
         self.run_menu()
 
         # self.main_loop()
-
-        
-        
 
     def main_loop(self):
         while True:
@@ -50,7 +46,7 @@ class Minesweeper:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 self.x_position = event.pos[0]
                 self.y_position = event.pos[1]
-            
+
             if event.type == pygame.K_ESCAPE:
                 pygame.quit()
                 exit()
