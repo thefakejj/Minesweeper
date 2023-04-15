@@ -21,7 +21,12 @@ class Minesweeper:
         
         self.clock = pygame.time.Clock()
 
-        self.game_loop()
+        # currently trying to make a working game loop
+        # setting a background color for the surface to test
+        # maybe make it a private attribute?
+        self.bg_color = (128, 128, 128)
+
+        self.main_loop()
         self.menu()
     #     self.open_menu()
 
@@ -33,8 +38,10 @@ class Minesweeper:
 
     #     menu.add.button('Quit', pygame_menu.events.EXIT)
 
-    def game_loop(self):
+
+    def main_loop(self):
         while True:
+            self.draw_surface()
             self.event_checker()
             pygame.display.flip()
             self.clock.tick(60)
@@ -53,14 +60,16 @@ class Minesweeper:
                 pygame.quit()
                 exit()
 
+    def draw_surface(self):
+
+        self.surface.fill(self.bg_color)
+
     # def set_minesweeper_size(self, value, size):
     #     if value == 1:
     #         return 8
     #     if value == 2:
     #         return 16
 
-    # def start_game(self, size):
-    #     self.game_loop()
 
     def set_minesweeper_size(self, value):
             if value == 1:
