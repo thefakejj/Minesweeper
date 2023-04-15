@@ -7,7 +7,7 @@ class Menu:
     # Chatgpt | as the correct values are already in the selector widget, we can simply use value[1] to get acces to the value
     # This function could potentially also be removed entirely, if onchange=self.set_minesweeper_size is changed to onchange=value[1]
     def set_minesweeper_size(self, value):
-            self.minesweeper.grid_size = value[1]
+            self.minesweeper.grid_size = value
 
     # ChatGPT was used to change this function, instead of calling the start_game function by typing self.minesweeper.start_game(), the function is simply referenced with self.minesweeper.start_game
     def menu(self):

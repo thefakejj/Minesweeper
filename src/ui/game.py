@@ -68,25 +68,6 @@ class Minesweeper:
 
         self.surface.fill(self.bg_color)
 
-    # def set_minesweeper_size(self, value, size):
-    #     if value == 1:
-    #         return 8
-    #     if value == 2:
-    #         return 16
 
-
-    def set_minesweeper_size(self, value):
-            if value == 1:
-                return 8
-            if value == 2:
-                return 16
-
-    def menu(self):
-        menu = pygame_menu.Menu('Settings', 400, 300,
-                        theme=pygame_menu.themes.THEME_BLUE)
-        menu.add.button('Play', start_game())
-        menu.add.selector('Field size :', [('8x8', 1), ('16x16', 2)], onchange=set_minesweeper_size)
-
-        menu.add.button('Quit', pygame_menu.events.EXIT)
-
-        menu.mainloop(self.surface)
+    def start_game(self):
+        print("kukkuu, start_game funktiota just käytettiin!")
