@@ -1,5 +1,6 @@
 from db_connection import get_database_connection
 
+
 def drop_tables(connection):
     cursor = connection.cursor()
 
@@ -12,7 +13,8 @@ def create_tables(connection):
 
     cursor = connection.cursor()
 
-    cursor.execute("CREATE TABLE Leaderboard (id integer PRIMARY KEY, name TEXT, time REAL);")
+    cursor.execute(
+        "CREATE TABLE Leaderboard (id integer PRIMARY KEY, name TEXT, time REAL);")
 
     connection.commit()
 

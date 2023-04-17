@@ -23,24 +23,25 @@ class Minesweeper:
         self.window_height = 720
 
         # ChatGPT | since the menu selectors change the size of the grid, having a default grid size is necessary for now
-        self.grid_size = (8, 8)  # default grid size, should be set inside menufrom database_connection import get_database_connection
+        # default grid size, should be set inside menufrom database_connection import get_database_connection
+        self.grid_size = (8, 8)
 
         self.grid_width = self.grid_size[0]
         self.grid_height = self.grid_size[1]
 
-        self.scale = 0.72  # default scale, i dont know how this should be implemented
+        self.scale = 1.5  # default scale, i dont know how this should be implemented
         self.default_image_size = (100, 100)
+        self.image_size = (100, 100)
 
         self.x_where_grid_starts = 0
-        self.y_where_grid_starts = 0 # this will always be 0, as any grid will touch the top of the window
+        # this will always be 0, as any grid will touch the top of the window
+        self.y_where_grid_starts = 0
 
         self.x_where_grid_ends = 0
         self.y_where_grid_ends = 0
 
         self.surface = pygame.display.set_mode(
             (self.window_width, self.window_height))
-
-        self.load_images()
 
         # currently trying to make a working game loop
         # setting a background color for the surface to test
@@ -49,7 +50,7 @@ class Minesweeper:
 
         # game logic stuff starts
 
-        #this attribute is false until the player has clicked on a tile. Once it's clicked, this attribute will be True.
+        # this attribute is false until the player has clicked on a tile. Once it's clicked, this attribute will be True.
         self.first_click_has_happened = False
 
         self.clock = pygame.time.Clock()
@@ -74,7 +75,7 @@ class Minesweeper:
             self.event_checker()
             pygame.display.flip()
             self.clock.tick(60)
- 
+
     def event_checker(self):
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -98,30 +99,32 @@ class Minesweeper:
                 pass
         else:
             return
-        
-        square_coordinates = self.which_square_was_clicked(x_coordinate, y_coordinate)
 
+        square_coordinates = self.which_square_was_clicked(
+            x_coordinate, y_coordinate)
 
         if self.first_click_has_happened == False:
 
             self.start_game(square_coordinates)
-    
+
     def which_square_was_clicked(self, x_coordinate, y_coordinate):
         for y in range(self.grid_height):
             if y_coordinate >= self.y_where_grid_starts+(y*self.get_scaled_image_size()[1]) and y_coordinate <= self.y_where_grid_starts+((y+1)*self.get_scaled_image_size()[1]):
                 square_y = y
 
-        for x in range(self.grid_height):
+        for x in range(self.grid_width):
             if x_coordinate >= self.x_where_grid_starts+(x*self.get_scaled_image_size()[1]) and x_coordinate <= self.x_where_grid_starts+((x+1)*self.get_scaled_image_size()[1]):
                 square_x = x
 
-        #for x in range(self.grid_width):
+        # for x in range(self.grid_width):
         return (square_x, square_y)
 
-
     # ChatGPT | the main loop will only be run once the "Play" button is pressed in the menu
+
     def go_to_game(self):
         self.create_grid()
+        self.set_scale_to_max_possible()
+        self.load_images()
         self.main_loop()
 
     def start_game(self, square_coordinates: tuple):
@@ -157,11 +160,17 @@ class Minesweeper:
         self.surface.fill(self.bg_color)
         self.draw_grid()
 
+    # 100*scale*grid_height<=720
+    # scale*grid_height <= 7.2
+    # scale <= 7.2/grid_height
+    def set_scale_to_max_possible(self):
+        self.scale = (self.window_height /
+                      self.default_image_size[1])/self.grid_height
+
     def create_grid(self):
+        self.set_scale_to_max_possible()
         self.grid = [[0]*self.grid_width for i in range(self.grid_height)]
         self.get_grid_edge_coordinates()
-
-
 
     def draw_grid(self):
 
@@ -181,9 +190,11 @@ class Minesweeper:
             self.images.append(image)
 
     def get_scaled_image_size(self):
-        return (self.scale*self.default_image_size[0], self.scale*self.default_image_size[1])
-    
+        return (self.scale*self.image_size[0], self.scale*self.image_size[1])
+
     def get_grid_edge_coordinates(self):
-        self.x_where_grid_ends = self.get_scaled_image_size()[0]*self.grid_width
-        self.y_where_grid_ends = self.get_scaled_image_size()[1]*self.grid_width
+        self.x_where_grid_ends = self.get_scaled_image_size()[
+            0]*self.grid_width
+        self.y_where_grid_ends = self.get_scaled_image_size()[
+            1]*self.grid_width
         return self.x_where_grid_ends, self.y_where_grid_ends
