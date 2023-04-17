@@ -4,19 +4,19 @@ from random import randint
 # 0: empty, 1: mine
 # make another grid for revealed and unrevealed tiles in pygame
 class Field:
-    def __init__(self, size: tuple):     # def __init__(self, size, firstclick):
-        # something randint, should maybe take input from pygame to ensure the first tile is empty
+    def __init__(self, size: tuple, first_click_coordinates: tuple):
 
         self.width = size[0]
         self.height = size[1]
 
-        # self.firstclick = firstclick
+        self.first_click_coordinates = first_click_coordinates
 
         # minesweeper has 16% of tiles as mines
         self.mine_count = (16*(self.width*self.height))//100
         self.grid = [[0]*self.width for i in range(self.height)]
         self.create_random_field()
-        # first click's x and y could be object attributes
+        
+        self.print_grid()
 
     def create_random_field(self):
 
@@ -29,7 +29,7 @@ class Field:
 
             # when the pygame functinality is added
             # the while loop should also check that the first square that was clicked is not a mine
-            while self.grid[y_coordinate][x_coordinate] == 1:
+            while self.grid[y_coordinate][x_coordinate] == 1 or (x_coordinate, y_coordinate) == self.first_click_coordinates:
                 x_coordinate = randint(0, self.width-1)
                 y_coordinate = randint(0, self.height-1)
             self.grid[y_coordinate][x_coordinate] = 1

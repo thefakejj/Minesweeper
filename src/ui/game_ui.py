@@ -98,18 +98,35 @@ class Minesweeper:
                 pass
         else:
             return
+        
+        square_coordinates = self.which_square_was_clicked(x_coordinate, y_coordinate)
+
 
         if self.first_click_has_happened == False:
-            self.start_game()
+
+            self.start_game(square_coordinates)
     
+    def which_square_was_clicked(self, x_coordinate, y_coordinate):
+        for y in range(self.grid_height):
+            if y_coordinate >= self.y_where_grid_starts+(y*self.get_scaled_image_size()[1]) and y_coordinate <= self.y_where_grid_starts+((y+1)*self.get_scaled_image_size()[1]):
+                square_y = y
+
+        for x in range(self.grid_height):
+            if x_coordinate >= self.x_where_grid_starts+(x*self.get_scaled_image_size()[1]) and x_coordinate <= self.x_where_grid_starts+((x+1)*self.get_scaled_image_size()[1]):
+                square_x = x
+
+        #for x in range(self.grid_width):
+        return (square_x, square_y)
+
 
     # ChatGPT | the main loop will only be run once the "Play" button is pressed in the menu
     def go_to_game(self):
         self.create_grid()
         self.main_loop()
 
-    def start_game(self):
+    def start_game(self, square_coordinates: tuple):
         self.first_click_has_happened = True
+        self.field = Field(self.grid_size, square_coordinates)
         self.start_timer()
 
     # ChatGPT | method to run the menu from an external module
