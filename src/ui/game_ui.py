@@ -19,11 +19,26 @@ class Minesweeper:
         self.height = 720
 
         # ChatGPT | since the menu selectors change the size of the grid, having a default grid size is necessary for now
-        self.grid_size = 16  # default grid size
+        self.grid_size = 16  # default grid size | later self.grid_size = (16, 16)
+
+        self.grid_width = 16 # self.grid_width = self.grid_size[0]
+        self.grid_height = 16 # self.grid_height = self.grid_size[1]
+        
 
         self.surface = pygame.display.set_mode((self.width, self.height))
 
         self.clock = pygame.time.Clock()
+
+
+        # timer, begins once start_timer is called, ends once stop_timer is called. needs to be changed if pausing is introduced into the game.
+        self.start_time = 0
+        self.stop_time = 0
+        self.current_time = self.time()
+        # this will always display the elapsed time, if game hasnt started, the difference will be 0
+        # displaying the elapsed time can work as an in-game clock, as it continuously updates
+        self.elapsed_time = self.current_time - self.start_time
+        self.finish_time = self.stop_time - self.start_time
+
 
         # currently trying to make a working game loop
         # setting a background color for the surface to test
@@ -36,6 +51,7 @@ class Minesweeper:
 
     def main_loop(self):
         while True:
+            self.time()
             self.draw_surface()
             self.event_checker()
             pygame.display.flip()
@@ -59,8 +75,10 @@ class Minesweeper:
 
         self.surface.fill(self.bg_color)
 
+
     # ChatGPT | the main loop will only be run once the "Play" button is pressed in the menu
     def start_game(self):
+        self.start_timer()
         self.main_loop()
         print("kukkuu, start_game funktiota just käytettiin!")
 
@@ -70,5 +88,12 @@ class Minesweeper:
         menu.menu()
 
 
-
-
+    def start_timer(self):
+        self.start_time = time.time()
+        
+    
+    def stop_timer(self):
+        self.stop_time = time.time()
+        
+    def time(self):
+        return time.time()
