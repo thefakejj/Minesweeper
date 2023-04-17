@@ -15,8 +15,6 @@ class Field:
         self.mine_count = (16*(self.width*self.height))//100
         self.grid = [[0]*self.width for i in range(self.height)]
         self.create_random_field()
-        
-        self.print_grid()
 
     def create_random_field(self):
 
@@ -39,8 +37,6 @@ class Field:
     def print_grid(self):
         print()
         print(self)
-        tulostus = str(self)
-        print("tulostus:", tulostus)
         print("Minesweeper grid: ")
         for row in self.grid:
             print(row)
