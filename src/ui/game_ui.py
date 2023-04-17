@@ -2,8 +2,8 @@ import os
 # time for timing a game of minesweeper, pygame's time for clock to reduce wasted computing power? I'll look into this
 import time
 import pygame
-import pygame_menu
 from menu.menu import Menu
+#from services.game import main_loop, event_checker
 
 dirname = os.path.dirname(__file__)
 
@@ -15,11 +15,11 @@ class Minesweeper:
         # the previous is impossible because the menu is drawn over an object of the Minesweeper class
         pygame.display.set_caption("Minesweeper")
 
-        self.width = 640
-        self.height = 480
+        self.width = 1280
+        self.height = 720
 
         # ChatGPT | since the menu selectors change the size of the grid, having a default grid size is necessary for now
-        self.grid_size = 8  # default grid size
+        self.grid_size = 16  # default grid size
 
         self.surface = pygame.display.set_mode((self.width, self.height))
 
