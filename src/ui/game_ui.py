@@ -11,21 +11,39 @@ dirname = os.path.dirname(__file__)
 class Minesweeper:
     def __init__(self):
         pygame.init()
-        # if the size of the grid is selected in the menu, the caption could be pygame.display.set_caption(f"Minesweeper {scale}x{scale} or {horizontal}x{vertical}")
+
+        #constructor beings with ui stuff
+
+        # if the size of the grid is selected in the menu, the caption could be pygame.display.set_caption(f"Minesweeper {self.grid_width}x{self.grid_height}")
         # the previous is impossible because the menu is drawn over an object of the Minesweeper class
         pygame.display.set_caption("Minesweeper")
 
-        self.width = 1280
-        self.height = 720
+        self.window_width = 1280
+        self.window_height = 720
 
         # ChatGPT | since the menu selectors change the size of the grid, having a default grid size is necessary for now
-        self.grid_size = 16  # default grid size | later self.grid_size = (16, 16)
+        self.grid_size = (16, 16) # default grid size, should be set inside menu
 
-        self.grid_width = 16 # self.grid_width = self.grid_size[0]
-        self.grid_height = 16 # self.grid_height = self.grid_size[1]
+        self.grid_width = self.grid_size[0]
+        self.grid_height = self.grid_size[1]
+
+        self.scale = 0.72 # default scale, i dont know how this should be implemented
         
 
-        self.surface = pygame.display.set_mode((self.width, self.height))
+        self.surface = pygame.display.set_mode((self.window_width, self.window_height))
+
+
+        self.load_images()
+
+        # currently trying to make a working game loop
+        # setting a background color for the surface to test
+        # maybe make it a private attribute?
+        self.bg_color = (128, 128, 128)
+
+
+
+
+        #game logic stuff starts
 
         self.clock = pygame.time.Clock()
 
@@ -40,14 +58,12 @@ class Minesweeper:
         self.finish_time = self.stop_time - self.start_time
 
 
-        # currently trying to make a working game loop
-        # setting a background color for the surface to test
-        # maybe make it a private attribute?
-        self.bg_color = (128, 128, 128)
+
 
         self.run_menu()
 
-        # self.main_loop()
+
+    # game logic methods
 
     def main_loop(self):
         while True:
@@ -71,16 +87,10 @@ class Minesweeper:
                 pygame.quit()
                 exit()
 
-    def draw_surface(self):
-
-        self.surface.fill(self.bg_color)
-
-
     # ChatGPT | the main loop will only be run once the "Play" button is pressed in the menu
     def start_game(self):
         self.start_timer()
         self.main_loop()
-        print("kukkuu, start_game funktiota just käytettiin!")
 
     # ChatGPT | method to run the menu from an external module
     def run_menu(self):
@@ -97,3 +107,28 @@ class Minesweeper:
         
     def time(self):
         return time.time()
+    
+    # ui methods
+
+    def draw_surface(self):
+
+        self.surface.fill(self.bg_color)
+
+
+    def create_grid(self):
+        self.grid = [[0]*self.grid_width for i in range(self.grid_height)]
+
+    def draw_grid(self):
+
+        for y in range(self.grid_height):
+            for x in range(self.grid_width):
+                square = self.grid[y][x]
+                # every image is 100x100 pixels, so a drawn square should always be 
+                self.surface.blit(self.images[square],
+                    (x * 100*self.scale, y * 100*self.scale))
+
+    def load_images(self):
+        self.images = []
+        for name in ["unrevealed_tile", "mine", "flag"]:
+            self.images.append(pygame.image.load(
+                os.path.join(dirname, "..", "assets", name + ".png")))

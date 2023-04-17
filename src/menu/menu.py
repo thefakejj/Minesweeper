@@ -20,7 +20,7 @@ class Menu:
         # Chatgpt | here the values of the selector are integers that can be used for the grid's size
         # this should be changed to return tuples like (8, 8) if different widths and heights of the field are introduced
         main_menu.add.selector(
-            'Field size :', [('16x16', 16), ('8x8', 8)], onchange=self.set_minesweeper_size)
+            'Field size :', [('16x16', (16, 16)), ('8x8', (8, 8)), ('30x16', (32, 16))], onchange=self.set_minesweeper_size)
 
         main_menu.add.button('Quit', pygame_menu.events.EXIT)
 
