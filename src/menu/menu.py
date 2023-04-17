@@ -11,7 +11,7 @@ class Menu:
         main_menu = pygame_menu.Menu(
             'Settings', 1280, 720, theme=pygame_menu.themes.THEME_BLUE)
         # Chatgpt | here the function is only referenced instead of called
-        main_menu.add.button('Play', self.minesweeper.start_game)
+        main_menu.add.button('Play', self.minesweeper.go_to_game)
         # Chatgpt | here the values of the selector are integers that can be used for the grid's size
         # this should be changed to return tuples like (8, 8) if different widths and heights of the field are introduced
         main_menu.add.selector(
