@@ -68,3 +68,7 @@ class Minesweeper:
     def run_menu(self):
         menu = Menu(self)
         menu.menu()
+
+
+
+

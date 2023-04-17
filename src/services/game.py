@@ -1,3 +1,6 @@
+# This file is coming as the split of game logic and ui contines. But for now the goal is to have something displayed on the screen
+
+
 # from ui.game_ui import Minesweeper
 # import pygame
 
