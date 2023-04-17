@@ -22,13 +22,13 @@ class Minesweeper:
         self.window_height = 720
 
         # ChatGPT | since the menu selectors change the size of the grid, having a default grid size is necessary for now
-        self.grid_size = (16, 16) # default grid size, should be set inside menu
+        self.grid_size = (8, 8) # default grid size, should be set inside menu
 
         self.grid_width = self.grid_size[0]
         self.grid_height = self.grid_size[1]
 
         self.scale = 0.72 # default scale, i dont know how this should be implemented
-        
+        self.default_image_size = (100, 100)
 
         self.surface = pygame.display.set_mode((self.window_width, self.window_height))
 
@@ -38,7 +38,7 @@ class Minesweeper:
         # currently trying to make a working game loop
         # setting a background color for the surface to test
         # maybe make it a private attribute?
-        self.bg_color = (128, 128, 128)
+        self.bg_color = (255, 255, 255)
 
 
 
@@ -89,6 +89,7 @@ class Minesweeper:
 
     # ChatGPT | the main loop will only be run once the "Play" button is pressed in the menu
     def start_game(self):
+        self.create_grid()
         self.start_timer()
         self.main_loop()
 
@@ -96,7 +97,6 @@ class Minesweeper:
     def run_menu(self):
         menu = Menu(self)
         menu.menu()
-
 
     def start_timer(self):
         self.start_time = time.time()
@@ -108,11 +108,19 @@ class Minesweeper:
     def time(self):
         return time.time()
     
+    # Chatgpt | as the correct values are already in the selector widget, we can simply use value[1] to get acces to the value
+    # This function could potentially also be removed entirely, if onchange=self.set_minesweeper_size is changed to onchange=value[1]
+    def set_minesweeper_size(self, _, value):
+        self.grid_size = value
+        self.grid_width = value[0]
+        self.grid_height = value[1]
+    
     # ui methods
 
     def draw_surface(self):
 
         self.surface.fill(self.bg_color)
+        self.draw_grid()
 
 
     def create_grid(self):
@@ -125,10 +133,18 @@ class Minesweeper:
                 square = self.grid[y][x]
                 # every image is 100x100 pixels, so a drawn square should always be 
                 self.surface.blit(self.images[square],
-                    (x * 100*self.scale, y * 100*self.scale))
+                    (x * self.get_scaled_image_size()[0], y * self.get_scaled_image_size()[1]))
 
     def load_images(self):
         self.images = []
         for name in ["unrevealed_tile", "mine", "flag"]:
-            self.images.append(pygame.image.load(
-                os.path.join(dirname, "..", "assets", name + ".png")))
+            image = pygame.image.load(
+                os.path.join(dirname, "..", "assets", name + ".png"))
+            image = pygame.transform.scale(image, self.get_scaled_image_size())
+            self.images.append(image)
+            
+
+
+
+    def get_scaled_image_size(self):
+        return (self.scale*self.default_image_size[0], self.scale*self.default_image_size[1])
