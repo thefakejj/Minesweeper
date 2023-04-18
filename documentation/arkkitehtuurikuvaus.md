@@ -4,4 +4,4 @@
 
 # Luokkakaavio
 
-![Luokkakaavio](./kuvat/arkkitehtuuri-pakkaus-luokat.png)
+![Luokkakaavio](./kuvat/Minesweeper_luokkakaavio.png)
