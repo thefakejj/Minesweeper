@@ -2,6 +2,6 @@
 
 ## Sovelluslogiikka
 
-# Luokkakaavio
+### Luokkakaavio
 
 ![Luokkakaavio](./kuvat/Minesweeper_luokkakaavio.png)

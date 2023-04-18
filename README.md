@@ -12,7 +12,7 @@ Miinaharava on muun muassa vanhoista Windows-versioista tuttu peli *Minesweeper*
 
 ## Asennusohjeet
 
-# Ohjelman käyttämiseen tarvitaan Poetry. Kaikki komennot tulee ajaa ohjelman juurihakemistossa (ot-harjoitystyo).
+### Ohjelman käyttämiseen tarvitaan Poetry. Kaikki komennot tulee ajaa ohjelman juurihakemistossa (ot-harjoitystyo).
 
 
 1: Asenna riippuvuudet
