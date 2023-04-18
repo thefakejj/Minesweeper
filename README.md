@@ -37,3 +37,5 @@ Nyt kun ohjelma on asennettu, voit käynnistää sen komennolla:
 ```bash
 poetry run invoke start
 ```
+
+Tästä eteenpäin ohjelma käynnistyy viimeisimmällä komennolla.
