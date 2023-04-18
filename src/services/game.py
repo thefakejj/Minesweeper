@@ -37,7 +37,6 @@ class Minesweeper:
         self.x_where_grid_ends = 0
         self.y_where_grid_ends = 0
 
-
         # game logic stuff starts
 
         # this attribute is false until the player has clicked on a tile. Once it's clicked, this attribute will be True.

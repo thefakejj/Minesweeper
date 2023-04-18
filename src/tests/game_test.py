@@ -7,8 +7,6 @@ class TestMinesweeper(unittest.TestCase):
         self.minesweeper = Minesweeper()
         # self.window_width = 1600
         # self.window_height = 900
-        self.filler_arg_for_set_minesweeper_size = "_"
-        self.wanted_dimensions = (10, 10)
 
         # self.grid_width = self.grid_size[0]
         # self.grid_height = self.grid_size[1]
@@ -34,6 +32,6 @@ class TestMinesweeper(unittest.TestCase):
         # self.finish_time = self.stop_time - self.start_time
 
     def test_scale_is_set_correctly(self):
-        self.minesweeper.set_minesweeper_size(self.filler_arg_for_set_minesweeper_size, (8, 8))
+        self.minesweeper.set_minesweeper_size("_", (8, 8))
         self.minesweeper.set_scale_to_max_possible()
         self.assertEqual(self.minesweeper.scale, 0.9)
