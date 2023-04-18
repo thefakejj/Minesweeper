@@ -9,3 +9,4 @@
 | 14.4 | 5.5    | Lisätty pylint, index avaa tyhjän ikkunan, yritetty tehdä menu epäonnistuneesti |
 | 15.4 | 2.5   | Saatu menu näkyville ja niin pitkälle toimimaan kun nyt pystyy. Käytetty ChatGPT apuna, ja ChatGPT:n ehdottamat muokkaukset merkitty kommenteilla koodiin |
 | 17.4 | 9.5   | Luotu hakemistoja, piirretty kuvakkeita, luotu sprites-hakemisto ja luokat (tosin ei käytössä), lisätty ajastin, kuvien lukeminen lisätty, muokattu Field-luokalle mahdolliseksi inputiksi tuplen kokoinen epäsymmetrinen taulukko, peli randomisoi kentän siten, että ensimmäinen klikattu ruutu ei ole miina, tietokantayhteys luotu, tietokannan aloittaminen toimii ja tiedosto ilmestyy, skaalaus saatu toimimaan |
+| 18.4 | 9.5   | Korjattu tietokannan import, jaettu ui:ta ja logiikkaa, nyt ui-attribuuttien luominen vain on toisessa luokassa. lisätty testejä. Poistetty sprites-hakemisto. changelogin päivitys.  |
