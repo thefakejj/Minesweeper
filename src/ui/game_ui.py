@@ -19,8 +19,8 @@ class Minesweeper:
         # the previous is impossible because the menu is drawn over an object of the Minesweeper class
         pygame.display.set_caption("Minesweeper")
 
-        self.window_width = 1280
-        self.window_height = 720
+        self.window_width = 1600
+        self.window_height = 900
 
         # ChatGPT | since the menu selectors change the size of the grid, having a default grid size is necessary for now
         # default grid size, should be set inside menufrom database_connection import get_database_connection
@@ -32,6 +32,7 @@ class Minesweeper:
         self.scale = 1.5  # default scale, i dont know how this should be implemented
         self.default_image_size = (100, 100)
         self.image_size = (100, 100)
+        self.images = []
 
         self.x_where_grid_starts = 0
         # this will always be 0, as any grid will touch the top of the window
@@ -79,10 +80,10 @@ class Minesweeper:
     def event_checker(self):
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
-                self.x_position = event.pos[0]
-                self.y_position = event.pos[1]
+                x_position = event.pos[0]
+                y_position = event.pos[1]
 
-                self.square_click(self.x_position, self.y_position)
+                self.square_click(x_position, y_position)
 
             if event.type == pygame.K_ESCAPE:
                 pygame.quit()
@@ -129,7 +130,7 @@ class Minesweeper:
 
     def start_game(self, square_coordinates: tuple):
         self.first_click_has_happened = True
-        self.field = Field(self.grid_size, square_coordinates)
+        Field(self.grid_size, square_coordinates) # self.field = Field(self.grid_size, square_coordinates)
         self.start_timer()
 
     # ChatGPT | method to run the menu from an external module
@@ -173,7 +174,6 @@ class Minesweeper:
         self.get_grid_edge_coordinates()
 
     def draw_grid(self):
-
         for y in range(self.grid_height):
             for x in range(self.grid_width):
                 square = self.grid[y][x]
@@ -182,7 +182,6 @@ class Minesweeper:
                                   (x * self.get_scaled_image_size()[0], y * self.get_scaled_image_size()[1]))
 
     def load_images(self):
-        self.images = []
         for name in ["unrevealed_tile", "mine", "flag"]:
             image = pygame.image.load(
                 os.path.join(dirname, "..", "assets", name + ".png"))

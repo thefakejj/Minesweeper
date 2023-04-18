@@ -12,9 +12,14 @@ class Field:
         self.first_click_coordinates = first_click_coordinates
 
         # minesweeper has 16% of tiles as mines
-        self.mine_count = (16*(self.width*self.height))//100
+        self.mine_count = (99*(self.width*self.height))//100
         self.grid = [[0]*self.width for i in range(self.height)]
+
+        # self.real_grid = [[0]*self.width for i in range(self.height)]
+        # self.known_grid = jotain_muuta #[[0]*self.width for i in range(self.height)]
+        
         self.create_random_field()
+        self.print_grid()
 
     def create_random_field(self):
 
@@ -44,6 +49,4 @@ class Field:
     def __str__(self):
         return f"Field (size={self.width}x{self.height}, , mine count={self.mine_count})"
 
-# sample field
-# around 16%  of the tiles should have a mine
-# so in this 64-tile grid, there are 10 mines and 54 empty tiles
+# sample field1
