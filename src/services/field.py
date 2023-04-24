@@ -4,10 +4,10 @@ from random import randint
 # 0: empty, 1: mine
 # make another grid for revealed and unrevealed tiles in pygame
 class Field:
-    def __init__(self, size: tuple, first_click_coordinates: tuple):
+    def __init__(self, width, height, first_click_coordinates: tuple):
 
-        self.width = size[0]
-        self.height = size[1]
+        self.width = width
+        self.height = height
 
         self.first_click_coordinates = first_click_coordinates
 
@@ -15,24 +15,20 @@ class Field:
         self.mine_count = (16*(self.width*self.height))//100
         self.grid = [[0]*self.width for i in range(self.height)]
 
-        # self.real_grid = [[0]*self.width for i in range(self.height)]
-        # self.known_grid = jotain_muuta #[[0]*self.width for i in range(self.height)]
-
         self.create_random_field()
         self.print_grid()
 
     def create_random_field(self):
 
-        for i in range(self.mine_count):
-            # firstclick_x = some_input_x
-            # firstclick_y = some_input_y
-
+        for _ in range(self.mine_count):
             x_coordinate = randint(0, self.width-1)
             y_coordinate = randint(0, self.height-1)
 
-            # when the pygame functinality is added
-            # the while loop should also check that the first square that was clicked is not a mine
-            while self.grid[y_coordinate][x_coordinate] == 1 or (x_coordinate, y_coordinate) == self.first_click_coordinates:
+            # checks that randomised coordinates aren't
+            # the same as first click's
+            # and that coordinates dont have a mine
+            while (self.grid[y_coordinate][x_coordinate] == 1
+                or (x_coordinate, y_coordinate) == self.first_click_coordinates):
                 x_coordinate = randint(0, self.width-1)
                 y_coordinate = randint(0, self.height-1)
             self.grid[y_coordinate][x_coordinate] = 1

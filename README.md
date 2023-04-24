@@ -44,16 +44,6 @@ Tästä eteenpäin ohjelma käynnistyy viimeisimmällä komennolla.
 
 ## Muut komennot
 
-<br>
-
-### Testaa koodia komennolla: 
-
-```bash
-poetry run invoke test
-```
-
-<br>
-
 ### Luo koodin testikattavuusraportti komennolla:
 ```bash
 poetry run invoke coverage-report
