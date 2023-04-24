@@ -5,6 +5,7 @@ import time
 import pygame
 from menu.menu import Menu
 from services.field import Field
+from ui.draw_game import Draw
 # from repositories.leaderboard_repository import
 # from services.game import main_loop, event_checker
 
@@ -25,6 +26,7 @@ class Minesweeper:
         self.grid_width = self.grid_size[0]
         self.grid_height = self.grid_size[1]
 
+        self.bg_color = (255, 255, 255)
         self.scale = 1.5  # default scale, i dont know how this should be implemented
         self.default_image_size = (100, 100)
         self.image_size = (100, 100)
@@ -53,12 +55,17 @@ class Minesweeper:
         self.elapsed_time = self.current_time - self.start_time
         self.finish_time = self.stop_time - self.start_time
 
+        self.draw = Draw(self.surface, )
+
+        # voidaanko laittaa tama versio otimimaan?
+
     # game logic methods
 
     def main_loop(self):
         while True:
             self.time()
-            self.draw_surface()
+            # self.draw_surface()
+            self.draw.draw_surface()
             self.event_checker()
             pygame.display.flip()
             self.clock.tick(60)
@@ -90,7 +97,7 @@ class Minesweeper:
         square_coordinates = self.which_square_was_clicked(
             x_coordinate, y_coordinate)
 
-        if self.first_click_has_happened == False:
+        if self.first_click_has_happened is False:
 
             self.start_game(square_coordinates)
 

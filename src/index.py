@@ -6,4 +6,10 @@ from repositories.leaderboard_repository import run_tests
 # grid_8.print_grid(
 run_tests()
 
-run_minesweeper()
+
+def run():
+    run_minesweeper()
+
+
+if __name__ in "__main__":
+    run()

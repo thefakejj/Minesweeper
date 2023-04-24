@@ -15,5 +15,4 @@ def run_minesweeper():
     # currently trying to make a working game loop
     # setting a background color for the surface to test
     # maybe make it a private attribute?
-    minesweeper.bg_color = (255, 255, 255)
     minesweeper.run_menu()

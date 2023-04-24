@@ -39,3 +39,31 @@ poetry run invoke start
 ```
 
 Tästä eteenpäin ohjelma käynnistyy viimeisimmällä komennolla.
+
+<br>
+
+## Muut komennot
+
+<br>
+
+### Testaa koodia komennolla: 
+
+```bash
+poetry run invoke test
+```
+
+<br>
+
+### Luo koodin testikattavuusraportti komennolla:
+```bash
+poetry run invoke coverage-report
+```
+Testikattavuusraportti näkyy sen jälkeen hakemistossa htmlcov. Voit avata tiedoston index.html katsoaksesi raporttia.
+
+<br>
+
+### Tarkista koodin laatu komennolla:
+```bash
+poetry run invoke lint
+```
+Tarkistukset on määritelty tiedostossa .pylintrc
