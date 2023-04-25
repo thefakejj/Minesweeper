@@ -129,7 +129,7 @@ class Minesweeper:
     # ChatGPT | method to run the menu from an external module
 
     def run_menu(self):
-        menu = Menu(self)
+        menu = Menu(self.go_to_game, self.set_minesweeper_size, self.surface)
         menu.menu()
 
     # Chatgpt | as the correct values are already in the selector widget,
