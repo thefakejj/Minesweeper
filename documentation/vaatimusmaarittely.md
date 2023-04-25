@@ -12,8 +12,8 @@ Sovellus alkaa valikosta, mistä käyttäjä voi aloittaa pelin, muuttaa asetuks
 - Käyttäjän tavoite on paljastaa kaikki ruudut, joissa ei ole miinaa
     - Jos käyttäjä paljastaa miinan, käyttäjä häviää pelin
 - Paljastetulla ruudulla lukee numero, joka kertoo, kuinka monta miinaa löytyy sen ympäröivistä kahdeksasta ruudusta
-- Käyttäjä voi liputtaa ruudun, ja poistaa ruudun liputuksen
-    - Liputettua ruutua ei voi paljastaa
+- Käyttäjä voi liputtaa ruudun, ja poistaa ruudun liputuksen | tehty
+    - Liputettua ruutua ei voi paljastaa | tehty
 - Jos käyttäjä paljastaa kaikki miinattomat ruudut, käyttäjä voittaa pelin
 
 ### Tulostaulu
