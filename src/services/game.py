@@ -79,12 +79,12 @@ class Minesweeper:
     def event_checker(self):
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
-                click_x_position = event.pos[0]
-                click_y_position = event.pos[1]
+                click_coordinates = (event.pos[0], event.pos[1])
+
                 # if event.button == 3:
                 #     flag
 
-                self.click_checker.square_click(event.button, click_x_position, click_y_position,
+                self.click_checker.square_click(event.button, click_coordinates,
                                                 self.window_height, self.first_click_has_happened,
                                                 self.start_game, self.ui_grid)
 
@@ -156,36 +156,41 @@ class Minesweeper:
 
     # time methods
     # no time methods work right now so they'll be commented out for the time being
-"""
+
     def set_start_time(self):
-        self.start_time = time()
-        # if self.game_state == 2:
-        #     self.start_time = time()
-        # else:
-        #     return
-    
+        pass
+        # self.start_time = time()
+        # # if self.game_state == 2:
+        # #     self.start_time = time()
+        # # else:
+        # #     return
+
     def get_start_time(self):
-        return self.start_time
+        pass
+        # return self.start_time
 
     # when game ends
     def set_stop_time(self):
-        self.stop_time = time()
+        pass
+        # self.stop_time = time()
         # if self.game_state == 4:
         #     self.stop_time = time()
         # else:
         #     return
 
     def get_stop_time(self):
-        return self.stop_time
-    
+        pass
+        # return self.stop_time
+
     def set_elapsed_time(self):
-        self.elapsed_time = time() - self.start_time
+        pass
+        # self.elapsed_time = time() - self.start_time
         # if self.game_state == 2:
         #     self.elapsed_time = self.get_current_time() - self.get_start_time()
         # # can be used as in-game clock
         # else:
         #     return
-    
+
     def get_elapsed_time(self):
-        return self.elapsed_time
-"""
+        pass
+        # return self.elapsed_time
