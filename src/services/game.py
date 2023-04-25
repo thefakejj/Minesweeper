@@ -86,7 +86,7 @@ class Minesweeper:
 
                 self.click_checker.square_click(event.button, x_position, y_position,
                                                 self.window_height, self.first_click_has_happened,
-                                                self.start_game, self.ui_grid.update_ui_grid,
+                                                self.start_game, self.ui_grid,
                                                 self.change_game_state)
 
             # if event.type == pygame.K_ESCAPE:

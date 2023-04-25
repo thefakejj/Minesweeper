@@ -11,7 +11,7 @@ class ClickChecker:
         self.x_where_grid_ends = x_where_grid_ends
 
     def square_click(self, event_button, x_coordinate, y_coordinate, window_height,
-                     first_click_has_happened, start_game, update_ui_grid, change_game_state):
+                     first_click_has_happened, start_game, grid, change_game_state):
         # this jungle of if-statements determines
         # whether or not the click is within grid's dimensions
 
@@ -19,19 +19,21 @@ class ClickChecker:
         if x_coordinate >= self.x_where_grid_starts and x_coordinate <= self.x_where_grid_ends:
             if y_coordinate >= 0 and y_coordinate <= window_height:
 
-                square_coordinates = self.which_square_was_clicked(
+                (square_x, square_y) = self.which_square_was_clicked(
                     x_coordinate, y_coordinate)
 
                 # upon left click
                 if event_button == 1:
+                    if grid.get_grid_square_from_coordinates(square_x, square_y) == 1:
+                        return
                     if first_click_has_happened is False:
-                        start_game(square_coordinates)
+                        start_game((square_x, square_y))
                         change_game_state(2)
 
                 # upon right click
                 if event_button == 3:
-                    update_ui_grid(
-                        square_coordinates[0], square_coordinates[1], 2)
+                    grid.update_ui_grid(
+                        square_x, square_y, 2)
 
         # when click is outside the grid
         else:
