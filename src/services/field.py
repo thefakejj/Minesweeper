@@ -13,7 +13,7 @@ class Field:
 
         # minesweeper has 16% of tiles as mines
         self.mine_count = (16*(self.width*self.height))//100
-        self.grid = [[0]*self.width for i in range(self.height)]
+        self.grid = [[0]*self.width for _ in range(self.height)]
 
         self.create_random_field()
         self.print_grid()

@@ -5,33 +5,33 @@ from services.game import Minesweeper
 class TestMinesweeper(unittest.TestCase):
     def setUp(self):
         self.minesweeper = Minesweeper()
-        # self.window_width = 1600
-        # self.window_height = 900
 
-        # self.grid_width = self.grid_size[0]
-        # self.grid_height = self.grid_size[1]
+    def test_size_is_set_correctly(self):
+        self.minesweeper.set_minesweeper_size("_", (10, 8))
+        self.assertEqual(self.minesweeper.grid_width, 10)
+        self.assertEqual(self.minesweeper.grid_height, 8)
 
-        # self.scale = 1.5
-        # self.default_image_size = (100, 100)
-        # self.image_size = (100, 100)
 
-        # self.x_where_grid_starts = 0
-        # self.y_where_grid_starts = 0
+    def test_first_click_has_happened_begins_false(self):
+        self.assertEqual(self.minesweeper.first_click_has_happened, False)
 
-        # self.x_where_grid_ends = 0
-        # self.y_where_grid_ends = 0
 
-        # self.first_click_has_happened = False
+    def test_start_game_makes_first_click_true(self):
+        self.minesweeper.start_game((2, 4)) #needs parameters
+        self.assertEqual(self.minesweeper.first_click_has_happened, True)
 
-        # self.clock = pygame.time.Clock()
+    def test_start_game_makes_changes_game_state(self):
+        self.minesweeper.start_game((2, 4)) #needs parameters
+        self.assertEqual(self.minesweeper.game_state, 2)
 
-        # self.start_time = 0
-        # self.stop_time = 0
-        # self.current_time = 0
-        # self.elapsed_time = self.current_time - self.start_time
-        # self.finish_time = self.stop_time - self.start_time
+    def test_start_game_creates_field_without_mine_on_first_click_square(self):
+        self.minesweeper.start_game((2, 4)) #needs parameters
+        self.assertEqual(self.minesweeper.real_field.grid[4][2], 0)
 
-    def test_scale_is_set_correctly(self):
-        self.minesweeper.set_minesweeper_size("_", (8, 8))
-        self.minesweeper.set_scale_to_max_possible()
-        self.assertEqual(self.minesweeper.scale, 0.9)
+
+    def test_game_state_default_correct(self):
+        self.assertEqual(self.minesweeper.game_state, 0)
+
+    def test_game_state_changes_correctly(self):
+        self.minesweeper.change_game_state(1)
+        self.assertEqual(self.minesweeper.game_state, 1)

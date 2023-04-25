@@ -79,15 +79,14 @@ class Minesweeper:
     def event_checker(self):
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
-                x_position = event.pos[0]
-                y_position = event.pos[1]
+                click_x_position = event.pos[0]
+                click_y_position = event.pos[1]
                 # if event.button == 3:
                 #     flag
 
-                self.click_checker.square_click(event.button, x_position, y_position,
+                self.click_checker.square_click(event.button, click_x_position, click_y_position,
                                                 self.window_height, self.first_click_has_happened,
-                                                self.start_game, self.ui_grid,
-                                                self.change_game_state)
+                                                self.start_game, self.ui_grid)
 
             # if event.type == pygame.K_ESCAPE:
             #     pygame.quit()
@@ -148,7 +147,8 @@ class Minesweeper:
 
     def start_game(self, square_coordinates: tuple):
         self.first_click_has_happened = True
-        Field(self.grid_width, self.grid_height, square_coordinates)
+        self.change_game_state(2)
+        self.real_field = Field(self.grid_width, self.grid_height, square_coordinates)
         # self.set_start_time()
 
     def change_game_state(self, desired_game_state: int):
