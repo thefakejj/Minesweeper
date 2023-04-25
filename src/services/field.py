@@ -28,7 +28,7 @@ class Field:
             # the same as first click's
             # and that coordinates dont have a mine
             while (self.grid[y_coordinate][x_coordinate] == 1
-                or (x_coordinate, y_coordinate) == self.first_click_coordinates):
+                   or (x_coordinate, y_coordinate) == self.first_click_coordinates):
                 x_coordinate = randint(0, self.width-1)
                 y_coordinate = randint(0, self.height-1)
             self.grid[y_coordinate][x_coordinate] = 1

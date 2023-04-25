@@ -12,7 +12,7 @@ class Images:
         self.load_images()
 
     def load_images(self):
-        for name in ["unrevealed_tile", "mine", "flag"]:
+        for name in ["unrevealed_tile", "flag", "mine"]:
             image = pygame.image.load(
                 os.path.join(dirname, "..", "assets", name + ".png"))
             image = pygame.transform.scale(image, self.image_size)
