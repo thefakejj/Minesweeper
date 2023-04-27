@@ -7,3 +7,11 @@ class MouseEnum(Enum):
     # MIDDLE_CLICK = 2
     # SCROLL_UP = 4
     # SCROLL_DOWN = 5
+
+    def __eq__(self, other):
+        if isinstance(other, int):
+            return self.value == other
+        elif isinstance(other, MouseEnum):
+            return self.value == other.value
+        else:
+            return NotImplemented

@@ -25,13 +25,13 @@ class MouseEvent:
 
                 (square_x, square_y) = self.which_square_was_clicked(click_coordinates)
 
-                if event_button == MouseEnum.LEFT_CLICK.value:
+                if event_button == MouseEnum.LEFT_CLICK:
                     if grid.get_grid_square_from_coordinates(square_x, square_y) == 1:
                         return
                     if first_click_has_happened is False:
                         start_game((square_x, square_y))
 
-                if event_button == MouseEnum.RIGHT_CLICK.value:
+                if event_button == MouseEnum.RIGHT_CLICK:
                     grid.update_ui_grid(
                         square_x, square_y, 2)
 
