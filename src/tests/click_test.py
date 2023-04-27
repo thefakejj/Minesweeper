@@ -9,5 +9,5 @@ class TestField(unittest.TestCase):
     
 
     def test_which_square_was_clicked_returns_correct_values(self):
-        self.assertEqual(self.click_checker.which_square_was_clicked(120, 120), (1, 1))
+        self.assertEqual(self.click_checker.which_square_was_clicked((120, 120)), (1, 1))
         
