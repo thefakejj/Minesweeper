@@ -7,7 +7,7 @@ from menu.menu import Menu
 
 # from services.game import main_loop, event_checker
 from services.field import Field
-from services.clicks import ClickChecker
+from services.mouse_event import MouseEvent
 from services.clock import Clock
 
 from ui.renderer import Renderer
@@ -84,7 +84,7 @@ class Minesweeper:
                 # if event.button == 3:
                 #     flag
 
-                self.click_checker.square_click(event.button, click_coordinates,
+                self.mouse_event.square_click(event.button, click_coordinates,
                                                 self.window_height, self.first_click_has_happened,
                                                 self.start_game, self.ui_grid)
 
@@ -132,7 +132,7 @@ class Minesweeper:
 
         self.x_where_grid_starts, self.x_where_grid_ends = scaling.get_grid_edge_x_coordinates()
 
-        self.click_checker = ClickChecker(
+        self.mouse_event = MouseEvent(
                                         self.image_size, self.grid_width, self.grid_height,
                                         self.x_where_grid_starts, self.x_where_grid_ends)
 

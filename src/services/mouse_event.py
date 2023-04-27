@@ -1,4 +1,6 @@
-class ClickChecker:
+from services.mouse_enum import MouseEnum
+
+class MouseEvent:
     def __init__(self, image_size, grid_width, grid_height, x_where_grid_starts, x_where_grid_ends):
         # self.event_button = event_button # 1 3
 
@@ -9,6 +11,7 @@ class ClickChecker:
 
         self.x_where_grid_starts = x_where_grid_starts
         self.x_where_grid_ends = x_where_grid_ends
+        
 
     def square_click(self, event_button, click_coordinates, window_height,
                      first_click_has_happened, start_game, grid):
@@ -22,15 +25,13 @@ class ClickChecker:
 
                 (square_x, square_y) = self.which_square_was_clicked(click_coordinates)
 
-                # upon left click
-                if event_button == 1:
+                if event_button == MouseEnum.LEFT_CLICK.value:
                     if grid.get_grid_square_from_coordinates(square_x, square_y) == 1:
                         return
                     if first_click_has_happened is False:
                         start_game((square_x, square_y))
 
-                # upon right click
-                if event_button == 3:
+                if event_button == MouseEnum.RIGHT_CLICK.value:
                     grid.update_ui_grid(
                         square_x, square_y, 2)
 
@@ -54,3 +55,4 @@ class ClickChecker:
                 square_x = width
 
         return (square_x, square_y)
+
