@@ -1,4 +1,4 @@
-from services.mouse_enum import MouseEnum
+from enums.mouse_enum import MouseEnum
 
 class MouseEvent:
     def __init__(self, image_size, grid_width, grid_height, x_where_grid_starts, x_where_grid_ends):
