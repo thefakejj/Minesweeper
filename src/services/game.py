@@ -83,10 +83,12 @@ class Minesweeper:
 
                 # if event.button == 3:
                 #     flag
-
+    
                 self.mouse_event.square_click(event.button, click_coordinates,
-                                                self.window_height, self.first_click_has_happened,
-                                                self.start_game, self.ui_grid)
+                                                self.first_click_has_happened,
+                                                self.start_game, self.ui_grid, self.change_game_state,
+                                                self.real_field.grid)
+
 
             # if event.type == pygame.K_ESCAPE:
             #     pygame.quit()
@@ -119,6 +121,11 @@ class Minesweeper:
     def go_to_game(self):
         self.game_state = 1
 
+        # we create a field which is the grid in the backend
+        # this is empty for now, and will be generated once first click occurs
+
+        self.real_field = Field(self.grid_width, self.grid_height)
+        
         # while drawing the surface needs ui_grid,
         # ui_grid needs parameters from this class
         # ui_grid cannot be defined before this
@@ -148,7 +155,7 @@ class Minesweeper:
     def start_game(self, square_coordinates: tuple):
         self.first_click_has_happened = True
         self.change_game_state(2)
-        self.real_field = Field(self.grid_width, self.grid_height, square_coordinates)
+        self.real_field.create_random_field(square_coordinates)
         # self.set_start_time()
 
     def change_game_state(self, desired_game_state: int):
