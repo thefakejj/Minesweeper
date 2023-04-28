@@ -25,7 +25,7 @@ class UiGrid:
                 self.grid[square_coordinates[1]][square_coordinates[0]] = 1
 
             elif click_type == "leftclick":
-                if is_mine:
+                if is_mine is True:
                     self.grid[square_coordinates[1]][square_coordinates[0]] = 2
                 else:
                     # changing from unrevealed to revealed_0
@@ -39,7 +39,7 @@ class UiGrid:
                 self.grid[square_coordinates[1]][square_coordinates[0]] = 0
         
 
-        # return self.get_square_content(square_coordinates)
+        return self.get_square_content(square_coordinates)
 
         # if the square is either a mine or a flipped tile, nothing should happen
 

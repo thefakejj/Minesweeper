@@ -32,7 +32,7 @@ class MouseEvent:
                 if event_button == MouseEnum.RIGHT_CLICK:
                     click_type = "rightclick"
                     grid.update_ui_grid(
-                        square_coordinates, click_type)
+                        square_coordinates, click_type, square_is_mine(square_coordinates, field_grid))
                     
                 if event_button == MouseEnum.LEFT_CLICK:
                     click_type = "leftclick"
@@ -42,8 +42,10 @@ class MouseEvent:
                     elif first_click_has_happened is False:
                         start_game(square_coordinates)
                 
+                # update and check if mine. if mine, change game state
                 grid.update_ui_grid(square_coordinates, click_type, square_is_mine(square_coordinates, field_grid))
-                
+                if grid.get_square_content == 2:
+                    change_game_state(3)
 
         # when click is outside the grid
         else:

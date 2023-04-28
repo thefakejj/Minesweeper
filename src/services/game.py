@@ -83,8 +83,8 @@ class Minesweeper:
 
                 # if event.button == 3:
                 #     flag
-    
-                self.mouse_event.square_click(event.button, click_coordinates,
+                if 1 <= self.game_state <= 2:
+                    self.mouse_event.square_click(event.button, click_coordinates,
                                                 self.first_click_has_happened,
                                                 self.start_game, self.ui_grid, self.change_game_state,
                                                 self.real_field.grid)

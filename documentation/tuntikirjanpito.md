@@ -12,4 +12,5 @@
 | 18.4 | 6.5   | Korjattu tietokannan import, jaettu ui:ta ja logiikkaa, nyt ui-attribuuttien luominen vain on toisessa luokassa. lisätty testejä. Poistetty sprites-hakemisto. changelogin päivitys. Luokkakaavio tehty ja lisätty arkkitehtuurikuvaukseen. Luotu asennusohjeet. |
 | 24.4 | 9   | Erotettu pelin logiikkaa ja käyttöliittymää. Nyt vihdoin pelin piirtäminen tapahtuu game.py:n ulkopuolella|
 | 25.4 | 5   | Käyttäjä voi nyt liputtaa ruutuja, joita ei sen jälkeen voi avata. UiGridille on siis tehty päivittämismetodi. Click-eventtien tulkitseminen siirretty omaan luokkaansa. Muokattu injektioita niin, että vain tarvittavat tulee uuden metodin tai luokan käyttöön (useimmiten). Lisätty sivupalkin nappien defaulttikoko. Lisätty testejä. Lintattu. Päivitetty changelog. Tehty release.|
-|yhteensä|49.5|tuntia|
+|27.4|3|miinat paljastuu. muutettu koodia niin, että tarvitaan vähemmän parametreja.|
+|yhteensä|52.5|tuntia|
