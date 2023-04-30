@@ -1,10 +1,12 @@
 import unittest
 from services.game import Minesweeper
+from services.field import Field
 
 
 class TestMinesweeper(unittest.TestCase):
     def setUp(self):
         self.minesweeper = Minesweeper()
+        self.minesweeper.real_field = Field(self.minesweeper.grid_width, self.minesweeper.grid_height)
 
     def test_size_is_set_correctly(self):
         self.minesweeper.set_minesweeper_size("_", (10, 8))
