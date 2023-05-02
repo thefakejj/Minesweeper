@@ -32,7 +32,7 @@ class Minesweeper:
         # from database_connection import get_database_connection
         self.grid_width, self.grid_height = (8, 8)  # default grid size
 
-        self.bg_color = (0, 0, 0)
+        self.bg_color = (128, 255, 128)
 
         # game logic stuff starts
 
@@ -59,7 +59,9 @@ class Minesweeper:
     # main loop, on when start_game is called
 
     def main_loop(self):
-        while True: 
+        while True:
+            if self.game_state == 0:
+                self.run_menu()
             if self.game_state == 2:
                 pass
             if self.game_state == 3:
@@ -160,6 +162,8 @@ class Minesweeper:
         # self.set_start_time()
 
     def change_game_state(self, desired_game_state: int):
+        if desired_game_state == 0:
+            self.first_click_has_happened = False
         self.game_state = int(desired_game_state)
 
     # time methods
