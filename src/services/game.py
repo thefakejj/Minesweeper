@@ -32,7 +32,7 @@ class Minesweeper:
         # from database_connection import get_database_connection
         self.grid_width, self.grid_height = (8, 8)  # default grid size
 
-        self.bg_color = (255, 255, 255)
+        self.bg_color = (200, 128, 255)
 
         # game logic stuff starts
 
@@ -146,7 +146,7 @@ class Minesweeper:
         # renderer defined outside of init so that class can be tested
         # otherwise surface would appear during tests
         self.renderer = Renderer(self.surface, self.ui_grid.grid, self.grid_width,
-                                 self.grid_height, self.image_size, images.images, self.bg_color)
+                                 self.grid_height, self.image_size, images.images, images.buttons, self.bg_color, self.x_where_grid_ends)
         self.main_loop()
 
     def start_game(self, square_coordinates: tuple):
