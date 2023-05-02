@@ -12,7 +12,19 @@ class UiGrid:
         return grid
     
     def get_square_content(self, square_coordinates: tuple):
-        return self.grid[square_coordinates[1]][square_coordinates[0]]
+        square_x = square_coordinates[0]
+        square_y = square_coordinates[1]
+        return self.grid[square_y][square_x]
+    
+    def set_square_content(self, square_coordinates, content):
+        square_x = square_coordinates[0]
+        square_y = square_coordinates[1]
+        self.grid[square_y][square_x] = content
+        # print("ui gridi: \n")
+        # for y in range(len(self.grid)):
+        #     for x in range(len(self.grid[y])):
+        #         print(self.grid[y][x])
+        
         
 
     def update_ui_grid(self, square_coordinates: tuple, click_type: str, is_mine: bool):
@@ -22,24 +34,26 @@ class UiGrid:
         if self.get_square_content(square_coordinates) == 0:
             if click_type == "rightclick":
                 # changing from unrevealed to flag
-                self.grid[square_coordinates[1]][square_coordinates[0]] = 1
+                self.set_square_content(square_coordinates, 1)
+                return True
 
             elif click_type == "leftclick":
                 if is_mine is True:
-                    self.grid[square_coordinates[1]][square_coordinates[0]] = 2
+                    self.set_square_content(square_coordinates, 2)
+                    return True
                 else:
                     # changing from unrevealed to revealed_0
-                    self.grid[square_coordinates[1]][square_coordinates[0]] = 3
-            
-            
+                    self.set_square_content(square_coordinates, 3)
+                    return True
 
         elif self.get_square_content(square_coordinates) == 1:
             if click_type == "rightclick":
                 # changing from flag to unrevealed
-                self.grid[square_coordinates[1]][square_coordinates[0]] = 0
+                self.set_square_content(square_coordinates, 0)
+                return True
         
 
-        return self.get_square_content(square_coordinates)
+        
 
         # if the square is either a mine or a flipped tile, nothing should happen
 

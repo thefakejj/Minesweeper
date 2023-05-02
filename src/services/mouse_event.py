@@ -3,20 +3,23 @@ import constants
 from services.check_if_mine import square_is_mine
 
 class MouseEvent:
-    def __init__(self, image_size, grid_width, grid_height, x_where_grid_starts, x_where_grid_ends):
+    def __init__(self, minesweeper):
         # self.event_button = event_button # 1 3
+        self.minesweeper = minesweeper
 
-        self.image_size = image_size
+        self.image_size = self.minesweeper.image_size
 
-        self.grid_width = grid_width
-        self.grid_height = grid_height
+        self.grid_width = self.minesweeper.grid_width
+        self.grid_height = self.minesweeper.grid_height
 
-        self.x_where_grid_starts = x_where_grid_starts
-        self.x_where_grid_ends = x_where_grid_ends
+        self.x_where_grid_starts = self.minesweeper.x_where_grid_starts
+        self.x_where_grid_ends = self.minesweeper.x_where_grid_ends
+        
+        self.change_game_state = self.minesweeper.change_game_state
         
 
     def square_click(self, event_button, click_coordinates,
-                     first_click_has_happened, start_game, grid, change_game_state, field_grid):
+                     first_click_has_happened, start_game, grid, field_grid):
         # this jungle of if-statements determines
         # whether or not the click is within grid's dimensions
 
@@ -31,8 +34,8 @@ class MouseEvent:
 
                 if event_button == MouseEnum.RIGHT_CLICK:
                     click_type = "rightclick"
-                    grid.update_ui_grid(
-                        square_coordinates, click_type, square_is_mine(square_coordinates, field_grid))
+                    #grid.update_ui_grid(
+                        #square_coordinates, click_type, square_is_mine(square_coordinates, field_grid))
                     
                 if event_button == MouseEnum.LEFT_CLICK:
                     click_type = "leftclick"
@@ -44,8 +47,9 @@ class MouseEvent:
                 
                 # update and check if mine. if mine, change game state
                 grid.update_ui_grid(square_coordinates, click_type, square_is_mine(square_coordinates, field_grid))
-                if grid.get_square_content == 2:
-                    change_game_state(3)
+                if square_is_mine(square_coordinates, field_grid):
+                    print("on miina")
+                    self.change_game_state(3)
 
         # when click is outside the grid
         else:

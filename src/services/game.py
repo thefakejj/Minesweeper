@@ -35,7 +35,7 @@ class Minesweeper:
 
         self.bg_color = (255, 255, 255)
 
-        # game logic stuff starts
+        # game logic stuff starts   
 
         # this attribute is false until the player has clicked on a tile.
         # Once it's clicked, this attribute will be True.
@@ -63,10 +63,10 @@ class Minesweeper:
         while True:
             # if self.game_state == 0:
             #     pass
-            # if self.game_state == 1:
-            #     pass
-            # if self.game_state == 2:
-            #     pass
+            if self.game_state == 1:
+                pass
+            if self.game_state == 2:
+                pass
             # if self.game_state == 3:
             #     pass
             self.renderer.render()
@@ -86,7 +86,7 @@ class Minesweeper:
                 if 1 <= self.game_state <= 2:
                     self.mouse_event.square_click(event.button, click_coordinates,
                                                 self.first_click_has_happened,
-                                                self.start_game, self.ui_grid, self.change_game_state,
+                                                self.start_game, self.ui_grid,
                                                 self.real_field.grid)
 
 
@@ -139,9 +139,7 @@ class Minesweeper:
 
         self.x_where_grid_starts, self.x_where_grid_ends = scaling.get_grid_edge_x_coordinates()
 
-        self.mouse_event = MouseEvent(
-                                        self.image_size, self.grid_width, self.grid_height,
-                                        self.x_where_grid_starts, self.x_where_grid_ends)
+        self.mouse_event = MouseEvent(self)
 
         # images
         images = Images(self.image_size)
@@ -159,7 +157,9 @@ class Minesweeper:
         # self.set_start_time()
 
     def change_game_state(self, desired_game_state: int):
+        
         self.game_state = int(desired_game_state)
+        print("kukkuu vaihdettiin statea. GAME state: ", self.game_state)
 
     # time methods
     # no time methods work right now so they'll be commented out for the time being
