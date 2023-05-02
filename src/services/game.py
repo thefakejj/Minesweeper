@@ -162,6 +162,9 @@ class Minesweeper:
         # self.set_start_time()
 
     def change_game_state(self, desired_game_state: int):
+        if desired_game_state == 0:
+            # 0 is a placeholder parameter
+            self.set_minesweeper_size(0, (8, 8))
         if desired_game_state == 1:
             self.first_click_has_happened = False
         self.game_state = int(desired_game_state)
