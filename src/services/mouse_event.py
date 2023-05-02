@@ -1,5 +1,5 @@
 from enums.mouse_enum import MouseEnum
-import constants
+from constants import WINDOW_HEIGHT, DEFAULT_BACK_TO_MENU_COORDINATES, DEFAULT_SIDE_BUTTON_IMAGE_SIZE
 from services.check_if_mine import square_is_mine
 
 class MouseEvent:
@@ -18,6 +18,15 @@ class MouseEvent:
         self.change_game_state = self.minesweeper.change_game_state
         
 
+    def side_button_click(self, click_coordinates):
+        if (click_coordinates[0] >= DEFAULT_BACK_TO_MENU_COORDINATES[0]
+            and click_coordinates[0] <= DEFAULT_BACK_TO_MENU_COORDINATES[0]+DEFAULT_SIDE_BUTTON_IMAGE_SIZE[0]):
+
+            if (click_coordinates[1] >= DEFAULT_BACK_TO_MENU_COORDINATES[1]
+                and click_coordinates[1] <= DEFAULT_BACK_TO_MENU_COORDINATES[1] + DEFAULT_SIDE_BUTTON_IMAGE_SIZE[1]):
+                self.minesweeper.change_game_state(0)
+                # self.minesweeper.run_menu
+
     def square_click(self, event_button, click_coordinates,
                      first_click_has_happened, start_game, grid, field_grid):
         # this jungle of if-statements determines
@@ -26,7 +35,7 @@ class MouseEvent:
         # when click is inside the grid
         if (click_coordinates[0] >= self.x_where_grid_starts
             and click_coordinates[0] <= self.x_where_grid_ends):
-            if click_coordinates[1] >= 0 and click_coordinates[1] <= constants.WINDOW_HEIGHT:
+            if click_coordinates[1] >= 0 and click_coordinates[1] <= WINDOW_HEIGHT:
 
                 square_coordinates = self.which_square_was_clicked(click_coordinates)
 

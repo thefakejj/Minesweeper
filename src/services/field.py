@@ -10,7 +10,7 @@ class Field:
         self.height = height
 
         # minesweeper has 16% of tiles as mines
-        self.mine_count = (16*(self.width*self.height))//100
+        self.mine_count = (99*(self.width*self.height))//100
         self.grid = [[0]*self.width for _ in range(self.height)]
 
     def create_random_field(self, first_click_coordinates):

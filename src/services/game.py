@@ -32,7 +32,7 @@ class Minesweeper:
         # from database_connection import get_database_connection
         self.grid_width, self.grid_height = (8, 8)  # default grid size
 
-        self.bg_color = (200, 128, 255)
+        self.bg_color = (0, 0, 0)
 
         # game logic stuff starts
 
@@ -59,19 +59,16 @@ class Minesweeper:
     # main loop, on when start_game is called
 
     def main_loop(self):
-        while True:
-            # if self.game_state == 0:
-            #     pass
-            if self.game_state == 1:
-                pass
+        while True: 
             if self.game_state == 2:
                 pass
-            # if self.game_state == 3:
-            #     pass
+            if self.game_state == 3:
+                pass
             self.renderer.render()
             self.event_checker()
             pygame.display.flip()
             self._clock.tick(60)
+            
 
     # events
 
@@ -87,6 +84,11 @@ class Minesweeper:
                                                 self.first_click_has_happened,
                                                 self.start_game, self.ui_grid,
                                                 self.real_field.grid)
+                
+                if event.button == 1:
+                    self.mouse_event.side_button_click(click_coordinates)
+
+                
 
 
             # if event.type == pygame.K_ESCAPE:
@@ -145,8 +147,10 @@ class Minesweeper:
 
         # renderer defined outside of init so that class can be tested
         # otherwise surface would appear during tests
-        self.renderer = Renderer(self.surface, self.ui_grid.grid, self.grid_width,
-                                 self.grid_height, self.image_size, images.images, images.buttons, self.bg_color, self.x_where_grid_ends)
+        # self.renderer = Renderer(self.surface, self.ui_grid.grid, self.grid_width,
+        #                          self.grid_height, self.image_size, images.images, images.buttons, self.bg_color, self.x_where_grid_ends)
+
+        self.renderer = Renderer(self, images.images, images.buttons)
         self.main_loop()
 
     def start_game(self, square_coordinates: tuple):
