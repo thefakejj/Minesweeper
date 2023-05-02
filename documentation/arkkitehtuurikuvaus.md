@@ -1,5 +1,9 @@
 # Arkkitehtuurikuvaus
 
+## Rakenne
+Pelin pakkausrakenne on seuraava:
+![Pakkauskaavio](./kuvat/pakkausdiagrammi.png)
+
 ## Sovelluslogiikka
 
 ### Luokkakaavio
