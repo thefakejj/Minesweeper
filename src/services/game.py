@@ -122,7 +122,7 @@ class Minesweeper:
     # ChatGPT | the main loop will only be run once the "Play" button is pressed in the menu
 
     def go_to_game(self):
-        self.game_state = 1
+        self.change_game_state(1)
 
         # we create a field which is the grid in the backend
         # this is empty for now, and will be generated once first click occurs
@@ -162,7 +162,7 @@ class Minesweeper:
         # self.set_start_time()
 
     def change_game_state(self, desired_game_state: int):
-        if desired_game_state == 0:
+        if desired_game_state == 1:
             self.first_click_has_happened = False
         self.game_state = int(desired_game_state)
 

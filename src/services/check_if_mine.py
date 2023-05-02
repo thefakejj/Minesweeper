@@ -16,14 +16,10 @@ def nearby_mines(square_coordinates: tuple, field_grid: list):
 
 def count_nearby_mines(square_coordinates: tuple, field_grid: list):
     mines = 0
-    for i in range(square_coordinates[0]-1, square_coordinates[0]+2):
-        for j in range(square_coordinates[1]-1, square_coordinates[1]+2):
-            if i < 0 or j < 0 or i >= len(field_grid) or j >= len(field_grid):
+    for j in range(square_coordinates[1]-1, square_coordinates[1]+2):
+        for i in range(square_coordinates[0]-1, square_coordinates[0]+2):
+            if i < 0 or j < 0 or j >= len(field_grid) or i >= len(field_grid[0]):
                 continue
             if field_grid[j][i] == 1:
                 mines += 1
     return mines
-
-    # how empty..?
-    # maybe calculate squares around and bomb count, maybe even make list
-    # of empty squares that are connected
