@@ -8,10 +8,8 @@ def square_is_mine(square_coordinates: tuple, field_grid: list):
     Returns:
         bool: returns true if square is mine, else returns false
     """
-    if check_square_content(square_coordinates, field_grid) == 1:
-        return True
-    else:
-        return False
+    return bool(check_square_content(square_coordinates, field_grid) == 1)
+
 
 def check_square_content(square_coordinates: tuple, field_grid: list):
     """checks field_grid's content of a specified square
@@ -24,6 +22,7 @@ def check_square_content(square_coordinates: tuple, field_grid: list):
         int: 1 for mine, 0 for empty tile
     """
     return field_grid[square_coordinates[1]][square_coordinates[0]]
+
 
 def nearby_mines(square_coordinates: tuple, field_grid: list):
     """checks if square is mine, else returns amount of surrounding mines
@@ -38,8 +37,9 @@ def nearby_mines(square_coordinates: tuple, field_grid: list):
     if square_is_mine(square_coordinates, field_grid):
         # corresponds to a mine
         return -1
-    else:
-        return count_nearby_mines(square_coordinates, field_grid)
+
+    return count_nearby_mines(square_coordinates, field_grid)
+
 
 def count_nearby_mines(square_coordinates: tuple, field_grid: list):
     """algorhithm for counting mines around the square

@@ -31,6 +31,7 @@ class Minesweeper:
         _clock: creates a pygame clock object from external module
 
     """
+
     def __init__(self):
         """Class constructor that creates a new minesweeper object
         """
@@ -86,7 +87,6 @@ class Minesweeper:
             self.event_checker()
             pygame.display.flip()
             self._clock.tick(60)
-            
 
     # events
 
@@ -101,15 +101,12 @@ class Minesweeper:
                 #     flag
                 if 1 <= self.game_state <= 2:
                     self.mouse_event.square_click(event.button, click_coordinates,
-                                                self.first_click_has_happened,
-                                                self.start_game, self.ui_grid,
-                                                self.real_field.grid)
-                
+                                                  self.first_click_has_happened,
+                                                  self.start_game, self.ui_grid,
+                                                  self.real_field.grid)
+
                 if event.button == 1:
                     self.mouse_event.side_button_click(click_coordinates)
-
-                
-
 
             # if event.type == pygame.K_ESCAPE:
             #     pygame.quit()
@@ -155,7 +152,7 @@ class Minesweeper:
         # this is empty for now, and will be generated once first click occurs
 
         self.real_field = Field(self.grid_width, self.grid_height)
-        
+
         # while drawing the surface needs ui_grid,
         # ui_grid needs parameters from this class
         # ui_grid cannot be defined before this
@@ -165,19 +162,18 @@ class Minesweeper:
         scaling = Scaling(
             self.window_height, constants.DEFAULT_IMAGE_SIZE, self.grid_width, self.grid_height)
         scaling.get_max_scale()
-        self.image_size = scaling.get_scaled_image_size()
 
         self.x_where_grid_starts, self.x_where_grid_ends = scaling.get_grid_edge_x_coordinates()
 
-        self.mouse_event = MouseEvent(self)
-
         # images
-        images = Images(self.image_size)
+        image_size = scaling.get_scaled_image_size()
+        images = Images(image_size)
+        self.mouse_event = MouseEvent(self, image_size)
 
         # renderer defined outside of init so that class can be tested
         # otherwise surface would appear during tests
 
-        self.renderer = Renderer(self, images.images, images.buttons)
+        self.renderer = Renderer(self, images.images, images.buttons, image_size)
         self.main_loop()
 
     def start_game(self, square_coordinates: tuple):
@@ -209,40 +205,40 @@ class Minesweeper:
     # time methods
     # no time methods work right now so they'll be commented out for the time being
 
-    def set_start_time(self):
-        pass
-        # self.start_time = time()
-        # # if self.game_state == 2:
-        # #     self.start_time = time()
-        # # else:
-        # #     return
+    # def set_start_time(self):
+    #     pass
+    #     # self.start_time = time()
+    #     # # if self.game_state == 2:
+    #     # #     self.start_time = time()
+    #     # # else:
+    #     # #     return
 
-    def get_start_time(self):
-        pass
-        # return self.start_time
+    # def get_start_time(self):
+    #     pass
+    #     # return self.start_time
 
-    # when game ends
-    def set_stop_time(self):
-        pass
-        # self.stop_time = time()
-        # if self.game_state == 4:
-        #     self.stop_time = time()
-        # else:
-        #     return
+    # # when game ends
+    # def set_stop_time(self):
+    #     pass
+    #     # self.stop_time = time()
+    #     # if self.game_state == 4:
+    #     #     self.stop_time = time()
+    #     # else:
+    #     #     return
 
-    def get_stop_time(self):
-        pass
-        # return self.stop_time
+    # def get_stop_time(self):
+    #     pass
+    #     # return self.stop_time
 
-    def set_elapsed_time(self):
-        pass
-        # self.elapsed_time = time() - self.start_time
-        # if self.game_state == 2:
-        #     self.elapsed_time = self.get_current_time() - self.get_start_time()
-        # # can be used as in-game clock
-        # else:
-        #     return
+    # def set_elapsed_time(self):
+    #     pass
+    #     # self.elapsed_time = time() - self.start_time
+    #     # if self.game_state == 2:
+    #     #     self.elapsed_time = self.get_current_time() - self.get_start_time()
+    #     # # can be used as in-game clock
+    #     # else:
+    #     #     return
 
-    def get_elapsed_time(self):
-        pass
-        # return self.elapsed_time
+    # def get_elapsed_time(self):
+    #     pass
+    #     # return self.elapsed_time

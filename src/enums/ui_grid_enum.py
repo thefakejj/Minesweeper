@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class UiGridEnum(Enum):
     UNREVEALED_TILE = 0
     FLAG = 1
@@ -17,7 +18,4 @@ class UiGridEnum(Enum):
     def __eq__(self, other):
         if isinstance(other, int):
             return self.value == other
-        elif isinstance(other, UiGridEnum):
-            return self.value == other.value
-        else:
-            return NotImplemented
+        return self.value == other.value

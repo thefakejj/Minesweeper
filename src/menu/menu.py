@@ -5,6 +5,7 @@ import constants
 class Menu:
     """class for pygame menu
     """
+
     def __init__(self, go_to_game, set_minesweeper_size, surface):
         """initiates pygame menu
 

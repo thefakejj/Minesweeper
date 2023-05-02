@@ -1,8 +1,10 @@
 from enums.ui_grid_enum import UiGridEnum
 
+
 class UiGrid:
     """class that deals with the visible grid
     """
+
     def __init__(self, grid_width: int, grid_height: int):
         """creates an ui_grid object, including creating a list full of zeros
 
@@ -47,7 +49,6 @@ class UiGrid:
         square_y = square_coordinates[1]
         self.grid[square_y][square_x] = content
 
-
     def update_ui_grid(self, square_coordinates: tuple, click_type: str, nearby_mines: int):
         """updates the grid
 
@@ -62,21 +63,22 @@ class UiGrid:
         if self.get_square_content(square_coordinates) == UiGridEnum.UNREVEALED_TILE.value:
             if click_type == "rightclick":
                 # changing from unrevealed to flag
-                self.set_square_content(square_coordinates, UiGridEnum.FLAG.value)
-                
+                self.set_square_content(
+                    square_coordinates, UiGridEnum.FLAG.value)
 
             elif click_type == "leftclick":
                 if nearby_mines == -1:
-                    self.set_square_content(square_coordinates, UiGridEnum.MINE.value)
+                    self.set_square_content(
+                        square_coordinates, UiGridEnum.MINE.value)
                 else:
                     # changing from unrevealed to the amount of mines
-                    self.set_square_content(square_coordinates, 3 + nearby_mines)
-                    
+                    self.set_square_content(
+                        square_coordinates, 3 + nearby_mines)
 
         elif self.get_square_content(square_coordinates) == UiGridEnum.FLAG.value:
             if click_type == "rightclick":
                 # changing from flag to unrevealed
-                self.set_square_content(square_coordinates, UiGridEnum.UNREVEALED_TILE.value)
-
+                self.set_square_content(
+                    square_coordinates, UiGridEnum.UNREVEALED_TILE.value)
 
         # if the square is either a mine or a flipped tile, nothing should happen

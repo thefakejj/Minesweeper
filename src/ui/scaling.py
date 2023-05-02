@@ -4,6 +4,7 @@ import pygame
 class Scaling:
     """class for scaling the game according to resolution, assets' sizes and grid size
     """
+
     def __init__(self, window_height, default_image_size, grid_width, grid_height):
         """creates the scaling object and sets scale
 
