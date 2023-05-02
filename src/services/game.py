@@ -2,7 +2,6 @@
 import sys
 import pygame
 
-
 from menu.menu import Menu
 
 # from services.game import main_loop, event_checker

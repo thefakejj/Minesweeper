@@ -17,5 +17,7 @@ class UiGridEnum(Enum):
     def __eq__(self, other):
         if isinstance(other, int):
             return self.value == other
-        else:
+        elif isinstance(other, UiGridEnum):
             return self.value == other.value
+        else:
+            return NotImplemented

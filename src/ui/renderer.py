@@ -1,6 +1,5 @@
 import pygame
 
-
 class Renderer:
     def __init__(self, surface, grid, grid_width, grid_height, image_size, images, bg_color):
         self._surface = surface

@@ -1,3 +1,5 @@
+from enums.ui_grid_enum import UiGridEnum
+
 class UiGrid:
     def __init__(self, grid_width: int, grid_height: int):
         self._grid_width = grid_width
@@ -27,25 +29,25 @@ class UiGrid:
         # !!!!!! Most of this updating should be in a game logic class !!!!!!
         # !!!!!! This class should only be used for updating the grid  !!!!!!
         # if square is unrevealed
-        if self.get_square_content(square_coordinates) == 0:
+        if self.get_square_content(square_coordinates) == UiGridEnum.UNREVEALED_TILE.value:
             if click_type == "rightclick":
                 # changing from unrevealed to flag
-                self.set_square_content(square_coordinates, 1)
+                self.set_square_content(square_coordinates, UiGridEnum.FLAG.value)
                 return True
 
             elif click_type == "leftclick":
                 if is_mine is True:
-                    self.set_square_content(square_coordinates, 2)
+                    self.set_square_content(square_coordinates, UiGridEnum.MINE.value)
                     return True
                 else:
                     # changing from unrevealed to revealed_0
-                    self.set_square_content(square_coordinates, 3)
+                    self.set_square_content(square_coordinates, UiGridEnum.REVEALED_0.value)
                     return True
 
-        elif self.get_square_content(square_coordinates) == 1:
+        elif self.get_square_content(square_coordinates) == UiGridEnum.FLAG.value:
             if click_type == "rightclick":
                 # changing from flag to unrevealed
-                self.set_square_content(square_coordinates, 0)
+                self.set_square_content(square_coordinates, UiGridEnum.UNREVEALED_TILE.value)
                 return True
 
         # if the square is either a mine or a flipped tile, nothing should happen
