@@ -27,3 +27,17 @@
     - DEFAULT_SIDE_BUTTON_SIZE
     - DEFAULT_WINDOW_WIDTH
     - DEFAULT_WINDOW_HEIGHT
+
+## Viikko 6
+
+- Lisätty miinojen avaaminen peliin
+    - Jos miinan avaa, ei voi enää avata lisää ruutuja, vaan joutuu aloittamaan uudestaan
+- Lisätty numerot, jotka kertovat ruutua ympäröivien miinojen määrän
+- Lisätty back to menu nappi peliin
+- Äskeisen kahden kohdan grafiikat luotu
+
+- Lisätty enums, joita käytetään klikkien ja käyttöliittymän kanssa
+
+- Lisätty docstring
+
+- Lisätty testejä ja dokumentaatiota

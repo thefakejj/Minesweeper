@@ -8,7 +8,7 @@ Miinaharava on muun muassa vanhoista Windows-versioista tuttu peli *Minesweeper*
 
 
 ## Dokumentaatio
-
+- [Käyttöohje](https://github.com/thefakejj/ot-harjoitustyo/blob/main/documentation/kayttoohje.md)
 - [Tuntikirjanpito](https://github.com/thefakejj/ot-harjoitustyo/blob/main/documentation/tuntikirjanpito.md)
 - [Vaatimusmäärittely](https://github.com/thefakejj/ot-harjoitustyo/blob/main/documentation/vaatimusmaarittely.md)
 - [Changelog](https://github.com/thefakejj/ot-harjoitustyo/blob/main/documentation/changelog.md)

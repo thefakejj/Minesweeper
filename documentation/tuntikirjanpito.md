@@ -13,4 +13,5 @@
 | 24.4 | 9   | Erotettu pelin logiikkaa ja käyttöliittymää. Nyt vihdoin pelin piirtäminen tapahtuu game.py:n ulkopuolella|
 | 25.4 | 5   | Käyttäjä voi nyt liputtaa ruutuja, joita ei sen jälkeen voi avata. UiGridille on siis tehty päivittämismetodi. Click-eventtien tulkitseminen siirretty omaan luokkaansa. Muokattu injektioita niin, että vain tarvittavat tulee uuden metodin tai luokan käyttöön (useimmiten). Lisätty sivupalkin nappien defaulttikoko. Lisätty testejä. Lintattu. Päivitetty changelog. Tehty release.|
 |27.4|3|miinat paljastuu. muutettu koodia niin, että tarvitaan vähemmän parametreja.|
-|yhteensä|52.5|tuntia|
+|2.5|12|peli on nyt "pelattavissa"! luotu grafiikat miinaharavan numeroille ja sivunapille. tehty docstringiä, käyttöohjetta, arkkitehtuurikuvausta, changelogia, testejä, linttiä.|
+|yhteensä|64.5|tuntia|
