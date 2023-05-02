@@ -4,11 +4,12 @@ import pygame
 
 
 def run_minesweeper():
+    """creates a minesweeper object and a surface for it, then runs the menu
+    """
     minesweeper = Minesweeper()
 
     create_surface(minesweeper)
 
-    minesweeper._game_state = 0
     minesweeper.run_menu()
 
 

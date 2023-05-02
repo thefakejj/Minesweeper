@@ -15,10 +15,3 @@ class MouseEnum(Enum):
             return self.value == other.value
         else:
             return NotImplemented
-
-    # correct but doesnt work
-    # def __eq__(self, other):
-    #     if isinstance(other, int):
-    #         return self.value == other
-    #     else:
-    #         return self.value == other.value

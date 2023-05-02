@@ -3,7 +3,14 @@ from constants import WINDOW_HEIGHT, DEFAULT_BACK_TO_MENU_COORDINATES, DEFAULT_S
 from services.check_if_mine import square_is_mine, nearby_mines
 
 class MouseEvent:
+    """class for handling pygame events having to do with mouse inputs and game logic
+    """
     def __init__(self, minesweeper):
+        """creates mouse_event object
+
+        Args:
+            minesweeper (object): gives minesweeper object to the class
+        """
         # self.event_button = event_button # 1 3
         self.minesweeper = minesweeper
 
@@ -19,6 +26,12 @@ class MouseEvent:
         
 
     def side_button_click(self, click_coordinates):
+        """Checks if click's coordinates in the window are within a side button's limits.
+            If they are, a corresponding minesweeper function is called
+
+        Args:
+            click_coordinates (tuple): _description_
+        """
         if (click_coordinates[0] >= DEFAULT_BACK_TO_MENU_COORDINATES[0]
             and click_coordinates[0] <= DEFAULT_BACK_TO_MENU_COORDINATES[0]+DEFAULT_SIDE_BUTTON_IMAGE_SIZE[0]):
 
@@ -28,6 +41,18 @@ class MouseEvent:
 
     def square_click(self, event_button, click_coordinates,
                      first_click_has_happened, start_game, grid, field_grid):
+        """Checks if click's coordinates were within the grid.
+            If they were, another method checks which square was clicked.
+            Based on what square was clicked, corresponding minesweeper methods are called.
+
+        Args:
+            event_button (int): _description_
+            click_coordinates (tuple): _description_
+            first_click_has_happened (bool): _description_
+            start_game (function): _description_
+            grid (list): _description_
+            field_grid (list): _description_
+        """
         # this jungle of if-statements determines
         # whether or not the click is within grid's dimensions
 
@@ -66,6 +91,14 @@ class MouseEvent:
             return
 
     def which_square_was_clicked(self, click_coordinates):
+        """converts click's pixel coorinates into grid coordinates
+
+        Args:
+            click_coordinates (tuple): x and y coordinates of click
+
+        Returns:
+            tuple: x and y coordinates of a square in ui_grid
+        """
         # y coordinates
         for height in range(self.grid_height):
             # grid will always start at y=0 and end at y = WINDOW_HEIGHT

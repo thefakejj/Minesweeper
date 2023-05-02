@@ -20,7 +20,21 @@ import constants
 
 
 class Minesweeper:
+    """Class that creates a minesweeper object, around which the game is built 
+    Attributes:
+        window_width, window_height: dimensions of the window set in constants
+        grid_width, grid_height: default dimensions for the minesweeper grid
+        bg_color: default background color
+        first_click_has_happened: sets default value for if the player has clicked a tile open
+        game_state: default game state, equates to being in menu
+        x_where_grid_starts, x_where_grid_ends: default values for grid dimensions in pixels
+        _clock: creates a pygame clock object from external module
+
+    """
     def __init__(self):
+        """Class constructor that creates a new minesweeper object
+        """
+
         pygame.init()
 
         self.window_width = constants.WINDOW_WIDTH
@@ -59,6 +73,8 @@ class Minesweeper:
     # main loop, on when start_game is called
 
     def main_loop(self):
+        """The loop of the game once "play" has been clicked
+        """
         while True:
             if self.game_state == 0:
                 self.run_menu()
@@ -75,6 +91,8 @@ class Minesweeper:
     # events
 
     def event_checker(self):
+        """checks events for mouse clicks and some keypresses
+        """
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 click_coordinates = (event.pos[0], event.pos[1])
@@ -106,6 +124,8 @@ class Minesweeper:
     # ChatGPT | method to run the menu from an external module
 
     def run_menu(self):
+        """runs pygame menu
+        """
         menu = Menu(self.go_to_game, self.set_minesweeper_size, self.surface)
         menu.menu()
 
@@ -113,7 +133,12 @@ class Minesweeper:
     # we can simply use value[1] to get acces to the value
     # This function could potentially also be removed entirely,
     # if onchange=self.set_minesweeper_size is changed to onchange=value[1]
-    def set_minesweeper_size(self, _, value):
+    def set_minesweeper_size(self, *args):
+        """changes grid width and grid height of the minesweeper object
+        Args:
+            args[-1] is value fom pygame menu.
+        """
+        value = args[-1]
         self.grid_width = value[0]
         self.grid_height = value[1]
 
@@ -122,6 +147,8 @@ class Minesweeper:
     # ChatGPT | the main loop will only be run once the "Play" button is pressed in the menu
 
     def go_to_game(self):
+        """goes into the game loop after creating and scaling UI, creating a field in the backend
+        """
         self.change_game_state(1)
 
         # we create a field which is the grid in the backend
@@ -149,22 +176,32 @@ class Minesweeper:
 
         # renderer defined outside of init so that class can be tested
         # otherwise surface would appear during tests
-        # self.renderer = Renderer(self.surface, self.ui_grid.grid, self.grid_width,
-        #                          self.grid_height, self.image_size, images.images, images.buttons, self.bg_color, self.x_where_grid_ends)
 
         self.renderer = Renderer(self, images.images, images.buttons)
         self.main_loop()
 
     def start_game(self, square_coordinates: tuple):
+        """once the user has opened the first tile, the game saves this infomation 
+            and creates a field in the backend
+
+        Args:
+            square_coordinates (tuple): x and y coordinates of the first click
+        """
         self.first_click_has_happened = True
         self.change_game_state(2)
         self.real_field.create_random_field(square_coordinates)
         # self.set_start_time()
 
     def change_game_state(self, desired_game_state: int):
+        """changes the game state and does necessary function calls
+            game states: 0 = menu, 1 = in game but no first click,
+            2 = in game and has clicked a square, 3 = game lost, 4 = won game
+
+        Args:
+            desired_game_state (int): the game state that the game is moving into
+        """
         if desired_game_state == 0:
-            # 0 is a placeholder parameter
-            self.set_minesweeper_size(0, (8, 8))
+            self.set_minesweeper_size((8, 8))
         if desired_game_state == 1:
             self.first_click_has_happened = False
         self.game_state = int(desired_game_state)
