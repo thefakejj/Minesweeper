@@ -35,7 +35,7 @@ class Minesweeper:
 
         self.bg_color = (255, 255, 255)
 
-        # game logic stuff starts   
+        # game logic stuff starts
 
         # this attribute is false until the player has clicked on a tile.
         # Once it's clicked, this attribute will be True.
@@ -157,9 +157,7 @@ class Minesweeper:
         # self.set_start_time()
 
     def change_game_state(self, desired_game_state: int):
-        
         self.game_state = int(desired_game_state)
-        print("kukkuu vaihdettiin statea. GAME state: ", self.game_state)
 
     # time methods
     # no time methods work right now so they'll be commented out for the time being

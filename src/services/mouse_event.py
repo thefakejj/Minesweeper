@@ -48,7 +48,6 @@ class MouseEvent:
                 # update and check if mine. if mine, change game state
                 grid.update_ui_grid(square_coordinates, click_type, square_is_mine(square_coordinates, field_grid))
                 if square_is_mine(square_coordinates, field_grid):
-                    print("on miina")
                     self.change_game_state(3)
 
         # when click is outside the grid

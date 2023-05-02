@@ -1,6 +1,3 @@
-import pygame
-
-
 class UiGrid:
     def __init__(self, grid_width: int, grid_height: int):
         self._grid_width = grid_width
@@ -24,8 +21,7 @@ class UiGrid:
         # for y in range(len(self.grid)):
         #     for x in range(len(self.grid[y])):
         #         print(self.grid[y][x])
-        
-        
+
 
     def update_ui_grid(self, square_coordinates: tuple, click_type: str, is_mine: bool):
         # !!!!!! Most of this updating should be in a game logic class !!!!!!
@@ -51,12 +47,5 @@ class UiGrid:
                 # changing from flag to unrevealed
                 self.set_square_content(square_coordinates, 0)
                 return True
-        
-
-        
 
         # if the square is either a mine or a flipped tile, nothing should happen
-
-
-            
-
