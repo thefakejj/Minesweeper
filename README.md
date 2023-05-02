@@ -3,8 +3,8 @@
 Miinaharava on muun muassa vanhoista Windows-versioista tuttu peli *Minesweeper*. Pelin tavoitteena on paljastaa kaikki ruudut, joiden alla ei ole miinaa. Jos paljastaa miinan, häviää pelin. Pelissä pystyy myös liputtamaan miinaksi epäiltyjä ruutuja.
 
 
-## Viikko 5 release!
-[Release löytyy tästä linkistä](https://github.com/thefakejj/ot-harjoitustyo/releases/tag/viikko5)
+## Viikko 6 release!
+[Release löytyy tästä linkistä](https://github.com/thefakejj/ot-harjoitustyo/releases/tag/viikko6)
 
 
 ## Dokumentaatio
