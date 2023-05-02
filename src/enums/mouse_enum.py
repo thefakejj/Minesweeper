@@ -11,7 +11,5 @@ class MouseEnum(Enum):
     def __eq__(self, other):
         if isinstance(other, int):
             return self.value == other
-        elif isinstance(other, MouseEnum):
-            return self.value == other.value
         else:
-            return NotImplemented
+            return self.value == other.value
