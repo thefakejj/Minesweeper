@@ -10,8 +10,8 @@ Sovellus alkaa valikosta, mistä käyttäjä voi aloittaa pelin, muuttaa asetuks
 - Sovellus muodostaa satunnaisen kentän | tehty
 - Sovellus käynnistää pelin alkaessa sekuntikellon
 - Käyttäjän tavoite on paljastaa kaikki ruudut, joissa ei ole miinaa
-    - Jos käyttäjä paljastaa miinan, käyttäjä häviää pelin
-- Paljastetulla ruudulla lukee numero, joka kertoo, kuinka monta miinaa löytyy sen ympäröivistä kahdeksasta ruudusta
+    - Jos käyttäjä paljastaa miinan, käyttäjä häviää pelin | tehty
+- Paljastetulla ruudulla lukee numero, joka kertoo, kuinka monta miinaa löytyy sen ympäröivistä kahdeksasta ruudusta | tehty
 - Käyttäjä voi liputtaa ruudun, ja poistaa ruudun liputuksen | tehty
     - Liputettua ruutua ei voi paljastaa | tehty
 - Jos käyttäjä paljastaa kaikki miinattomat ruudut, käyttäjä voittaa pelin
