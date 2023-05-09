@@ -224,6 +224,7 @@ class Minesweeper:
             self.set_finish_time()
             self.leaderboard.insert_time((self.grid_width, self.grid_height), self.player_name, self.get_finish_time_in_seconds())
 
+
         self.game_state = int(desired_game_state)
 
 
