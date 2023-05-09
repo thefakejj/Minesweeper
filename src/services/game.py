@@ -48,6 +48,8 @@ class Minesweeper:
 
         self.bg_color = (128, 255, 128)
 
+        self.player_name = ""
+
         # game logic stuff starts
 
         # this attribute is false until the player has clicked on a tile.
@@ -124,7 +126,7 @@ class Minesweeper:
     def run_menu(self):
         """runs pygame menu
         """
-        menu = Menu(self.go_to_game, self.set_minesweeper_size, self.surface)
+        menu = Menu(self.go_to_game, self.set_minesweeper_size, self.surface, self.set_player_name)
         menu.menu()
 
     # Chatgpt | as the correct values are already in the selector widget,
@@ -140,6 +142,10 @@ class Minesweeper:
         self.grid_width = value[0]
         self.grid_height = value[1]
 
+    def set_player_name(self, *args):
+        name = str(args[-1])
+        self.player_name = name.strip()
+
     # game starts
 
     # ChatGPT | the main loop will only be run once the "Play" button is pressed in the menu
@@ -147,6 +153,9 @@ class Minesweeper:
     def go_to_game(self):
         """goes into the game loop after creating and scaling UI, creating a field in the backend
         """
+        if self.player_name == "":
+            self.run_menu()
+
         self.change_game_state(1)
 
         # we create a field which is the grid in the backend
