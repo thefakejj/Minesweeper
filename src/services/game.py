@@ -127,7 +127,7 @@ class Minesweeper:
     def run_menu(self):
         """runs pygame menu
         """
-        menu = Menu(self.go_to_game, self.set_minesweeper_size, self.surface, self.set_player_name)
+        menu = Menu(self.go_to_game, self.set_minesweeper_size, self.surface, self.set_player_name, self.player_name)
         menu.menu()
 
     # Chatgpt | as the correct values are already in the selector widget,
