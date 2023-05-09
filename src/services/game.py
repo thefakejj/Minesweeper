@@ -137,7 +137,7 @@ class Minesweeper:
     def set_minesweeper_size(self, *args):
         """changes grid width and grid height of the minesweeper object
         Args:
-            args[-1] is value fom pygame menu.
+            args[-1] is value from pygame menu.
         """
         value = args[-1]
         self.grid_width = value[0]
