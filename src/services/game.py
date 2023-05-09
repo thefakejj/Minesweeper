@@ -13,7 +13,7 @@ from ui.ui_grid import UiGrid
 from ui.scaling import Scaling
 from ui.load_images import Images
 
-# from repositories.leaderboard_repository import
+from repositories.leaderboard_repository import Leaderboard
 
 import constants
 
@@ -43,7 +43,6 @@ class Minesweeper:
         # ChatGPT | since the menu selectors change the size of the grid,
         # having a default grid size is necessary for now
         # default grid size, should be set inside menu
-        # from database_connection import get_database_connection
         self.grid_width, self.grid_height = (8, 8)  # default grid size
 
         self.bg_color = (128, 255, 128)
@@ -69,6 +68,8 @@ class Minesweeper:
         self.finish_time = 0
 
         self._clock = Clock()
+
+        self.leaderboard = Leaderboard()
 
     # game logic methods
 
@@ -220,8 +221,12 @@ class Minesweeper:
         
         if desired_game_state == 4:
             self.set_stop_time()
+            self.set_finish_time()
+            self.leaderboard.insert_time((self.grid_width, self.grid_height), self.player_name, self.get_finish_time_in_seconds())
 
         self.game_state = int(desired_game_state)
+
+
 
     # time methods
 
@@ -242,6 +247,10 @@ class Minesweeper:
 
     def get_elapsed_time_in_seconds(self):
         return f'{(self.elapsed_time/1000.0):.2f}'
-
-    def get_finish_time(self):
-        return self.get_stop_time() - self.get_start_time()
+    
+    def set_finish_time(self):
+        self.finish_time = self.get_stop_time() - self.get_start_time()
+        print(self.get_finish_time_in_seconds())
+    
+    def get_finish_time_in_seconds(self):
+        return f'{(self.finish_time/1000.0):.2f}'
