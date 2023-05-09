@@ -1,4 +1,3 @@
-# from time import time
 import sys
 import pygame
 
@@ -62,10 +61,10 @@ class Minesweeper:
         self.x_where_grid_starts = 0
         self.x_where_grid_ends = 0
 
-        # self.start_time = 0
-        # self.elapsed_time = 0
-        # self.stop_time = 0
-        # self.finish_time = 0
+        self.start_time = 0
+        self.elapsed_time = 0
+        self.stop_time = 0
+        self.finish_time = 0
 
         self._clock = Clock()
 
@@ -80,13 +79,15 @@ class Minesweeper:
             if self.game_state == 0:
                 self.run_menu()
             if self.game_state == 2:
-                pass
+                self.set_elapsed_time()
+                if self.ui_grid.check_if_enough_squares_flipped():
+                    self.change_game_state(4)
             if self.game_state == 3:
                 pass
             self.renderer.render()
             self.event_checker()
             pygame.display.flip()
-            self._clock.tick(60)
+            self._clock.tick(60)    
 
     # events
 
@@ -186,7 +187,7 @@ class Minesweeper:
         self.first_click_has_happened = True
         self.change_game_state(2)
         self.real_field.create_random_field(square_coordinates)
-        # self.set_start_time()
+        self.set_start_time()
 
     def change_game_state(self, desired_game_state: int):
         """changes the game state and does necessary function calls
@@ -198,47 +199,40 @@ class Minesweeper:
         """
         if desired_game_state == 0:
             self.set_minesweeper_size((8, 8))
+
         if desired_game_state == 1:
             self.first_click_has_happened = False
+
+        if desired_game_state == 2:
+            self.set_start_time()
+
+        if desired_game_state == 3:
+            self.set_stop_time()
+        
+        if desired_game_state == 4:
+            self.set_stop_time()
+
         self.game_state = int(desired_game_state)
 
     # time methods
-    # no time methods work right now so they'll be commented out for the time being
 
-    # def set_start_time(self):
-    #     pass
-    #     # self.start_time = time()
-    #     # # if self.game_state == 2:
-    #     # #     self.start_time = time()
-    #     # # else:
-    #     # #     return
+    def set_start_time(self):
+        self.start_time = self._clock.get_ticks()
 
-    # def get_start_time(self):
-    #     pass
-    #     # return self.start_time
+    def get_start_time(self):
+        return self.start_time
 
-    # # when game ends
-    # def set_stop_time(self):
-    #     pass
-    #     # self.stop_time = time()
-    #     # if self.game_state == 4:
-    #     #     self.stop_time = time()
-    #     # else:
-    #     #     return
+    def set_stop_time(self):
+        self.stop_time = self._clock.get_ticks()
 
-    # def get_stop_time(self):
-    #     pass
-    #     # return self.stop_time
+    def get_stop_time(self):
+        return self.stop_time
 
-    # def set_elapsed_time(self):
-    #     pass
-    #     # self.elapsed_time = time() - self.start_time
-    #     # if self.game_state == 2:
-    #     #     self.elapsed_time = self.get_current_time() - self.get_start_time()
-    #     # # can be used as in-game clock
-    #     # else:
-    #     #     return
+    def set_elapsed_time(self):
+        self.elapsed_time = self._clock.get_ticks() - self.get_start_time()
 
-    # def get_elapsed_time(self):
-    #     pass
-    #     # return self.elapsed_time
+    def get_elapsed_time_in_seconds(self):
+        return f'{(self.elapsed_time/1000.0):.2f}'
+
+    def get_finish_time(self):
+        return self.get_stop_time() - self.get_start_time()

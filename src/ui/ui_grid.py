@@ -15,6 +15,9 @@ class UiGrid:
         self._grid_width = grid_width
         self._grid_height = grid_height
         self.grid = self.create_ui_grid()
+        
+        self._revealed_tiles = 0
+        self._mine_count = (16*(self._grid_width*self._grid_height))//100
 
     def create_ui_grid(self):
         """creates a list that represents the visible grid
@@ -74,6 +77,7 @@ class UiGrid:
                     # changing from unrevealed to the amount of mines
                     self.set_square_content(
                         square_coordinates, 3 + nearby_mines)
+                    self._revealed_tiles += 1
 
         elif self.get_square_content(square_coordinates) == UiGridEnum.FLAG.value:
             if click_type == "rightclick":
@@ -82,3 +86,7 @@ class UiGrid:
                     square_coordinates, UiGridEnum.UNREVEALED_TILE.value)
 
         # if the square is either a mine or a flipped tile, nothing should happen
+
+    def check_if_enough_squares_flipped(self):
+        return self._revealed_tiles >= (self._grid_width*self._grid_height) - self._mine_count
+                    

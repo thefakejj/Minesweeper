@@ -16,7 +16,7 @@ class Renderer:
             buttons (list): side button images
         """
         pygame.font.init()
-        self.font = pygame.font.SysFont('Arial Black', 25)
+        self.font = pygame.font.SysFont('Arial Black', WINDOW_HEIGHT//30)
         self.minesweeper = minesweeper
         self.images = images
         self.buttons = buttons
@@ -28,8 +28,15 @@ class Renderer:
         self.minesweeper.surface.fill(self.minesweeper.bg_color)
         self.draw_grid()
         self.draw_side_buttons()
-        if self.minesweeper.game_state == 3:
+        if self.minesweeper.game_state == 1:
+            self.draw_text("Click to start")
+        elif self.minesweeper.game_state == 2:
+            self.draw_text("")
+        elif self.minesweeper.game_state == 3:
             self.draw_text("GAME OVER!!!")
+        elif self.minesweeper.game_state == 4:
+            self.draw_text("YOU WIN!!!")
+        self.draw_timer()
         pygame.display.flip()
 
     def draw_grid(self):
@@ -41,6 +48,12 @@ class Renderer:
                 # every image is 100x100 pixels, so a drawn square should always be scaled from that size
                 self.minesweeper.surface.blit(self.images[square],
                                               (x * self.image_size[0], y * self.image_size[1]))
+
+    def draw_timer(self):
+        time = str(self.minesweeper.get_elapsed_time_in_seconds())
+        timer_surface = self.font.render(time, True, (0, 0, 0))
+        self.minesweeper.surface.blit(
+            timer_surface, (WINDOW_WIDTH - DEFAULT_SIDE_BUTTON_IMAGE_SIZE[0], DEFAULT_SIDE_BUTTON_IMAGE_SIZE[1] + timer_surface.get_height()))
 
     def draw_side_buttons(self):
         """draws the side buttons (only back to menu)
@@ -58,4 +71,4 @@ class Renderer:
         text_surface = self.font.render(text, True, (0, 0, 0))
 
         self.minesweeper.surface.blit(
-            text_surface, (WINDOW_WIDTH - text_surface.get_width(), WINDOW_HEIGHT - text_surface.get_height()))
+            text_surface, (WINDOW_WIDTH*0.99 - text_surface.get_width(), WINDOW_HEIGHT*0.75 - text_surface.get_height()))
