@@ -16,5 +16,5 @@ Viikko 7 aikana tuntikirjanpito unohtui, joten laitan tänne vain sen tiedon mis
 | 25.4 | 5   | Käyttäjä voi nyt liputtaa ruutuja, joita ei sen jälkeen voi avata. UiGridille on siis tehty päivittämismetodi. Click-eventtien tulkitseminen siirretty omaan luokkaansa. Muokattu injektioita niin, että vain tarvittavat tulee uuden metodin tai luokan käyttöön (useimmiten). Lisätty sivupalkin nappien defaulttikoko. Lisätty testejä. Lintattu. Päivitetty changelog. Tehty release.|
 |27.4|3|miinat paljastuu. muutettu koodia niin, että tarvitaan vähemmän parametreja.|
 |2.5|12|peli on nyt "pelattavissa"! luotu grafiikat miinaharavan numeroille ja sivunapille. tehty docstringiä, käyttöohjetta, arkkitehtuurikuvausta, changelogia, testejä, linttiä.|
-|10.5|    | lisätty leaderboard ja miinojen paljastaminen peliin (useiden vaiheiden kautta)| 
-|yhteensä|64.5|tuntia|
+|10.5|4.5| lisätty leaderboard ja miinojen paljastaminen peliin (useiden vaiheiden kautta), päivitetty vaatimusmäärittely ja changelog. päivitetty käyttöohjetta| 
+|yhteensä|69|tuntia|
