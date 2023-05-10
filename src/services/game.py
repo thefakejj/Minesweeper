@@ -56,7 +56,7 @@ class Minesweeper:
         self.first_click_has_happened = False
 
         # game states: 0 = menu, 1 = in game but no first click,
-        # 2 = in game and has clicked a square, 3 = game lost, 4 = won game
+        # 2 = in game and has clicked a square, 3 = game lost, 4 = won game, 5 = leaderboard
         self.game_state = 0
 
         self.x_where_grid_starts = 0
@@ -87,6 +87,8 @@ class Minesweeper:
                     self.change_game_state(4)
             if self.game_state == 3:
                 pass
+            if self.game_state == 5:
+                pass
             self.renderer.render()
             self.event_checker()
             pygame.display.flip()
@@ -100,9 +102,6 @@ class Minesweeper:
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 click_coordinates = (event.pos[0], event.pos[1])
-
-                # if event.button == 3:
-                #     flag
                 if 1 <= self.game_state <= 2:
                     self.mouse_event.square_click(event.button, click_coordinates,
                                                   self.first_click_has_happened,
@@ -127,7 +126,7 @@ class Minesweeper:
     def run_menu(self):
         """runs pygame menu
         """
-        menu = Menu(self.go_to_game, self.set_minesweeper_size, self.surface, self.set_player_name, self.player_name)
+        menu = Menu(self.go_to_game, self.set_minesweeper_size, self.surface, self.set_player_name, self.player_name, self.go_to_leaderboard)
         menu.menu()
 
     # Chatgpt | as the correct values are already in the selector widget,
@@ -187,6 +186,24 @@ class Minesweeper:
         self.renderer = Renderer(self, images.images, images.buttons, image_size)
         self.main_loop()
 
+
+    def go_to_leaderboard(self):
+
+        self.change_game_state(5)
+
+        # images
+        image_size = constants.DEFAULT_IMAGE_SIZE
+        images = Images(image_size)
+        self.mouse_event = MouseEvent(self, image_size)
+
+        # renderer defined outside of init so that class can be tested
+        # otherwise surface would appear during tests
+
+        self.renderer = Renderer(self, images.images, images.buttons, image_size)
+        self.main_loop()
+
+
+    
     def start_game(self, square_coordinates: tuple):
         """once the user has opened the first tile, the game saves this infomation 
             and creates a field in the backend
@@ -224,6 +241,8 @@ class Minesweeper:
             self.set_finish_time()
             self.leaderboard.insert_time((self.grid_width, self.grid_height), self.player_name, self.get_finish_time_in_seconds())
 
+        if desired_game_state == 5:
+            pass
 
         self.game_state = int(desired_game_state)
 
@@ -251,7 +270,6 @@ class Minesweeper:
     
     def set_finish_time(self):
         self.finish_time = self.get_stop_time() - self.get_start_time()
-        print(self.get_finish_time_in_seconds())
     
     def get_finish_time_in_seconds(self):
         return f'{(self.finish_time/1000.0):.2f}'

@@ -6,7 +6,7 @@ class Menu:
     """class for pygame menu
     """
 
-    def __init__(self, go_to_game, set_minesweeper_size, surface, set_player_name, player_name):
+    def __init__(self, go_to_game, set_minesweeper_size, surface, set_player_name, player_name, go_to_leaderboard):
         """initiates pygame menu
 
         Args:
@@ -19,6 +19,7 @@ class Menu:
         self.surface = surface
         self.set_player_name = set_player_name
         self.player_name = player_name
+        self.go_to_leaderboard = go_to_leaderboard
 
     # ChatGPT was used to change this function, instead of calling the start_game function by typing self.minesweeper.start_game(), the function is simply referenced with self.minesweeper.start_game
     def menu(self):
@@ -33,6 +34,7 @@ class Menu:
         # this should be changed to return tuples like (8, 8) if different widths and heights of the field are introduced
         main_menu.add.selector(
             'Field size :', [('8x8', (8, 8)), ('16x16', (16, 16)), ('24x16', (24, 16))], onchange=self.set_minesweeper_size)
+        main_menu.add.button('Leaderboard', self.go_to_leaderboard)
 
         main_menu.add.button('Quit', pygame_menu.events.EXIT)
 

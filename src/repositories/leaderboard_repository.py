@@ -19,5 +19,5 @@ class Leaderboard:
     def grid_leaderboard(self, grid_size):
         table = self._get_grid_table(grid_size)
         result = self._cursor.execute(
-        f"SELECT name, time FROM {table} ORDER BY time LIMIT 10;").fetchall()
+        f"SELECT name, time FROM {table} ORDER BY time LIMIT 10").fetchall()
         return result
