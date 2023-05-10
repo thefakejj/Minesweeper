@@ -64,11 +64,10 @@ class Renderer:
                 self.minesweeper.surface.blit(self.images[square],
                                               (x * self.image_size[0], y * self.image_size[1]))
 
-
     def draw_leaderboard(self):
         table = self.minesweeper.leaderboard.grid_leaderboard(
             (self.minesweeper.grid_width, self.minesweeper.grid_height))
-        
+
         tablefont = pygame.font.SysFont('FreeSans', WINDOW_HEIGHT//20)
 
         table_surface = pygame.Surface(
@@ -80,7 +79,7 @@ class Renderer:
             f"{self.minesweeper.grid_width}x{self.minesweeper.grid_height}", False, (255, 255, 255))
 
         table_surface.blit(table_header_surface,
-                        (table_surface.get_width()//2 - table_header_surface.get_width()//2,
+                           (table_surface.get_width()//2 - table_header_surface.get_width()//2,
                             WINDOW_HEIGHT*0.05))
 
         # chatgpt | idea to create row surfaces list
@@ -96,21 +95,23 @@ class Renderer:
 
             # chatgpt | creating a specific surface for the current row
             # and blitting the surfaces name and time onto it
-            row_surface = pygame.Surface((LEADERBOARD_SIZE[0], LEADERBOARD_ROW_SIZE[1]))
-            row_surface.blits([(name_surface, (0, 0)), (time_surface, (LEADERBOARD_NAME_CELL_SIZE[0], 0))])
-            
+            row_surface = pygame.Surface(
+                (LEADERBOARD_SIZE[0], LEADERBOARD_ROW_SIZE[1]))
+            row_surface.blits(
+                [(name_surface, (0, 0)), (time_surface, (LEADERBOARD_NAME_CELL_SIZE[0], 0))])
+
             # chatgpt | appending the created row to the list
             row_surfaces.append(row_surface)
 
         # chatgpt | blitting rows onto surface
         # (though I did realise that using blits was better...)
         row_positions = ([(row_surface, (0, WINDOW_HEIGHT*0.05
-                                        + (index + 1) * LEADERBOARD_ROW_SIZE[1]))
-                                        for index, row_surface in enumerate(row_surfaces)])
+                                         + (index + 1) * LEADERBOARD_ROW_SIZE[1]))
+                          for index, row_surface in enumerate(row_surfaces)])
         table_surface.blits(row_positions)
 
-        self.minesweeper.surface.blit(table_surface, ((WINDOW_WIDTH // 2 - table_surface.get_width() // 2), 0))
-
+        self.minesweeper.surface.blit(
+            table_surface, ((WINDOW_WIDTH // 2 - table_surface.get_width() // 2), 0))
 
     def draw_timer(self):
         time = str(self.minesweeper.get_elapsed_time_in_seconds())

@@ -1,4 +1,5 @@
 from enums.ui_grid_enum import UiGridEnum
+from services.check_if_mine import square_is_mine, nearby_mines
 
 
 class UiGrid:
@@ -15,7 +16,7 @@ class UiGrid:
         self._grid_width = grid_width
         self._grid_height = grid_height
         self.grid = self.create_ui_grid()
-        
+
         self._revealed_tiles = 0
         self._mine_count = (16*(self._grid_width*self._grid_height))//100
 
@@ -89,4 +90,3 @@ class UiGrid:
 
     def check_if_enough_squares_flipped(self):
         return self._revealed_tiles >= (self._grid_width*self._grid_height) - self._mine_count
-                    

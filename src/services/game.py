@@ -92,7 +92,7 @@ class Minesweeper:
             self.renderer.render()
             self.event_checker()
             pygame.display.flip()
-            self._clock.tick(60)    
+            self._clock.tick(60)
 
     # events
 
@@ -126,7 +126,8 @@ class Minesweeper:
     def run_menu(self):
         """runs pygame menu
         """
-        menu = Menu(self.go_to_game, self.set_minesweeper_size, self.surface, self.set_player_name, self.player_name, self.go_to_leaderboard)
+        menu = Menu(self.go_to_game, self.set_minesweeper_size, self.surface,
+                    self.set_player_name, self.player_name, self.go_to_leaderboard)
         menu.menu()
 
     # Chatgpt | as the correct values are already in the selector widget,
@@ -183,9 +184,9 @@ class Minesweeper:
         # renderer defined outside of init so that class can be tested
         # otherwise surface would appear during tests
 
-        self.renderer = Renderer(self, images.images, images.buttons, image_size)
+        self.renderer = Renderer(
+            self, images.images, images.buttons, image_size)
         self.main_loop()
-
 
     def go_to_leaderboard(self):
 
@@ -199,11 +200,10 @@ class Minesweeper:
         # renderer defined outside of init so that class can be tested
         # otherwise surface would appear during tests
 
-        self.renderer = Renderer(self, images.images, images.buttons, image_size)
+        self.renderer = Renderer(
+            self, images.images, images.buttons, image_size)
         self.main_loop()
 
-
-    
     def start_game(self, square_coordinates: tuple):
         """once the user has opened the first tile, the game saves this infomation 
             and creates a field in the backend
@@ -235,18 +235,19 @@ class Minesweeper:
 
         if desired_game_state == 3:
             self.set_stop_time()
-        
+            self.mouse_event.reveal_grid(self.ui_grid, self.real_field)
+
         if desired_game_state == 4:
             self.set_stop_time()
             self.set_finish_time()
-            self.leaderboard.insert_time((self.grid_width, self.grid_height), self.player_name, self.get_finish_time_in_seconds())
+            self.mouse_event.reveal_grid(self.ui_grid, self.real_field)
+            self.leaderboard.insert_time(
+                (self.grid_width, self.grid_height), self.player_name, self.get_finish_time_in_seconds())
 
         if desired_game_state == 5:
             pass
 
         self.game_state = int(desired_game_state)
-
-
 
     # time methods
 
@@ -267,9 +268,9 @@ class Minesweeper:
 
     def get_elapsed_time_in_seconds(self):
         return f'{(self.elapsed_time/1000.0):.2f}'
-    
+
     def set_finish_time(self):
         self.finish_time = self.get_stop_time() - self.get_start_time()
-    
+
     def get_finish_time_in_seconds(self):
         return f'{(self.finish_time/1000.0):.2f}'

@@ -1,6 +1,6 @@
 from enums.mouse_enum import MouseEnum
 from constants import (WINDOW_HEIGHT,
-    DEFAULT_BACK_TO_MENU_COORDINATES, DEFAULT_SIDE_BUTTON_IMAGE_SIZE)
+                       DEFAULT_BACK_TO_MENU_COORDINATES, DEFAULT_SIDE_BUTTON_IMAGE_SIZE)
 from services.check_if_mine import square_is_mine, nearby_mines
 
 
@@ -34,10 +34,10 @@ class MouseEvent:
         Args:
             click_coordinates (tuple): x and y coordinates of the square in pixels
         """
-        button_coordinates_x, button_coordinates_y  = DEFAULT_BACK_TO_MENU_COORDINATES
+        button_coordinates_x, button_coordinates_y = DEFAULT_BACK_TO_MENU_COORDINATES
         button_width, button_height = DEFAULT_SIDE_BUTTON_IMAGE_SIZE
         if (click_coordinates[0] >= button_coordinates_x
-        and click_coordinates[0] <= button_coordinates_x+button_width):
+                and click_coordinates[0] <= button_coordinates_x+button_width):
 
             if (click_coordinates[1] >= button_coordinates_y
                     and click_coordinates[1] <= button_coordinates_y + button_height):
@@ -112,7 +112,20 @@ class MouseEvent:
         for width in range(self.grid_width):
             # x-coordinates are given from the scaling module
             if ((click_coordinates[0] >= self.x_where_grid_starts+(width*self.image_size[1]))
-            and click_coordinates[0] <= self.x_where_grid_starts+((width+1)*self.image_size[1])):
+                    and click_coordinates[0] <= self.x_where_grid_starts+((width+1)*self.image_size[1])):
                 square_x = width
 
         return (square_x, square_y)
+
+    # fake mouse events to reveal everything
+    def reveal_grid(self, grid, field_grid):
+        for row_index, row in enumerate(grid.grid):
+            for square_index, square in enumerate(grid.grid[row_index]):
+                square_content = grid.get_square_content((square_index, row_index))
+                if square_content == 1:
+                    continue
+                elif square_content >= 3:
+                    continue
+                grid.update_ui_grid((square_index, row_index),
+                                    "leftclick",
+                                    nearby_mines((square_index, row_index), field_grid.grid))

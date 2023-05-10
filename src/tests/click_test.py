@@ -31,5 +31,6 @@ class TestMouseEvent(unittest.TestCase):
             self.mouse_event.which_square_was_clicked((120, 120)), (1, 1))
 
     def test_square_click_changes_game_state(self):
-        self.mouse_event.square_click(1, (120, 120), self.minesweeper.first_click_has_happened, self.minesweeper.start_game, self.ui_grid_no_mines, self.real_field_no_mines)
+        self.mouse_event.square_click(1, (120, 120), self.minesweeper.first_click_has_happened,
+                                      self.minesweeper.start_game, self.ui_grid_no_mines, self.real_field_no_mines)
         self.assertEqual(self.minesweeper.game_state, 2)
