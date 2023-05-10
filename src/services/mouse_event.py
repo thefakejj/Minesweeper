@@ -112,19 +112,19 @@ class MouseEvent:
         for width in range(self.grid_width):
             # x-coordinates are given from the scaling module
             if ((click_coordinates[0] >= self.x_where_grid_starts+(width*self.image_size[1]))
-                    and click_coordinates[0] <= self.x_where_grid_starts+((width+1)*self.image_size[1])):
+                    and click_coordinates[0]
+                    <= self.x_where_grid_starts+((width+1)*self.image_size[1])):
                 square_x = width
 
         return (square_x, square_y)
 
     # fake mouse events to reveal everything
     def reveal_grid(self, grid, field_grid):
-        for row_index, row in enumerate(grid.grid):
-            for square_index, square in enumerate(grid.grid[row_index]):
-                square_content = grid.get_square_content((square_index, row_index))
-                if square_content == 1:
-                    continue
-                elif square_content >= 3:
+        for row_index, _ in enumerate(grid.grid):
+            for square_index, _ in enumerate(grid.grid[row_index]):
+                square_content = grid.get_square_content(
+                    (square_index, row_index))
+                if square_content == 1 or square_content >= 3:
                     continue
                 grid.update_ui_grid((square_index, row_index),
                                     "leftclick",

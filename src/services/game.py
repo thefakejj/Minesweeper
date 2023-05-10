@@ -242,7 +242,9 @@ class Minesweeper:
             self.set_finish_time()
             self.mouse_event.reveal_grid(self.ui_grid, self.real_field)
             self.leaderboard.insert_time(
-                (self.grid_width, self.grid_height), self.player_name, self.get_finish_time_in_seconds())
+                (self.grid_width, self.grid_height),
+                self.player_name,
+                self.get_finish_time_in_seconds())
 
         if desired_game_state == 5:
             pass
