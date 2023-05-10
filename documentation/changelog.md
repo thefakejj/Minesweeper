@@ -41,3 +41,12 @@
 - Lisätty docstring
 
 - Lisätty testejä ja dokumentaatiota
+
+## Viikko 7
+
+- Lisätty mahdollisuus "voittaa" tai "hävitä" peli
+- Lisätty leaderboard
+- renderer-luokassa uudet metodid draw_text, draw_leaderboard
+- Samalla menussa input-kenttä, johon laitetaan nimi
+- peli paljastaa koko kentän, jos voittaa
+ - tähän tehty metodi mouse_eventtiin
