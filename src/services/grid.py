@@ -63,7 +63,7 @@ class Grid:
         """
         # if square is unrevealed
         nearby_mines = self.count_nearby_mines(square_coordinates, field_grid)
-        
+
         if event_button == MouseEnum.LEFT_CLICK.value:
             if self.get_square_content(square_coordinates) == GridEnum.UNREVEALED_TILE.value:
                 # changing from unrevealed to mine
