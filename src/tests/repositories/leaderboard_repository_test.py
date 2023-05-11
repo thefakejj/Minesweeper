@@ -1,6 +1,7 @@
 import unittest
 from repositories.leaderboard_repository import Leaderboard
 
+
 class TestLeaderboardRepository(unittest.TestCase):
     def setUp(self):
         self.leaderboard = Leaderboard()

@@ -1,3 +1,3 @@
-from ui.program_ui import run_minesweeper
+from ui.game import Minesweeper
 
-run_minesweeper()
+minesweeper = Minesweeper()

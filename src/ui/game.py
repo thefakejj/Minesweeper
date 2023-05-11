@@ -63,6 +63,11 @@ class Minesweeper:
         self.clock = Clock()
 
         self.leaderboard = Leaderboard()
+        pygame.display.set_caption("Minesweeper")
+        self.surface = pygame.display.set_mode(
+            (constants.WINDOW_WIDTH, constants.WINDOW_HEIGHT))
+
+        self.run_menu()
 
     # main loop, on when start_game is called
 

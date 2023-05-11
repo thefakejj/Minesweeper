@@ -75,9 +75,9 @@ class MouseEvent:
                         start_game(square_coordinates)
 
                     elif field_grid[square_coordinates[1]][square_coordinates[0]] == 1:
-                            self.change_game_state(3)
-                            self.reveal_grid(grid, field_grid)
-                            return
+                        self.change_game_state(3)
+                        self.reveal_grid(grid, field_grid)
+                        return
                 grid.update_grid(square_coordinates, event_button, field_grid)
 
                 # update and check if mine. if mine, change game state
@@ -116,4 +116,5 @@ class MouseEvent:
                     (square_index, row_index))
                 if square_content == 1 or square_content >= 3:
                     continue
-                grid.update_grid((square_index, row_index), MouseEnum.LEFT_CLICK.value, field_grid)
+                grid.update_grid((square_index, row_index),
+                                 MouseEnum.LEFT_CLICK.value, field_grid)

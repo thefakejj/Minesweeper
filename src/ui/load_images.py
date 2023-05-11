@@ -1,5 +1,5 @@
-import pygame
 import os
+import pygame
 from constants import DEFAULT_SIDE_BUTTON_IMAGE_SIZE
 
 dirname = os.path.dirname(__file__)
