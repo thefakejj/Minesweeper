@@ -212,6 +212,7 @@ class Minesweeper:
 
         if desired_game_state == 1:
             self.first_click_has_happened = False
+            self.clock.reset_elapsed_time()
 
         if desired_game_state == 2:
             self.clock.set_start_time()
