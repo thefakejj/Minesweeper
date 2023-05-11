@@ -1,7 +1,6 @@
 from enums.mouse_enum import MouseEnum
 from constants import (WINDOW_HEIGHT,
                        DEFAULT_BACK_TO_MENU_COORDINATES, DEFAULT_SIDE_BUTTON_IMAGE_SIZE)
-from services.check_if_mine import square_is_mine, nearby_mines
 
 
 class MouseEvent:
@@ -43,8 +42,8 @@ class MouseEvent:
                     and click_coordinates[1] <= button_coordinates_y + button_height):
                 self.minesweeper.change_game_state(0)
 
-    def square_click(self, event_button, click_coordinates,
-                     first_click_has_happened, start_game, grid, field_grid):
+    def square_click(self, event_button: int, click_coordinates: tuple,
+                     first_click_has_happened: bool, start_game, grid, field_grid: list):
         """Checks if click's coordinates were within the grid.
             If they were, another method checks which square was clicked.
             Based on what square was clicked, corresponding minesweeper methods are called.
@@ -68,29 +67,20 @@ class MouseEvent:
                 square_coordinates = self.which_square_was_clicked(
                     click_coordinates)
 
-                click_type = None
-
-                if event_button == MouseEnum.RIGHT_CLICK:
-                    click_type = "rightclick"
-
                 if event_button == MouseEnum.LEFT_CLICK:
                     if grid.get_square_content(square_coordinates) == 1:
                         return
 
-                    click_type = "leftclick"
                     if first_click_has_happened is False:
                         start_game(square_coordinates)
 
-                    elif square_is_mine(square_coordinates, field_grid):
-                        self.change_game_state(3)
+                    elif field_grid[square_coordinates[1]][square_coordinates[0]] == 1:
+                            self.change_game_state(3)
+                            self.reveal_grid(grid, field_grid)
+                            return
+                grid.update_grid(square_coordinates, event_button, field_grid)
 
                 # update and check if mine. if mine, change game state
-                grid.update_ui_grid(square_coordinates, click_type, nearby_mines(
-                    square_coordinates, field_grid))
-
-        # when click is outside the grid
-        else:
-            return
 
     def which_square_was_clicked(self, click_coordinates):
         """converts click's pixel coorinates into grid coordinates
@@ -119,13 +109,11 @@ class MouseEvent:
         return (square_x, square_y)
 
     # fake mouse events to reveal everything
-    def reveal_grid(self, grid, field_grid):
+    def reveal_grid(self, grid: object, field_grid: list):
         for row_index, _ in enumerate(grid.grid):
             for square_index, _ in enumerate(grid.grid[row_index]):
                 square_content = grid.get_square_content(
                     (square_index, row_index))
                 if square_content == 1 or square_content >= 3:
                     continue
-                grid.update_ui_grid((square_index, row_index),
-                                    "leftclick",
-                                    nearby_mines((square_index, row_index), field_grid.grid))
+                grid.update_grid((square_index, row_index), MouseEnum.LEFT_CLICK.value, field_grid)

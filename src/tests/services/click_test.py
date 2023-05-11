@@ -1,6 +1,6 @@
 import unittest
-from services.mouse_event import MouseEvent
-from services.game import Minesweeper
+from ui.mouse_event import MouseEvent
+from ui.game import Minesweeper
 from ui.scaling import Scaling
 
 

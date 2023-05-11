@@ -1,5 +1,5 @@
 import unittest
-from services.game import Minesweeper
+from ui.game import Minesweeper
 from services.field import Field
 
 

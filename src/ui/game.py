@@ -5,11 +5,11 @@ from menu.menu import Menu
 
 # from services.game import main_loop, event_checker
 from services.field import Field
-from services.mouse_event import MouseEvent
 from services.clock import Clock
+from services.grid import Grid
 
+from ui.mouse_event import MouseEvent
 from ui.renderer import Renderer
-from ui.ui_grid import UiGrid
 from ui.scaling import Scaling
 from ui.load_images import Images
 
@@ -49,8 +49,6 @@ class Minesweeper:
 
         self.player_name = ""
 
-        # game logic stuff starts
-
         # this attribute is false until the player has clicked on a tile.
         # Once it's clicked, this attribute will be True.
         self.first_click_has_happened = False
@@ -66,8 +64,6 @@ class Minesweeper:
 
         self.leaderboard = Leaderboard()
 
-    # game logic methods
-
     # main loop, on when start_game is called
 
     def main_loop(self):
@@ -78,7 +74,7 @@ class Minesweeper:
                 self.run_menu()
             if self.game_state == 2:
                 self.clock.set_elapsed_time()
-                if self.ui_grid.check_if_enough_squares_flipped():
+                if self.grid.check_if_enough_squares_flipped():
                     self.change_game_state(4)
             if self.game_state == 3:
                 pass
@@ -100,7 +96,7 @@ class Minesweeper:
                 if 1 <= self.game_state <= 2:
                     self.mouse_event.square_click(event.button, click_coordinates,
                                                   self.first_click_has_happened,
-                                                  self.start_game, self.ui_grid,
+                                                  self.start_game, self.grid,
                                                   self.real_field.grid)
 
                 if event.button == 1:
@@ -162,10 +158,10 @@ class Minesweeper:
 
         self.real_field = Field(self.grid_width, self.grid_height)
 
-        # while drawing the surface needs ui_grid,
-        # ui_grid needs parameters from this class
-        # ui_grid cannot be defined before this
-        self.ui_grid = UiGrid(self.grid_width, self.grid_height)
+        # while drawing the surface needs grid,
+        # grid needs parameters from this class
+        # grid cannot be defined before this
+        self.grid = Grid(self.grid_width, self.grid_height)
 
         # scaling
         scaling = Scaling(
@@ -217,12 +213,12 @@ class Minesweeper:
 
         if desired_game_state == 3:
             self.clock.set_stop_time()
-            self.mouse_event.reveal_grid(self.ui_grid, self.real_field)
+            self.mouse_event.reveal_grid(self.grid, self.real_field.grid)
 
         if desired_game_state == 4:
             self.clock.set_stop_time()
             self.clock.set_finish_time()
-            self.mouse_event.reveal_grid(self.ui_grid, self.real_field)
+            self.mouse_event.reveal_grid(self.grid, self.real_field.grid)
             self.leaderboard.insert_time(
                 (self.grid_width, self.grid_height),
                 self.player_name,

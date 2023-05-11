@@ -59,7 +59,7 @@ class Renderer:
         """
         for y in range(self.minesweeper.grid_height):
             for x in range(self.minesweeper.grid_width):
-                square = self.minesweeper.ui_grid.grid[y][x]
+                square = self.minesweeper.grid.grid[y][x]
                 # every image is 100x100 pixels, so a drawn square should always be scaled from that size
                 self.minesweeper.surface.blit(self.images[square],
                                               (x * self.image_size[0], y * self.image_size[1]))

@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class UiGridEnum(Enum):
+class GridEnum(Enum):
     UNREVEALED_TILE = 0
     FLAG = 1
     MINE = 2

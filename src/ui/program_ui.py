@@ -1,4 +1,4 @@
-from services.game import Minesweeper
+from ui.game import Minesweeper
 import pygame
 
 

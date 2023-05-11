@@ -30,7 +30,6 @@ class TestLeaderboardRepository(unittest.TestCase):
                     self.leaderboard.insert_time(grid_size, "Player", 177.05)
 
             result = self.leaderboard.grid_leaderboard(grid_size)
-            print(result)
             # length should be 10 because of limit
             self.assertEqual(len(result), 10)
 
