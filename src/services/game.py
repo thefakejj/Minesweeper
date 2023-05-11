@@ -27,7 +27,7 @@ class Minesweeper:
         first_click_has_happened: sets default value for if the player has clicked a tile open
         game_state: default game state, equates to being in menu
         x_where_grid_starts, x_where_grid_ends: default values for grid dimensions in pixels
-        _clock: creates a pygame clock object from external module
+        clock: creates a pygame clock object from external module
 
     """
 
@@ -62,12 +62,7 @@ class Minesweeper:
         self.x_where_grid_starts = 0
         self.x_where_grid_ends = 0
 
-        self.start_time = 0
-        self.elapsed_time = 0
-        self.stop_time = 0
-        self.finish_time = 0
-
-        self._clock = Clock()
+        self.clock = Clock()
 
         self.leaderboard = Leaderboard()
 
@@ -82,7 +77,7 @@ class Minesweeper:
             if self.game_state == 0:
                 self.run_menu()
             if self.game_state == 2:
-                self.set_elapsed_time()
+                self.clock.set_elapsed_time()
                 if self.ui_grid.check_if_enough_squares_flipped():
                     self.change_game_state(4)
             if self.game_state == 3:
@@ -92,7 +87,7 @@ class Minesweeper:
             self.renderer.render()
             self.event_checker()
             pygame.display.flip()
-            self._clock.tick(60)
+            self.clock.tick(60)
 
     # events
 
@@ -201,7 +196,7 @@ class Minesweeper:
         self.first_click_has_happened = True
         self.change_game_state(2)
         self.real_field.create_random_field(square_coordinates)
-        self.set_start_time()
+        self.clock.set_start_time()
 
     def change_game_state(self, desired_game_state: int):
         """changes the game state and does necessary function calls
@@ -218,48 +213,22 @@ class Minesweeper:
             self.first_click_has_happened = False
 
         if desired_game_state == 2:
-            self.set_start_time()
+            self.clock.set_start_time()
 
         if desired_game_state == 3:
-            self.set_stop_time()
+            self.clock.set_stop_time()
             self.mouse_event.reveal_grid(self.ui_grid, self.real_field)
 
         if desired_game_state == 4:
-            self.set_stop_time()
-            self.set_finish_time()
+            self.clock.set_stop_time()
+            self.clock.set_finish_time()
             self.mouse_event.reveal_grid(self.ui_grid, self.real_field)
             self.leaderboard.insert_time(
                 (self.grid_width, self.grid_height),
                 self.player_name,
-                self.get_finish_time_in_seconds())
+                self.clock.get_finish_time_in_seconds())
 
         if desired_game_state == 5:
             pass
 
         self.game_state = int(desired_game_state)
-
-    # time methods
-
-    def set_start_time(self):
-        self.start_time = self._clock.get_ticks()
-
-    def get_start_time(self):
-        return self.start_time
-
-    def set_stop_time(self):
-        self.stop_time = self._clock.get_ticks()
-
-    def get_stop_time(self):
-        return self.stop_time
-
-    def set_elapsed_time(self):
-        self.elapsed_time = self._clock.get_ticks() - self.get_start_time()
-
-    def get_elapsed_time_in_seconds(self):
-        return f'{(self.elapsed_time/1000.0):.2f}'
-
-    def set_finish_time(self):
-        self.finish_time = self.get_stop_time() - self.get_start_time()
-
-    def get_finish_time_in_seconds(self):
-        return f'{(self.finish_time/1000.0):.2f}'

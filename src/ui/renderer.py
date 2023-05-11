@@ -114,7 +114,7 @@ class Renderer:
             table_surface, ((WINDOW_WIDTH // 2 - table_surface.get_width() // 2), 0))
 
     def draw_timer(self):
-        time = str(self.minesweeper.get_elapsed_time_in_seconds())
+        time = str(self.minesweeper.clock.get_elapsed_time_in_seconds())
         timer_surface = self.font.render(time, True, (0, 0, 0))
         self.minesweeper.surface.blit(
             timer_surface, (WINDOW_WIDTH - DEFAULT_SIDE_BUTTON_IMAGE_SIZE[0],
