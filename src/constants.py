@@ -1,5 +1,3 @@
-# any of these constants can be changed, if it makes sense for the program
-
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
 

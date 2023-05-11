@@ -1,7 +1,6 @@
 import unittest
 from services.field import Field
 
-
 class TestField(unittest.TestCase):
     def setUp(self):
         self.grid_width, self.grid_height = (8, 8)

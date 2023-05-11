@@ -3,7 +3,6 @@ from services.grid import Grid
 from enums.grid_enum import GridEnum
 from enums.mouse_enum import MouseEnum
 
-
 class TestGrid(unittest.TestCase):
     def setUp(self):
         self.grid = Grid(8, 8)
