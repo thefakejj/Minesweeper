@@ -4,3 +4,4 @@ minesweeper_suunnitelma.txt
 htmlcov/
 .coverage
 data/leaderboard.db
+data/test_leaderboard.db
