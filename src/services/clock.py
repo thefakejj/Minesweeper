@@ -46,6 +46,9 @@ class Clock:
     def set_elapsed_time(self):
         self._elapsed_time = self.get_ticks() - self.get_start_time()
 
+    def reset_elapsed_time(self):
+        self._elapsed_time = 0
+
     def get_elapsed_time_in_seconds(self):
         return f'{(self._elapsed_time/1000.0):.2f}'
 
