@@ -19,6 +19,10 @@ class TestClock(unittest.TestCase):
 
         self.assertEqual(self.clock.get_elapsed_time_in_seconds(), "0.01")
 
+        self.clock.reset_elapsed_time()
+
+        self.assertEqual(self.clock.get_elapsed_time_in_seconds(), "0.00")
+
     def test_finish_time(self):
         self.clock.set_start_time()
         self.clock.tick(100)
