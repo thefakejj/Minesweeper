@@ -111,10 +111,6 @@ class Minesweeper:
                 if event.button == 1:
                     self.mouse_event.side_button_click(click_coordinates)
 
-            # if event.type == pygame.K_ESCAPE:
-            #     pygame.quit()
-            #     sys.exit()
-
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
@@ -158,7 +154,14 @@ class Minesweeper:
             self.run_menu()
 
         self.change_game_state(1)
+        self.change_view()
 
+    def go_to_leaderboard(self):
+
+        self.change_game_state(5)
+        self.change_view()
+
+    def change_view(self):
         # we create a field which is the grid in the backend
         # this is empty for now, and will be generated once first click occurs
 
@@ -178,22 +181,6 @@ class Minesweeper:
 
         # images
         image_size = scaling.get_scaled_image_size()
-        images = Images(image_size)
-        self.mouse_event = MouseEvent(self, image_size)
-
-        # renderer defined outside of init so that class can be tested
-        # otherwise surface would appear during tests
-
-        self.renderer = Renderer(
-            self, images.images, images.buttons, image_size)
-        self.main_loop()
-
-    def go_to_leaderboard(self):
-
-        self.change_game_state(5)
-
-        # images
-        image_size = constants.DEFAULT_IMAGE_SIZE
         images = Images(image_size)
         self.mouse_event = MouseEvent(self, image_size)
 

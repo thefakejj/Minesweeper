@@ -46,7 +46,6 @@ class Scaling:
         Returns:
             tuple: grid's start and ending x coordinates
         """
-        # this could be mathematically determined in the future so that the grid is centered or something of the sort
         x_where_grid_starts = 0
 
         x_where_grid_ends = self.get_scaled_image_size()[0]*self.grid_width

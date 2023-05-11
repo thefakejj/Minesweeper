@@ -42,16 +42,3 @@ class Field:
                 x_coordinate = randint(0, self.width-1)
                 y_coordinate = randint(0, self.height-1)
             self.grid[y_coordinate][x_coordinate] = 1
-
-    #     self.print_grid()
-    # # this method may be unnecessary for the finished product
-    # # but it exists for the purpose of debugging
-    # def print_grid(self):
-    #     print()
-    #     print(self)
-    #     print("Minesweeper grid: ")
-    #     for row in self.grid:
-    #         print(row)
-
-    # def __str__(self):
-    #     return f"Field (size={self.width}x{self.height}, , mine count={self.mine_count})"

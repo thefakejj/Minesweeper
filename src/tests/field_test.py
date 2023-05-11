@@ -14,11 +14,6 @@ class TestField(unittest.TestCase):
     def test_grid_exists(self):
         self.assertNotEqual(self.field.grid, None)
 
-    # mahdollisesti turha testi
-    # def test_str_is_correct(self):
-    #     self.assertEqual(
-    #         str(self.field), f"Field (size=8x8, , mine count=10)")
-
     def test_grid_correct_height(self):
         self.assertEqual(len(self.field.grid), self.grid_height)
 

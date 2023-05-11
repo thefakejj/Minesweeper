@@ -1,7 +1,7 @@
 import pygame
 
 from constants import (DEFAULT_SIDE_BUTTON_IMAGE_SIZE, WINDOW_WIDTH, WINDOW_HEIGHT,
-                       LEADERBOARD_NAME_CELL_SIZE, LEADERBOARD_TIME_CELL_SIZE,
+                       LEADERBOARD_NAME_CELL_SIZE,
                        LEADERBOARD_ROW_SIZE, LEADERBOARD_SIZE)
 
 

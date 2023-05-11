@@ -7,21 +7,20 @@ Sovellus alkaa valikosta, mistä käyttäjä voi aloittaa pelin, muuttaa asetuks
 
 ### Peli
 
-- Sovellus muodostaa satunnaisen kentän | tehty
-- Sovellus käynnistää pelin alkaessa sekuntikellon | tehty
+- Sovellus muodostaa satunnaisen kentän
+- Sovellus käynnistää pelin alkaessa sekuntikellon
 - Käyttäjän tavoite on paljastaa kaikki ruudut, joissa ei ole miinaa....
-    - Jos käyttäjä paljastaa miinan, käyttäjä häviää pelin | tehty
-- Paljastetulla ruudulla lukee numero, joka kertoo, kuinka monta miinaa löytyy sen ympäröivistä kahdeksasta ruudusta | tehty
-- Käyttäjä voi liputtaa ruudun, ja poistaa ruudun liputuksen | tehty
-    - Liputettua ruutua ei voi paljastaa | tehty
-- Jos käyttäjä paljastaa kaikki miinattomat ruudut, käyttäjä voittaa pelin | tehty
+    - Jos käyttäjä paljastaa miinan, käyttäjä häviää pelin
+- Paljastetulla ruudulla lukee numero, joka kertoo, kuinka monta miinaa löytyy sen ympäröivistä kahdeksasta ruudusta
+- Käyttäjä voi liputtaa ruudun, ja poistaa ruudun liputuksen
+    - Liputettua ruutua ei voi paljastaa
+- Jos käyttäjä paljastaa kaikki miinattomat ruudut, käyttäjä voittaa pelin
 
 ### Tulostaulu
 
-- Kun pelaaja läpäisee pelin, häneltä kysytään nimeä, joka ajan kanssa lisätään tulostauluun | tehty
-- Tulostaulu tallentuu paikallisesti | tehty
+- Kun pelaaja läpäisee pelin, häneltä kysytään nimeä, joka ajan kanssa lisätään tulostauluun
+- Tulostaulu tallentuu paikallisesti
 
 ### Asetukset
 
-- Voi valita ruudukon koon | tehty
-
+- Voi valita ruudukon koon
