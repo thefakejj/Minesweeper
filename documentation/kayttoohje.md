@@ -2,6 +2,14 @@
 
 Kloonaa [repositorio](https://github.com/thefakejj/ot-harjoitustyo) koneellesi. (myöhemmin tähän release)
 
+## Konfigurointi
+Voit vaihtaa tietokantatiedoston nimen .env-tiedostossa, jolloin voit esimerkiksi käyttää useampia tulostauluja.
+Tiedostot luodaan automaattisesti data-hakemistoon.
+.env-tiedostossa tietokantatiedoston nimi määritellään seuraavasti:
+```
+DATABASE_FILENAME=databasename.db
+```
+
 ## Ohjelman käynnistäminen
 
 1: Mene virtuaaliympäristöön
@@ -16,7 +24,13 @@ poetry shell
 poetry install
 ```
 
-3: Nyt kun ohjelma on asennettu, voit käynnistää sen komennolla:
+3: Luo tietokanta. HUOM: Tämä komento tyhjentää sen tietokannan, minkä tiedostonimi on .envissä! 
+
+```bash
+poetry run invoke build
+```
+
+4: Nyt kun ohjelma on asennettu, voit käynnistää sen komennolla:
 
 ```bash
 poetry run invoke start
