@@ -2,6 +2,8 @@ import unittest
 import constants
 
 # these tests mainly exist because the constants get played around with in development
+
+
 class TestConstants(unittest.TestCase):
     def setUp(self):
         pass

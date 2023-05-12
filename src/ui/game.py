@@ -178,7 +178,8 @@ class Minesweeper:
         # images
         image_size = scaling.get_scaled_image_size()
         images = Images(image_size)
-        self.mouse_event = MouseEvent(image_size, self.grid_width, self.grid_height, self.x_where_grid_starts, self.x_where_grid_ends, self.change_game_state)
+        self.mouse_event = MouseEvent(image_size, self.grid_width, self.grid_height,
+                                      self.x_where_grid_starts, self.x_where_grid_ends, self.change_game_state)
 
         # renderer defined outside of init so that class can be tested
         # otherwise surface would appear during tests
