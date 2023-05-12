@@ -1,5 +1,6 @@
 import unittest
 from services.grid import Grid
+from ui.mouse_event import MouseEvent
 from enums.grid_enum import GridEnum
 from enums.mouse_enum import MouseEnum
 

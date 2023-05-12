@@ -7,7 +7,7 @@ class MouseEvent:
     """class for handling pygame events having to do with mouse inputs and game logic
     """
 
-    def __init__(self, minesweeper, image_size):
+    def __init__(self, image_size, grid_width, grid_height, x_where_grid_starts, x_where_grid_ends, change_game_state):
         """creates mouse_event object
 
         Args:
@@ -16,15 +16,13 @@ class MouseEvent:
 
         self.image_size = image_size
 
-        self.minesweeper = minesweeper
+        self.grid_width = grid_width
+        self.grid_height = grid_height
 
-        self.grid_width = self.minesweeper.grid_width
-        self.grid_height = self.minesweeper.grid_height
+        self.x_where_grid_starts = x_where_grid_starts
+        self.x_where_grid_ends = x_where_grid_ends
 
-        self.x_where_grid_starts = self.minesweeper.x_where_grid_starts
-        self.x_where_grid_ends = self.minesweeper.x_where_grid_ends
-
-        self.change_game_state = self.minesweeper.change_game_state
+        self.change_game_state = change_game_state
 
     def side_button_click(self, click_coordinates):
         """Checks if click's coordinates in the window are within a side button's limits.
@@ -40,7 +38,7 @@ class MouseEvent:
 
             if (click_coordinates[1] >= button_coordinates_y
                     and click_coordinates[1] <= button_coordinates_y + button_height):
-                self.minesweeper.change_game_state(0)
+                self.change_game_state(0)
 
     def square_click(self, event_button: int, click_coordinates: tuple,
                      first_click_has_happened: bool, start_game, grid, field_grid: list):
