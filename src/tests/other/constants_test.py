@@ -18,3 +18,4 @@ class TestConstants(unittest.TestCase):
         self.assertEqual(constants.LEADERBOARD_ROW_SIZE, (700, 60))
         self.assertEqual(constants.LEADERBOARD_NAME_CELL_SIZE, (500, 60))
         self.assertEqual(constants.LEADERBOARD_TIME_CELL_SIZE, (200, 60))
+        self.assertEqual(constants.CORRECT_TABLES, [('_8x8',), ('_16x16',), ('_24x16',)])

@@ -18,9 +18,9 @@ Sovellus alkaa valikosta, mistä käyttäjä voi aloittaa pelin, muuttaa asetuks
 
 ### Tulostaulu
 
-- Kun pelaaja läpäisee pelin, häneltä kysytään nimeä, joka ajan kanssa lisätään tulostauluun
 - Tulostaulu tallentuu paikallisesti
 
 ### Asetukset
 
+- Pelaajan täytyy valita nimi jotta pääsee peliin
 - Voi valita ruudukon koon

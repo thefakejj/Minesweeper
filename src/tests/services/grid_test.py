@@ -42,9 +42,8 @@ class TestGrid(unittest.TestCase):
             [0, 0, 0, 0, 0, 1, 0, 4]
         ]
 
-        self.change_game_state = placeholder_change_game_state
         self.mouse_event = MouseEvent(
-            (90, 90), 8, 8, 0, 720, self.change_game_state)
+            (90, 90), 8, 8, 0, 720, placeholder_change_game_state)
 
     def test_setup_grid_correct(self):
         self.assertEqual(self.grid.grid, self.empty_grid)
@@ -53,6 +52,7 @@ class TestGrid(unittest.TestCase):
         self.grid.grid = self.occupied_grid
         self.assertEqual(self.grid.get_square_content((0, 0)), 1)
         self.assertEqual(self.grid.get_square_content((1, 0)), 0)
+        self.assertEqual(self.grid.get_square_content((7, 7)), 4)
 
     def test_set_square_content(self):
         self.assertEqual(self.grid.get_square_content((0, 0)), 0)

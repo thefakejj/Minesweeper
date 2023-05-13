@@ -7,12 +7,8 @@ class TestField(unittest.TestCase):
         self.grid_width, self.grid_height = (8, 8)
         square_x = 5
         square_y = 3
-        self.first_click_coordinates = (150, 150)
         self.field = Field(self.grid_width, self.grid_height)
         self.field.create_random_field((square_x, square_y))
-
-    def test_grid_exists(self):
-        self.assertNotEqual(self.field.grid, None)
 
     def test_grid_correct_height(self):
         self.assertEqual(len(self.field.grid), self.grid_height)

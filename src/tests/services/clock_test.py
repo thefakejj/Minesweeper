@@ -8,11 +8,6 @@ class TestClock(unittest.TestCase):
     def setUp(self):
         self.clock = Clock()
 
-        self.start_time = 0
-        self.elapsed_time = 0
-        self.stop_time = 0
-        self.finish_time = 0
-
     def test_elapsed_time(self):
         self.clock.set_start_time()
         self.clock.tick(100)
