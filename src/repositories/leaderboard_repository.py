@@ -32,5 +32,13 @@ class Leaderboard:
     def get_all(self, grid_size: tuple):
         table = self._get_grid_table(grid_size)
         result = self._cursor.execute(
-            f"SELECT *FROM {table}").fetchall()
+            f"SELECT * FROM {table}").fetchall()
+        return result
+
+    def get_tables(self):
+        query = """
+                    SELECT name FROM sqlite_master  
+                    WHERE type='table'
+                    """
+        result = self._cursor.execute(query).fetchall()
         return result

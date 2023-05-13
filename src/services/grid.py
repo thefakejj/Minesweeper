@@ -115,7 +115,6 @@ class Grid:
                     mines += 1
         return mines
 
-
     def reveal_grid(self, field_grid: list):
         for row_index, _ in enumerate(self.grid):
             for square_index, _ in enumerate(self.grid[row_index]):

@@ -1,7 +1,6 @@
 import pygame_menu
 import constants
 
-
 class Menu:
     """class for pygame menu
     """
@@ -21,6 +20,7 @@ class Menu:
         self.player_name = player_name
         self.go_to_leaderboard = go_to_leaderboard
 
+
     # ChatGPT was used to change this function, instead of calling the start_game function by typing self.minesweeper.start_game(), the function is simply referenced with self.minesweeper.start_game
     def menu(self):
         """pygame menu's default state
@@ -28,7 +28,7 @@ class Menu:
         main_menu = pygame_menu.Menu(
             'Settings', constants.WINDOW_WIDTH, constants.WINDOW_HEIGHT, theme=pygame_menu.themes.THEME_BLUE)
         main_menu.add.text_input(
-            'Name: ', default=self.player_name, onchange=self.set_player_name)
+            'Name: ', default=self.player_name, maxchar=20, onchange=self.set_player_name)
         # Chatgpt | here the function is only referenced instead of called
         main_menu.add.button('Play', self.go_to_game)
         # Chatgpt | here the values of the selector are integers that can be used for the grid's size

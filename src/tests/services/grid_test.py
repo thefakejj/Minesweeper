@@ -141,7 +141,7 @@ class TestGrid(unittest.TestCase):
         # mouse event flags a tile and opens a tile with mines near it
         self.mouse_event.square_click(MouseEnum.LEFT_CLICK.value, (150, 40),
                                       True, placeholder_start_game, self.grid, self.field_grid)
-        
+
         self.mouse_event.square_click(MouseEnum.RIGHT_CLICK.value, (200, 40),
                                       True, placeholder_start_game, self.grid, self.field_grid)
 
