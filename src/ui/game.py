@@ -1,7 +1,7 @@
 import sys
 import pygame
 
-from menu.menu import Menu
+from ui.menu import Menu
 
 # from services.game import main_loop, event_checker
 from services.field import Field
