@@ -54,7 +54,8 @@ class Grid:
         self.grid[square_y][square_x] = content
 
     def update_grid(self, square_coordinates: tuple, event_button: int, field_grid: list):
-        """updates a specific square in the grid according to the clicked mouse button and mine proximity
+        """updates a specific square in the grid
+           according to the clicked mouse button and mine proximity
 
         Args:
             square_coordinates (tuple): x and y coordinates of a square

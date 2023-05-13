@@ -14,7 +14,7 @@ class Clock:
             _elapsed_time: how long run has lasted
             _stop_time: when run was stopped
             _finish_time: how long the whole run lasted
-            
+
         """
         self._clock = pygame.time.Clock()
 
@@ -89,7 +89,8 @@ class Clock:
         self._finish_time = self.get_stop_time() - self.get_start_time()
 
     def get_finish_time_in_seconds(self):
-        """Gives finish time of the run. This is called by minesweeper to insert time into leaderboard.
+        """Gives finish time of the run.
+           This is called by minesweeper to insert time into leaderboard.
 
         Returns:
             str: finish time in seconds with a two decimal precision

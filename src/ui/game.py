@@ -85,7 +85,6 @@ class Minesweeper:
             pygame.display.flip()
             self.clock.tick(60)
 
-
     def event_checker(self):
         """checks events for mouse clicks
         """
@@ -170,7 +169,8 @@ class Minesweeper:
         # images
         image_size = scaling.get_scaled_image_size()
         images = Images(image_size)
-        self.mouse_event = MouseEvent(image_size, self.grid_width, self.grid_height, self.x_where_grid_ends, self.change_game_state)
+        self.mouse_event = MouseEvent(
+            image_size, self.grid_width, self.grid_height, self.x_where_grid_ends, self.change_game_state)
 
         self.renderer = Renderer(
             self, images.images, images.buttons, image_size)

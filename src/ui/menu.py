@@ -1,6 +1,7 @@
 import pygame_menu
 import constants
 
+
 class Menu:
     """class for pygame menu
     """
@@ -24,8 +25,8 @@ class Menu:
         self.player_name = player_name
         self.go_to_leaderboard = go_to_leaderboard
 
-
     # ChatGPT was used to change this function, instead of calling the start_game function by typing self.minesweeper.start_game(), the function is simply referenced with self.minesweeper.start_game
+
     def menu(self):
         """Adds all the buttons to menu and runs it
         """
