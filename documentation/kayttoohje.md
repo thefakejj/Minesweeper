@@ -1,6 +1,8 @@
 # Käyttöohje
 
-Kloonaa [repositorio](https://github.com/thefakejj/ot-harjoitustyo) koneellesi. (myöhemmin tähän release)
+Ohjelmaan tarvitaan vähintään pythonin versio 3.8. Ohjelma on julkaistu poetryn version 1.4.2 kanssa.
+
+Kloonaa [repositorio](https://github.com/thefakejj/Minesweeper) koneellesi. (myöhemmin tähän release)
 
 ## Konfigurointi
 Voit vaihtaa tietokantatiedoston nimen .env-tiedostossa, jolloin voit esimerkiksi käyttää useampia tulostauluja.

@@ -48,9 +48,15 @@ Ohjelma on testattu toimivan tilanteessa, joissa tietokanta on valmiiksi olemass
 
 On testattu indeksistä se, että printataan pyyntö ajaa build, jos tietokantaa ei ole alustettu.
 
+On testattu, että kaikki valikon napit toimii.
+
 On testattu, että tyhjällä nimikentällä ei pääse peliin.
 
 On testattu, että yli 20 merkin nimeä ei voi syöttää.
+
+On testattu, että back to menu -nappi toimii pelin ja tulostaulun näkymissä.
+
+On testattu, että peli toimii.
 
 ### Toiminnallisuus
 
