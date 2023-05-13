@@ -122,8 +122,6 @@ class Minesweeper:
 
     # Chatgpt | as the correct values are already in the selector widget,
     # we can simply use value[1] to get acces to the value
-    # This function could potentially also be removed entirely,
-    # if onchange=self.set_minesweeper_size is changed to onchange=value[1]
     def set_minesweeper_size(self, *args):
         """changes grid width and grid height of the minesweeper object
         Args:
@@ -177,9 +175,6 @@ class Minesweeper:
         images = Images(image_size)
         self.mouse_event = MouseEvent(image_size, self.grid_width, self.grid_height,
                                       self.x_where_grid_starts, self.x_where_grid_ends, self.change_game_state)
-
-        # renderer defined outside of init so that class can be tested
-        # otherwise surface would appear during tests
 
         self.renderer = Renderer(
             self, images.images, images.buttons, image_size)

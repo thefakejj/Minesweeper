@@ -1,5 +1,6 @@
 import unittest
 from repositories.leaderboard_repository import Leaderboard
+from constants import CORRECT_TABLES
 
 
 class TestLeaderboardRepository(unittest.TestCase):
@@ -7,6 +8,10 @@ class TestLeaderboardRepository(unittest.TestCase):
         self.leaderboard = Leaderboard()
         self.leaderboard.delete_all()
         self.grid_sizes = [(8, 8), (16, 16), (24, 16)]
+
+    def test_get_tables_returns_correct_tables(self):
+        result = self.leaderboard.get_tables()
+        self.assertEqual(result, CORRECT_TABLES)
 
     def test_insert_works(self):
         for grid_size in self.grid_sizes:
