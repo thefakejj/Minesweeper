@@ -65,7 +65,3 @@ Ohjelma on testattu toimivan tilanteessa, joissa tietokanta on valmiiksi olemass
 ### Toiminnallisuus
 
 Kaikki [vaatimusmäärittelyssä](https://github.com/thefakejj/Minesweeper/blob/main/documentation/vaatimusmaarittely.md) ja käyttöohjeessa listattu toiminnallisuus on käyty läpi.
-
-## Sovellukseen jääneet ongelmat
-
-On testattu manuaalisesti, että jos menussa nimeksi laittaa esimerkiksi emojin, ohjelma kaatuu. Tähän on yritetty löytää ratkaisua pygame-menusta, mutta tähän mennessä ongelma on edelleen olemassa.

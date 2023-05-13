@@ -89,3 +89,5 @@
 - Päivitetty readme
 - Päivitetty käyttöohjetta
 - Tehty release
+- Lisätty sallitut merkit menun nimi-inputtiin
+- Uusittu release

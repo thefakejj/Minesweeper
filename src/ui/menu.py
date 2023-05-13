@@ -37,7 +37,7 @@ class Menu:
         main_menu = pygame_menu.Menu(
             'Settings', constants.WINDOW_WIDTH, constants.WINDOW_HEIGHT, theme=pygame_menu.themes.THEME_BLUE)
         main_menu.add.text_input(
-            'Name: ', default=self.player_name, maxchar=20, onchange=self.set_player_name, valid_chars=[valid_characters])
+            'Name: ', default=self.player_name, maxchar=20, onchange=self.set_player_name, valid_chars=valid_characters)
         # Chatgpt | here the function is only referenced instead of called
         main_menu.add.button('Play', self.go_to_game)
         # Chatgpt | here the values of the selector are integers that can be used for the grid's size

@@ -39,7 +39,7 @@ poetry run invoke start
 
 ## Pelin pelaaminen
 
-Jotta voit pelata peliä, sinun tulee asettaa jokin nimi "Name"-kenttään.
+Jotta voit pelata peliä, sinun tulee asettaa jokin nimi "Name"-kenttään. Nimen maksimipituus on 20 merkkiä, ja sen tulee koostua string-moduulin printable-merkeistä.
 ![menu](./kuvat/menu_screenshot.png)
 
 Kun olet valinnut nimen, voit aloittaa pelin klikkaamalla "Play".
