@@ -162,16 +162,12 @@ sequenceDiagram
   Minesweeper->>Clock: set_finish_time()
   Clock->>Clock: _finish_time = get_stop_time() - get_start_time()
   Minesweeper->>Grid: reveal_grid(field_grid)
-
-
-
-  Minesweeper->>MouseEvent: square_click(click_coordinates)
-  MouseEvent->>MouseEvent: which_square_was_clicked(click_coordinates)
-  MouseEvent-->>MouseEvent: return square_coordinates
-  MouseEvent->>Grid: update_grid(square_coordinates, event_button, field_grid)
-  Grid->>Grid: count_nearby_mines(square_coordinates, field_grid)
-  Grid-->>Grid: nearby_mines
-  Grid->>Grid: set_square_content(square_coordinates, 3 + nearby_mines)
+  Grid->>Grid: loops through grid
+  Grid->>Grid: update_grid
+  Minesweeper->>Clock: get_finish_time_in_seconds()
+  Clock-->>Minesweeper: finish_time
+  Minesweeper->>Leaderboard: insert_time((grid_width, grid_height), player_name, finish_time)
+  Minesweeper->>Minesweeper: game_state = 4
   Minesweeper->>Renderer: render()
   Renderer->>Renderer: draw_grid()
   Minesweeper->>Minesweeper: pygame.display.flip()
