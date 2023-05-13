@@ -5,7 +5,7 @@ Pelin pakkausrakenne on seuraava:
 
 ![Pakkauskaavio](./kuvat/pakkausdiagrammi.png)
 
-Ui sisältää pelin käyttöliittymän, menun, käyttäjän syötteet ja loopin. Services sisältää pelin logiikan koodia, eli päivitettävän ruudukon jonka ui piirtää ja backissa olevan miinaruudukon. Näiden lisäksi servicesissä on pelin kello, jota käytetään ajastimessa ja pelin fps:n asettamisessa. Enums sisältää enumerateja, joilla selkeytetään koodia. Repositories-hakemistossa taas on tietokantafunktioita.
+Ui sisältää pelin käyttöliittymän, menun, käyttäjän syötteet ja loopin. Services sisältää pelin logiikan koodia. Enums sisältää enumerateja, joilla selkeytetään koodia. Repositories-hakemistossa taas on tietokannan rajapinnan koodia.
 
 ## Käyttöliittymä
 
@@ -13,11 +13,23 @@ Käyttöliittymä sisältää kaksi eri näkymää: asetukset, tulostaulun ja pe
 
 Kun käyttäjä painaa menussa play, kutsutaan Minesweeper-luokan go_to_game -funktiota, joka vie käyttäjän peliin. Jos menussa painaa leaderboard, kutsutaan Minesweeper-luokan go_to_leaderboard -funktiota. Kummankin näkymän sisällä taas voi painaa nappia "back to menu", joka vie käyttäjän takaisin menuun.
 
-## Sovelluslogiikka
+## Pelin logiikka
+
+Ohjelmassa annetaan ui:n Menu- ja Minesweeper -luokilta saatuja käyttäjän interaktiosta muodostuvia syötteitä servicesin luokille Grid, Field ja Clock.
 
 ### Luokkakaavio
 
-![Luokkakaavio](./kuvat/Minesweeper_luokkakaavio.png)
+![Luokkakaavio](./kuvat/luokkakaavio.png)
+
+Ensin luodaan minesweeper-olio, jonka displayn päälle Menu laittaa oman displaynsä. Menu-luokasta kutsutaan Minesweeper-luokan metodeja. Minesweeper-luokka käyttää kaikkia kaaviossa oikealla olevia luokkia. Luokka MouseEvent käyttää luokista Grid ja Field olioita, mutta se saa ne Minesweeper-luokan kautta injektiona. Luokka Grid myös käyttää samoin Field-oliota ja saa sen Minesweeper-luokalta.
+
+Luokka Field esimerkiksi muodostaa MouseEventistä klikkikoordinaatin avulla satunnaisen miinaruudukon, jossa klikattu ruutu ei saa olla miina.
+
+Luokka Grid taas saa päivittää näkyvältä ruudukolta MouseEventin antaman ruudun vastaamaan käyttäjän syötettä (vasen/oikea klikkaus, avaus/liputus) ja ruutua ympäröivien miinojen määrää.
+
+Luokka Clock vastaa sekä pelin sekuntikellosta että fps:n asettamisesta. Luokan metodit ylläpitää pelin alkuaikaa, pelin nykyistä aikaa, pelin loppuaikaa ja laskee kuluneen ajan sekä läpäisemisen menneen ajan. Minesweeper-luokka kutsuu Clockin metodeja päästäkseen käsiksi aikoihin.
+
+Luokka Leaderboard tallentaa ajat tulostauluihin. Minesweeper kutsuu Leaderboardia ja Clockia, ja tallentaa nimen ja ajan tietokantaan.
 
 <br>
 
@@ -32,7 +44,7 @@ Tiedot tallennetaan miinaharavan vaikeustasoihin jaettuihin tauluihin _8x8, _16x
 <br>
 
 ## Keskeiset toiminnallisuudet
-Tässä osassa on pelin ohjelman toimintaa kuvaavia yksinkertaistettuja sekvenssikaavioita. Jotkin sekvenssikaaviot näyttävät melko pitkiltä, koska funktioihin injektoidaan monia asioita.
+Tässä osassa on pelin ohjelman toimintaa kuvaavia yksinkertaistettuja sekvenssikaavioita. Jotkin sekvenssikaaviot ovat melko pitkiä, koska funktioihin injektoidaan monia asioita.
 
 ### Pelin avaus
 
@@ -78,6 +90,7 @@ sequenceDiagram
   Menu->>Minesweeper: go_to_game()
   Minesweeper->>Minesweeper: change_game_state(1)
   Minesweeper->>Minesweeper: change_view()
+
   Minesweeper->>Field: Field(grid_width, grid_height)
   Minesweeper->>Grid: Grid(grid_width, grid_height)
   Minesweeper->>Scaling: Scaling(window_height, DEFAULT_IMAGE_SIZE, grid_width, grid_height)
@@ -143,13 +156,21 @@ sequenceDiagram
 ```
 <br>
 
-### Tuloksen tallentaminen
+### Pelin voittaminen, tuloksen tallentaminen
 
 #### Tilanne, jossa pelaaja voittaa pelin
 
 ```mermaid
 sequenceDiagram
   actor Player input
+
+  Player input->>Menu: Name: name
+  Menu->>Minesweeper: set_player_name(name)
+  Minesweeper-->>Minesweeper: player_name = name
+  Player input->>Menu: Play
+  Menu->>Minesweeper: go_to_game()
+  Minesweeper->>Minesweeper: change_game_state(1)
+  Minesweeper->>Minesweeper: change_view()
   
   Minesweeper->>Minesweeper: main_loop()
   Player input->>Minesweeper: event_checker(click_x_position, click_y_position)
@@ -173,3 +194,28 @@ sequenceDiagram
   Minesweeper->>Minesweeper: pygame.display.flip()
 ```
 <br>
+
+### Pelaaja menee tulostauluun
+
+```mermaid
+sequenceDiagram
+  actor Player input
+  
+  Player input->>Menu: Leaderboard
+  Menu->>Minesweeper: go_to_leaderboard
+  Minesweeper->>Minesweeper: change_game_state(5)
+  Minesweeper->>Minesweeper: change_view()
+
+  Minesweeper->>Minesweeper: main_loop()
+  Minesweeper->>Renderer: render()
+  Renderer->>Renderer: draw_leaderboard()
+  Renderer->>Leaderboard: grid_leaderboard(grid_width, grid_height)
+  Leaderboard-->>Renderer: table
+  Minesweeper->>Minesweeper: pygame.display.flip()
+```
+<br>
+
+
+## Ohjelman rakenteeseen jääneet heikkoudet
+
+Ohjelmassa on käyttöliittymää ja logiikkaa sekaisin, mikä esimerkiksi aiheuttaa tarpeen koodin toistolle, jotta testejä voidaan pyörittää.
