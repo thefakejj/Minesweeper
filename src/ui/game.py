@@ -1,13 +1,11 @@
 import sys
 import pygame
 
-from ui.menu import Menu
-
-# from services.game import main_loop, event_checker
 from services.field import Field
 from services.clock import Clock
 from services.grid import Grid
 
+from ui.menu import Menu
 from ui.mouse_event import MouseEvent
 from ui.renderer import Renderer
 from ui.scaling import Scaling
@@ -171,7 +169,6 @@ class Minesweeper:
         # scaling
         scaling = Scaling(
             self.window_height, constants.DEFAULT_IMAGE_SIZE, self.grid_width, self.grid_height)
-        scaling.get_max_scale()
 
         self.x_where_grid_starts, self.x_where_grid_ends = scaling.get_grid_edge_x_coordinates()
 
@@ -220,12 +217,12 @@ class Minesweeper:
 
         if desired_game_state == 3:
             self.clock.set_stop_time()
-            self.mouse_event.reveal_grid(self.grid, self.real_field.grid)
+            self.grid.reveal_grid(self.real_field.grid)
 
         if desired_game_state == 4:
             self.clock.set_stop_time()
             self.clock.set_finish_time()
-            self.mouse_event.reveal_grid(self.grid, self.real_field.grid)
+            self.grid.reveal_grid(self.real_field.grid)
             self.leaderboard.insert_time(
                 (self.grid_width, self.grid_height),
                 self.player_name,

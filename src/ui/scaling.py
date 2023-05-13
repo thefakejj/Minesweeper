@@ -1,6 +1,3 @@
-import pygame
-
-
 class Scaling:
     """class for scaling the game according to resolution, assets' sizes and grid size
     """

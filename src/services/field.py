@@ -2,7 +2,6 @@ from random import randint
 
 
 # 0: empty, 1: mine
-# make another grid for revealed and unrevealed tiles in pygame
 class Field:
     """class for the backend field, which holds the locations of the mines
     """
@@ -19,7 +18,6 @@ class Field:
         self.width = width
         self.height = height
 
-        # minesweeper has 16% of tiles as mines
         self.mine_count = (16*(self.width*self.height))//100
         self.grid = [[0]*self.width for _ in range(self.height)]
 

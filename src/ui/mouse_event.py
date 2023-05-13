@@ -106,13 +106,6 @@ class MouseEvent:
 
         return (square_x, square_y)
 
-    # fake mouse events to reveal everything
+    # for testing purposes :)
     def reveal_grid(self, grid: object, field_grid: list):
-        for row_index, _ in enumerate(grid.grid):
-            for square_index, _ in enumerate(grid.grid[row_index]):
-                square_content = grid.get_square_content(
-                    (square_index, row_index))
-                if square_content == 1 or square_content >= 3:
-                    continue
-                grid.update_grid((square_index, row_index),
-                                 MouseEnum.LEFT_CLICK.value, field_grid)
+        grid.reveal_grid(field_grid)

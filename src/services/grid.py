@@ -114,3 +114,14 @@ class Grid:
                 if field_grid[j][i] == 1:
                     mines += 1
         return mines
+
+
+    def reveal_grid(self, field_grid: list):
+        for row_index, _ in enumerate(self.grid):
+            for square_index, _ in enumerate(self.grid[row_index]):
+                square_content = self.get_square_content(
+                    (square_index, row_index))
+                if square_content == 1 or square_content >= 3:
+                    continue
+                self.update_grid((square_index, row_index),
+                                 MouseEnum.LEFT_CLICK.value, field_grid)

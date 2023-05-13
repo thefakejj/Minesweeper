@@ -39,7 +39,7 @@ class TestGrid(unittest.TestCase):
             [0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0]
+            [0, 0, 0, 0, 0, 1, 0, 4]
         ]
 
         self.change_game_state = placeholder_change_game_state
@@ -137,6 +137,13 @@ class TestGrid(unittest.TestCase):
     def test_mouse_event_revealing_mine_reveals_grid(self):
 
         self.assertEqual(self.count_unrevealed_tiles(self.grid.grid), 64)
+
+        # mouse event flags a tile and opens a tile with mines near it
+        self.mouse_event.square_click(MouseEnum.LEFT_CLICK.value, (150, 40),
+                                      True, placeholder_start_game, self.grid, self.field_grid)
+        
+        self.mouse_event.square_click(MouseEnum.RIGHT_CLICK.value, (200, 40),
+                                      True, placeholder_start_game, self.grid, self.field_grid)
 
         # when mouse_event opens mine tile, the grid reveal every tile
         # and be left with 0 unrevealed tiles
