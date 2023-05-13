@@ -39,6 +39,8 @@ Luokka Leaderboard tallentaa tietoa SQLite-tietokantaan.
 
 Juurihakemistosta löytyy konfiguraatiotiedosto [.env](https://github.com/thefakejj/Minesweeper/blob/main/.env), jossa voidaan määritellä tiedostonimi, johon tulokset tallennetaan.
 
+Ajat on taulussa muodossa (nimi TEXT, aika FLOAT).
+
 Tiedot tallennetaan miinaharavan vaikeustasoihin jaettuihin tauluihin _8x8, _16x6 ja _24x16 tietokannassa, joka alustetaan [initialize_database.py](https://github.com/thefakejj/Minesweeper/blob/main/src/initialize_database.py)-tiedostossa.
 
 <br>
