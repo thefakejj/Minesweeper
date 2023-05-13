@@ -60,6 +60,8 @@ On testattu, että peli toimii.
 
 ### Asennus ja konfigurointi
 
+Ohjelman käynnistystä on testattu [käyttöohjeiden](https://github.com/thefakejj/Minesweeper/blob/main/documentation/kayttoohje.md) mukaan linux-ympäristössä.
+
 Ohjelma on testattu toimivan tilanteessa, joissa tietokanta on valmiiksi olemassa ja tilanteessa, jossa ohjelman tulee luoda tietokantatiedosto itse.
 
 ### Toiminnallisuus
