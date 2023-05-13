@@ -19,5 +19,5 @@ Viikko 7 aikana tuntikirjanpito unohtui moneen otteeseen, joten laitan tänne va
 |10.5|4.5| lisätty leaderboard ja miinojen paljastaminen peliin (useiden vaiheiden kautta), päivitetty vaatimusmäärittely ja changelog. päivitetty käyttöohjetta| 
 |11.5|?| tänä päivänä (ja sitä seuraavana yönä) tehtiin suurin osa ui:n ja serviceiden uusimmimsta muutoksista ja niiden testeistä| 
 |12.5|2| päivitetty testejä ja poistettu ylimääräisiä injektointeja| 
-|13.5|8| Laajennettu dokumentaatiota, lisätty testejä| 
-|yhteensä|72|tuntia|
+|13.5|11| Laajennettu dokumentaatiota testausdokumentilla, sekvenssikaavioilla, arkkitehtuurikuvauksella, käyttöohjeen päivittämistä, lisätty testejä, pieniä muokkauksia koodiin, paljon docstringiä | 
+|yhteensä|82|tuntia|

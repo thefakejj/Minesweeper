@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Kloonaa [repositorio](https://github.com/thefakejj/Minesweeper) koneellesi. (myöhemmin tähän release)
+Lataa uusimman [releasen](https://github.com/thefakejj/Minesweeper/releases) lähdekoodin .zip-tiedosto koneellesi.
 
 ## Konfigurointi
 Voit vaihtaa tietokantatiedoston nimen .env-tiedostossa, jolloin voit esimerkiksi käyttää useampia tulostauluja.
