@@ -6,8 +6,8 @@ Miinaharava on muun muassa vanhoista Windows-versioista tuttu peli *Minesweeper*
 Ohjelmaan tarvitaan vähintään pythonin versio 3.8. Ohjelma on julkaistu poetryn version 1.4.2 kanssa. Vanhemmilla versioilla saattaa ilmetä ongelmia.
 
 
-## Viikko 6 release!
-[Release löytyy tästä linkistä](https://github.com/thefakejj/ot-harjoitustyo/releases/tag/viikko6)
+## Loppupalautuksen release
+[Release löytyy tästä linkistä](https://github.com/thefakejj/Minesweeper/releases/tag/v1.0.0)
 
 
 ## Dokumentaatio
