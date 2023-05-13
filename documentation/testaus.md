@@ -44,8 +44,6 @@ Testaamatta jäi buildin ajaminen komentoriviltä ja konfiguraation FileNotFound
 
 ## Manuaalisesti testattu:
 
-Ohjelma on testattu toimivan tilanteessa, joissa tietokanta on valmiiksi olemassa ja tilanteessa, jossa ohjelman tulee luoda tietokanta itse.
-
 On testattu indeksistä se, että printataan pyyntö ajaa build, jos tietokantaa ei ole alustettu.
 
 On testattu, että kaikki valikon napit toimii.
@@ -57,6 +55,12 @@ On testattu, että yli 20 merkin nimeä ei voi syöttää.
 On testattu, että back to menu -nappi toimii pelin ja tulostaulun näkymissä.
 
 On testattu, että peli toimii.
+
+## Järjestelmätestaus
+
+### Asennus ja konfigurointi
+
+Ohjelma on testattu toimivan tilanteessa, joissa tietokanta on valmiiksi olemassa ja tilanteessa, jossa ohjelman tulee luoda tietokantatiedosto itse.
 
 ### Toiminnallisuus
 
