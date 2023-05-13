@@ -3,7 +3,7 @@ from enums.mouse_enum import MouseEnum
 
 
 class Grid:
-    """class that deals with the visible grid
+    """class that handles the visible grid
     """
 
     def __init__(self, grid_width: int, grid_height: int):
@@ -36,7 +36,7 @@ class Grid:
             square_coordinates (tuple): x and y coordinates of a square
 
         Returns:
-            (GridEnum/int): the square's contents
+            (int): the square's contents
         """
         square_x = square_coordinates[0]
         square_y = square_coordinates[1]
@@ -47,19 +47,19 @@ class Grid:
 
         Args:
             square_coordinates (tuple): x and y coordinates of a square
-            content (GridEnum/int): the content that the square will be set to
+            content (int): the content that the square will be set to
         """
         square_x = square_coordinates[0]
         square_y = square_coordinates[1]
         self.grid[square_y][square_x] = content
 
     def update_grid(self, square_coordinates: tuple, event_button: int, field_grid: list):
-        """updates the grid
+        """updates a specific square in the grid according to the clicked mouse button and mine proximity
 
         Args:
             square_coordinates (tuple): x and y coordinates of a square
-            event_button (int): specifies whether the click event used a left click or a right click
-            nearby_mines (int): the amount of mines surrounding the square
+            event_button (int): 1 for left click, 3 for right click
+            field_grid (list): a Field-object's grid
         """
         # if square is unrevealed
         nearby_mines = self.count_nearby_mines(square_coordinates, field_grid)
@@ -91,17 +91,23 @@ class Grid:
         # if the square is either a mine or a flipped tile, nothing should happen
 
     def check_if_enough_squares_flipped(self):
+        """checks if the player has revealed every tile that is't a mine
+
+        Returns:
+            bool: True if enough tiles have been revealed, otherwise returns False
+        """
         return self.revealed_tiles >= (self._grid_width*self._grid_height) - self._mine_count
 
     def count_nearby_mines(self, square_coordinates: tuple, field_grid: list):
-        """algorhithm for counting mines around the square
+        """checks if the tile is a mine and otherwise counts the surrounidng mines
+           mines are counted using an algorhithm
 
         Args:
-            square_coordinates (tuple): x and y coordinates of the square
-            field_grid (list): the field object's grid
+            square_coordinates (tuple): x and y coordinates of a square
+            field_grid (list): a Field-object's grid
 
         Returns:
-            int: amount of mines surrounding the square
+            int: -1 if is mine, otherwise returns amount of surrounding mines
         """
         if field_grid[square_coordinates[1]][square_coordinates[0]] == 1:
             return -1
@@ -116,6 +122,11 @@ class Grid:
         return mines
 
     def reveal_grid(self, field_grid: list):
+        """reveals every square that isn't revealed or flagged
+
+        Args:
+            field_grid (list): a Field-object's grid
+        """
         for row_index, _ in enumerate(self.grid):
             for square_index, _ in enumerate(self.grid[row_index]):
                 square_content = self.get_square_content(

@@ -5,14 +5,18 @@ class Menu:
     """class for pygame menu
     """
 
-    def __init__(self, go_to_game, set_minesweeper_size, surface, set_player_name, player_name, go_to_leaderboard):
-        """initiates pygame menu
+    def __init__(self, go_to_game, set_minesweeper_size, surface, set_player_name, player_name: str, go_to_leaderboard):
+        """initiates the pygame menu
 
         Args:
-            go_to_game (function): minesweeper object's function for going into the game
-            set_minesweeper_size (function): sets grid width and height in minesweeper object
-            surface (minesweeper object): surface on top which pygame menu can draw it's own menu
+            go_to_game (function): Minesweeper's go_to_game function
+            set_minesweeper_size (function): Minesweeper's set_minesweeper_size function
+            surface (object): Minesweeper's surface object
+            set_player_name (function): Minesweeper's set_player_name function
+            player_name (str): Minesweeper's current player name
+            go_to_leaderboard (function): Minesweeper's go_to_leaderboard function
         """
+
         self.go_to_game = go_to_game
         self.set_minesweeper_size = set_minesweeper_size
         self.surface = surface
@@ -23,7 +27,7 @@ class Menu:
 
     # ChatGPT was used to change this function, instead of calling the start_game function by typing self.minesweeper.start_game(), the function is simply referenced with self.minesweeper.start_game
     def menu(self):
-        """pygame menu's default state
+        """Adds all the buttons to menu and runs it
         """
         main_menu = pygame_menu.Menu(
             'Settings', constants.WINDOW_WIDTH, constants.WINDOW_HEIGHT, theme=pygame_menu.themes.THEME_BLUE)

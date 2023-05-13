@@ -2,6 +2,14 @@ from enum import Enum
 
 
 class GridEnum(Enum):
+    """Assigns number values to strings that represent states of tiles in the Grid class
+
+    Args:
+        Enum (str): string which the enumerate represents
+
+    Returns:
+        str, int: enum
+    """
     UNREVEALED_TILE = 0
     FLAG = 1
     MINE = 2

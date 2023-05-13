@@ -7,15 +7,22 @@ from constants import (DEFAULT_SIDE_BUTTON_IMAGE_SIZE, WINDOW_WIDTH, WINDOW_HEIG
 
 class Renderer:
     """class responsible for drawing the screen
+    Attributes:
+        font: the font that is used by text in the game view
+        minesweeper: a Minesweeper object
+        images: list of tile images
+        buttons: list of side button images
+        image_size: size of the tile images after scaling
     """
 
-    def __init__(self, minesweeper, images, buttons, image_size):
+    def __init__(self, minesweeper, images: list, buttons: list, image_size: tuple):
         """creates a renderer object
 
         Args:
-            minesweeper (Minesweeper object): gives the created minesweeper object to the renderer
+            minesweeper (object): gives the minesweeper object to renderer
             images (list): tile images
             buttons (list): side button images
+            image_size (tuple): size of the tile images after scaling
         """
         pygame.font.init()
         self.font = pygame.font.SysFont('FreeSans', WINDOW_HEIGHT//30)
@@ -55,17 +62,18 @@ class Renderer:
         pygame.display.flip()
 
     def draw_grid(self):
-        """draws the minesweeper grid based on the UiGrid object received from the minesweeper class
+        """draws the minesweeper grid based on the Grid object received from the minesweeper class
         """
         for y in range(self.minesweeper.grid_height):
             for x in range(self.minesweeper.grid_width):
                 square = self.minesweeper.grid.grid[y][x]
-                # every image is 100x100 pixels
-                # so a drawn square should always be scaled from that size
                 self.minesweeper.surface.blit(self.images[square],
                                               (x * self.image_size[0], y * self.image_size[1]))
 
     def draw_leaderboard(self):
+        """draws the leaderboard view based on the leaderboard object
+           received from the minesweeper class
+        """
         table = self.minesweeper.leaderboard.grid_leaderboard(
             (self.minesweeper.grid_width, self.minesweeper.grid_height))
 
@@ -115,6 +123,8 @@ class Renderer:
             table_surface, ((WINDOW_WIDTH // 2 - table_surface.get_width() // 2), 0))
 
     def draw_timer(self):
+        """draws the timer based on the Clock object received from the minesweeper class
+        """
         time = str(self.minesweeper.clock.get_elapsed_time_in_seconds())
         timer_surface = self.font.render(time, True, (0, 0, 0))
         self.minesweeper.surface.blit(

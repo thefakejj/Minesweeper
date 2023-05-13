@@ -2,6 +2,11 @@ from db_connection import get_database_connection
 
 
 def drop_tables(connection):
+    """drops all tables
+
+    Args:
+        connection (sqlite3.Connection): connection to .db file
+    """
     cursor = connection.cursor()
 
     cursor.execute("DROP TABLE IF EXISTS _8x8;")
@@ -12,6 +17,11 @@ def drop_tables(connection):
 
 
 def create_tables(connection):
+    """creates tables
+
+    Args:
+        connection (sqlite3.Connection): connection to .db file
+    """
 
     cursor = connection.cursor()
 
@@ -26,6 +36,8 @@ def create_tables(connection):
 
 
 def initialize_database():
+    """gets database connection or makes the file, clears it, and then creates tables
+    """
     connection = get_database_connection()
 
     drop_tables(connection)

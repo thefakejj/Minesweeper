@@ -7,9 +7,13 @@ dirname = os.path.dirname(__file__)
 
 class Images:
     """class that holds lists for images
+    Attributes:
+        image_size: image size after scaling
+        images: list of tile images
+        buttons: list of button images
     """
 
-    def __init__(self, image_size):
+    def __init__(self, image_size: tuple):
         """creates object and loads images from the assets directory into lists
 
         Args:
@@ -36,14 +40,3 @@ class Images:
             image = pygame.transform.scale(
                 image, DEFAULT_SIDE_BUTTON_IMAGE_SIZE)
             self.buttons.append(image)
-
-    def give_image(self, image_number):
-        """method for giving outer modules specific images without copying lists
-
-        Args:
-            image_number (int): the number of the tile image in the list
-
-        Returns:
-            image file: returns an image file from the assets folder
-        """
-        return self.images[image_number]

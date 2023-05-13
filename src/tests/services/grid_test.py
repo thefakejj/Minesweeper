@@ -43,7 +43,7 @@ class TestGrid(unittest.TestCase):
         ]
 
         self.mouse_event = MouseEvent(
-            (90, 90), 8, 8, 0, 720, placeholder_change_game_state)
+            (90, 90), 8, 8, 720, placeholder_change_game_state)
 
     def test_setup_grid_correct(self):
         self.assertEqual(self.grid.grid, self.empty_grid)

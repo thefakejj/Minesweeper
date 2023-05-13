@@ -63,7 +63,7 @@ sequenceDiagram
   Minesweeper->>Minesweeper: player_name = ""
   Minesweeper->>Minesweeper: first_click_has_happened = False
   Minesweeper->>Minesweeper: game_state = 0
-  Minesweeper->>Minesweeper: x_where_grid_starts = 0, x_where_grid_ends = 0
+  Minesweeper->>Minesweeper: x_where_grid_ends = 0
 
   Minesweeper->>Clock: Clock()
   Minesweeper->>Leaderboard: Leaderboard()
@@ -97,12 +97,12 @@ sequenceDiagram
   Minesweeper->>Grid: Grid(grid_width, grid_height)
   Minesweeper->>Scaling: Scaling(window_height, DEFAULT_IMAGE_SIZE, grid_width, grid_height)
   Minesweeper->>Scaling: get_grid_edge_x_coordinates()
-  Scaling-->>Minesweeper: x_where_grid_starts, x_where_grid_ends
+  Scaling-->>Minesweeper: x_where_grid_ends
   Minesweeper->>Scaling: get_scaled_image_size()
   Scaling-->>Minesweeper: image_size
   Minesweeper->>Images: Images(image_size)
   Images-->>Minesweeper: images, buttons
-  Minesweeper->>MouseEvent: MouseEvent(image_size, grid_width, grid_height, x_where_grid_starts,x_where_grid_ends, change_game_state)
+  Minesweeper->>MouseEvent: MouseEvent(image_size, grid_width, grid_height, x_where_grid_ends, change_game_state)
   Minesweeper->>Renderer: Renderer(images, buttons, image_size)
   Minesweeper->>Minesweeper: main_loop()
 

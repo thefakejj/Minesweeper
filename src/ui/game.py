@@ -21,11 +21,15 @@ class Minesweeper:
     Attributes:
         window_width, window_height: dimensions of the window set in constants
         grid_width, grid_height: default dimensions for the minesweeper grid
-        bg_color: default background color
+        bg_color: game background color
+        player_name: player name which will be inserted into leaderboard
         first_click_has_happened: sets default value for if the player has clicked a tile open
         game_state: default game state, equates to being in menu
-        x_where_grid_starts, x_where_grid_ends: default values for grid dimensions in pixels
+        x_where_grid_ends: default values for grid most right coordinate in pixels
         clock: creates a pygame clock object from external module
+        leaderboard: creates a leaderboard object for database commands
+        surface: creates a window for the program
+
 
     """
 
@@ -55,7 +59,6 @@ class Minesweeper:
         # 2 = in game and has clicked a square, 3 = game lost, 4 = won game, 5 = leaderboard
         self.game_state = 0
 
-        self.x_where_grid_starts = 0
         self.x_where_grid_ends = 0
 
         self.clock = Clock()
@@ -67,8 +70,6 @@ class Minesweeper:
 
         self.run_menu()
 
-    # main loop, on when start_game is called
-
     def main_loop(self):
         """The loop of the game once "play" has been clicked
         """
@@ -79,19 +80,14 @@ class Minesweeper:
                 self.clock.set_elapsed_time()
                 if self.grid.check_if_enough_squares_flipped():
                     self.change_game_state(4)
-            if self.game_state == 3:
-                pass
-            if self.game_state == 5:
-                pass
             self.renderer.render()
             self.event_checker()
             pygame.display.flip()
             self.clock.tick(60)
 
-    # events
 
     def event_checker(self):
-        """checks events for mouse clicks and some keypresses
+        """checks events for mouse clicks
         """
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -108,8 +104,6 @@ class Minesweeper:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-
-    # menu
 
     # ChatGPT | method to run the menu from an external module
 
@@ -135,12 +129,10 @@ class Minesweeper:
         name = str(args[-1])
         self.player_name = name.strip()
 
-    # game starts
-
     # ChatGPT | the main loop will only be run once the "Play" button is pressed in the menu
 
     def go_to_game(self):
-        """goes into the game loop after creating and scaling UI, creating a field in the backend
+        """changes the game state to one and calls change_view to go to the game view
         """
         if self.player_name == "":
             self.run_menu()
@@ -149,11 +141,16 @@ class Minesweeper:
         self.change_view()
 
     def go_to_leaderboard(self):
+        """changes the game state to five and calls change_view to go to the leaderboard view
+        """
 
         self.change_game_state(5)
         self.change_view()
 
     def change_view(self):
+        """changes the view into either game or leaderboard
+           this method creates all that is necessary to run the main loop
+        """
         # we create a field which is the grid in the backend
         # this is empty for now, and will be generated once first click occurs
 
@@ -168,13 +165,12 @@ class Minesweeper:
         scaling = Scaling(
             self.window_height, constants.DEFAULT_IMAGE_SIZE, self.grid_width, self.grid_height)
 
-        self.x_where_grid_starts, self.x_where_grid_ends = scaling.get_grid_edge_x_coordinates()
+        self.x_where_grid_ends = scaling.get_grid_edge_x_coordinate()
 
         # images
         image_size = scaling.get_scaled_image_size()
         images = Images(image_size)
-        self.mouse_event = MouseEvent(image_size, self.grid_width, self.grid_height,
-                                      self.x_where_grid_starts, self.x_where_grid_ends, self.change_game_state)
+        self.mouse_event = MouseEvent(image_size, self.grid_width, self.grid_height, self.x_where_grid_ends, self.change_game_state)
 
         self.renderer = Renderer(
             self, images.images, images.buttons, image_size)
@@ -182,7 +178,8 @@ class Minesweeper:
 
     def start_game(self, square_coordinates: tuple):
         """once the user has opened the first tile, the game saves this infomation 
-            and creates a field in the backend
+           and creates a field in the backend.
+           This method also starts the timer in the Clock class.
 
         Args:
             square_coordinates (tuple): x and y coordinates of the first click
@@ -194,8 +191,10 @@ class Minesweeper:
 
     def change_game_state(self, desired_game_state: int):
         """changes the game state and does necessary function calls
-            game states: 0 = menu, 1 = in game but no first click,
-            2 = in game and has clicked a square, 3 = game lost, 4 = won game
+            game states:
+                0 = menu, 1 = in game but no first click,
+                2 = in game and has clicked a square, 3 = game lost, 4 = won game
+                5 = leaderboard
 
         Args:
             desired_game_state (int): the game state that the game is moving into
@@ -222,8 +221,5 @@ class Minesweeper:
                 (self.grid_width, self.grid_height),
                 self.player_name,
                 self.clock.get_finish_time_in_seconds())
-
-        if desired_game_state == 5:
-            pass
 
         self.game_state = int(desired_game_state)
