@@ -2,6 +2,9 @@
 
 Miinaharava on muun muassa vanhoista Windows-versioista tuttu peli *Minesweeper*. Pelin tavoitteena on paljastaa kaikki ruudut, joiden alla ei ole miinaa. Jos paljastaa miinan, häviää pelin. Pelissä pystyy myös liputtamaan miinaksi epäiltyjä ruutuja.
 
+## Pythonin ja poetryn versiot
+Ohjelmaan tarvitaan vähintään pythonin versio 3.8. Ohjelma on julkaistu poetryn version 1.4.2 kanssa. Vanhemmilla versioilla saattaa ilmetä ongelmia.
+
 
 ## Viikko 6 release!
 [Release löytyy tästä linkistä](https://github.com/thefakejj/ot-harjoitustyo/releases/tag/viikko6)
@@ -13,36 +16,36 @@ Miinaharava on muun muassa vanhoista Windows-versioista tuttu peli *Minesweeper*
 - [Vaatimusmäärittely](https://github.com/thefakejj/ot-harjoitustyo/blob/main/documentation/vaatimusmaarittely.md)
 - [Changelog](https://github.com/thefakejj/ot-harjoitustyo/blob/main/documentation/changelog.md)
 - [Arkkitehtuurikuvaus](https://github.com/thefakejj/ot-harjoitustyo/blob/main/documentation/arkkitehtuurikuvaus.md)
+- [Testausdokumentaatio](https://github.com/thefakejj/ot-harjoitustyo/blob/main/documentation/testaus.md)
 
 ## Asennusohjeet
 
-### Ohjelman käyttämiseen tarvitaan Poetry. Kaikki komennot tulee ajaa ohjelman juurihakemistossa (ot-harjoitystyo).
+### Ohjelman käyttämiseen tarvitaan Poetry. Kaikki komennot tulee ajaa ohjelman juurihakemistossa (minesweeper).
 
-
-1: Asenna riippuvuudet
-
-```bash
-poetry install
-```
-
-2: Mene virtuaaliympäristöön
+1: Mene virtuaaliympäristöön
 
 ```bash
 poetry shell
 ```
 
-3: Suorita aloitustoimenpiteet (tämän tarvitsee tehdä vain kerran)
+2: Asenna riippuvuudet
+
+```bash
+poetry install
+```
+
+3: Luo tietokanta. HUOM: Tämä komento tyhjentää sen tietokannan, minkä tiedostonimi on .envissä! 
+
 ```bash
 poetry run invoke build
 ```
 
-Nyt kun ohjelma on asennettu, voit käynnistää sen komennolla:
+4: Nyt kun ohjelma on asennettu, voit käynnistää sen komennolla:
 
 ```bash
 poetry run invoke start
 ```
-
-Tästä eteenpäin ohjelma käynnistyy viimeisimmällä komennolla.
+Tästä eteenpäin ohjelman voi käynnistää ajamalla vain tämän komennon.
 
 <br>
 

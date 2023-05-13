@@ -1,6 +1,6 @@
 # Työaikakirjanpito
 
-Viikko 7 aikana tuntikirjanpito unohtui, joten laitan tänne vain sen tiedon mistä voin olla varma.
+Viikko 7 aikana tuntikirjanpito unohtui moneen otteeseen, joten laitan tänne vain sen tiedon mistä voin olla varma.
 
 | päivä | aika | mitä tein  |
 | :----:|:-----| :-----|
@@ -17,4 +17,7 @@ Viikko 7 aikana tuntikirjanpito unohtui, joten laitan tänne vain sen tiedon mis
 |27.4|3|miinat paljastuu. muutettu koodia niin, että tarvitaan vähemmän parametreja.|
 |2.5|12|peli on nyt "pelattavissa"! luotu grafiikat miinaharavan numeroille ja sivunapille. tehty docstringiä, käyttöohjetta, arkkitehtuurikuvausta, changelogia, testejä, linttiä.|
 |10.5|4.5| lisätty leaderboard ja miinojen paljastaminen peliin (useiden vaiheiden kautta), päivitetty vaatimusmäärittely ja changelog. päivitetty käyttöohjetta| 
-|yhteensä|69|tuntia|
+|11.5|?| tänä päivänä (ja sitä seuraavana yönä) tehtiin suurin osa ui:n ja serviceiden uusimmimsta muutoksista ja niiden testeistä| 
+|12.5|2| päivitetty testejä ja poistettu ylimääräisiä injektointeja| 
+|13.5|8| Laajennettu dokumentaatiota, lisätty testejä| 
+|yhteensä|72|tuntia|
